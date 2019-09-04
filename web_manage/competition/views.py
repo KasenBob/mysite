@@ -26,6 +26,8 @@ def com_list(request):
 			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
 
 	com_basic_info = models.com_basic_info.objects.all()
+	for com in com_basic_info:
+		com.update_status()
 	context['com_list'] = com_basic_info
 	return render(request, 'competition/com_list.html', context)
 

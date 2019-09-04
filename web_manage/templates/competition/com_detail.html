@@ -14,7 +14,7 @@
         <h1>{{ inform }}</h1>
         <p>{{ com_info.com_name }}</p>
 
-        {% if com_info.com_status == 0 %}
+        {% if com_info.com_status == '0' %}
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
                     style="display:inline-block;">
                 报名
@@ -39,7 +39,9 @@
                 </div>
             </div>
             <a class="btn btn-primary btn-lg" href="/competition/com_attach_download?id={{ com_info.com_id }}"
-               role="button" style="display:inline-block;">下载附件</a>
+               role="button" style="display:inline-block;">
+                下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+            </a>
         {% else %}
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal"
                     disabled="disabled">

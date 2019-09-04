@@ -30,4 +30,10 @@ class user_login_info(models.Model):
 	have_login = models.CharField(max_length=5, default='0')
 	have_alter = models.CharField(max_length=5, default='0')
 	ip = models.CharField(max_length=25)
-	jurisdiction = models.CharField(max_length=5)
+
+
+class jurisdiction(models.Model):
+	account = models.ForeignKey('user_login_info', to_field='account', on_delete=models.CASCADE)
+	status = models.CharField(max_length=10,
+	                          choices=(
+	                          ("0", "学生"), ("1", "指导教师"), ("2", "辅导员"), ("3", "学院领带"), ("4", "学校领导"), ("5", "学科委员")))

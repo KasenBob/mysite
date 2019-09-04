@@ -39,17 +39,17 @@ def login(request):
 				if user.psword == t_psword:
 					request.session['is_login'] = True
 					request.session['user_number'] = user.account
-					request.session['user_power'] = user.jurisdiction
+					judge = get_object_or_404(models.jurisdiction, account=user)
+					request.session['user_power'] = judge.status
 					# print(request.session['user_power'])
 					# print(type(request.session['user_power']))
 					# 初次登录需要修改个人信息
 					# 学生
-					if user.have_alter == '0' and user.jurisdiction == '1':
+					#权限修改
+					if user.have_alter == '0' and judge.status == '0':
 						return redirect('/student/alter_info_stu')
 					# 指导老师
-					if user.have_alter == '0' and user.jurisdiction == '2':
-						return redirect('/teacher/alter_info_teach')
-					if user.have_alter == '0' and user.jurisdiction == '3':
+					if user.have_alter == '0' and judge.status == '1':
 						return redirect('/teacher/alter_info_teach')
 					return redirect('/home')
 				else:

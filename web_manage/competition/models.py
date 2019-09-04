@@ -1,11 +1,21 @@
 from django.db import models
+from datetime import datetime
 
 
 # Create your models here.
+# 系列比赛信息
+class series_info(models.Model):
+	id = models.AutoField(primary_key=True)
+	name = models.CharField(max_length=50, unique=True)
+	introduction = models.TextField(null=True, blank=True)
+	photo = models.ImageField(upload_to='series_photo', null=True, blank=True)
+
+
 # 竞赛基本信息
 class com_basic_info(models.Model):
 	com_id = models.AutoField(primary_key=True)
 	com_name = models.CharField(max_length=50, unique=True)
+	series_id = models.ForeignKey('series_info', to_field='id', on_delete=models.DO_NOTHING, null=True, blank=True)
 	begin_regit = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
 	end_regit = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
 	begin_time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
@@ -17,7 +27,21 @@ class com_basic_info(models.Model):
 	com_web = models.CharField(max_length=225, null=True, blank=True)
 	if_web = models.IntegerField(default=0)
 	num_teach = models.IntegerField(default=1)
-	com_status = models.IntegerField(default=0)
+	com_status = models.CharField(max_length=10, choices=(('0', '报名中'), ('1', '报名结束'), ('2', '比赛中'), ('3', '比赛结束')),
+	                              default='0')
+
+	def update_status(self):
+		now_time = datetime.now()
+		print(now_time)
+		if now_time >= self.begin_regit and now_time < self.end_regit:
+			self.com_status = '0'
+		elif now_time >= self.end_regit and now_time < self.begin_time:
+			self.com_status = '1'
+		elif now_time >= self.begin_time and now_time < self.end_time:
+			self.com_status = '2'
+		else:
+			self.com_status = '3'
+		self.save()
 
 
 # 竞赛发布信息
@@ -79,3 +103,4 @@ class temp_com_group_basic_info(models.Model):
 	                              blank=True)
 	product_name = models.CharField(max_length=50, null=True, blank=True)
 	else_info = models.TextField(default='', null=True, blank=True)
+	apply_type = models.CharField(max_length=5, choices=(('1', '修改'), ('2', '撤销')), default='1')

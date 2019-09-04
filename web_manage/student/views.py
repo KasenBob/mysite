@@ -3,12 +3,13 @@ from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
-import datetime
+from datetime import datetime
 from . import models
 import os
 import all.models as all_model
 import competition.models as competition_model
 import teacher.models as teacher_model
+import student.models as student_model
 
 
 # Create your views here.
@@ -112,13 +113,14 @@ def personal_center_stu(request):
 	context['stu_num'] = stu_info.stu_number
 	context['photo'] = img_path
 	if tag == '2':
-		apply_list = models.com_stu_info.objects.filter(stu_id=stu_info.stu_number)
+		apply_list = models.com_stu_info.objects.filter(stu_id=stu_info.stu_number).order_by('-group_id')
 		com_list = []
 		teach_list = []
 		group_list = []
 		for apply in apply_list:
 			group_list.append(apply.group_id)
 			com = get_object_or_404(competition_model.com_basic_info, com_id=apply.com_id.com_id)
+			com.update_status()
 			com_list.append(com)
 			teach_info = teacher_model.com_teach_info.objects.filter(com_id=com.com_id, group_id=apply.group_id)
 			temp = []
@@ -133,7 +135,7 @@ def personal_center_stu(request):
 	return render(request, 'student/personal_center/overview.html', context)
 
 
-# 学生个人中心-竞赛详情
+# 学生个人中心-报名详情
 def apply_detail(request):
 	context = {}
 	com_id = request.GET.get('p1')
@@ -179,6 +181,7 @@ def stu_apply_edit(request):
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	com_info.update_status()
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
 	depart_list = all_model.depart_info.objects.all()
 
@@ -301,7 +304,7 @@ def stu_apply_edit(request):
 			product_name = request.POST.get('product_name').strip()
 
 		# 报名中 - 直接修改
-		if com_info.com_status == 0:
+		if com_info.com_status == '0':
 			pre_stu_list = models.com_stu_info.objects.filter(group_id=group_info)
 			for pre_stu in pre_stu_list:
 				pre_stu.delete()
@@ -361,6 +364,7 @@ def stu_apply_edit(request):
 			# 备注
 			if flag_else == 1:
 				temp_group.else_info = else_info
+			temp_group.apply_type = '1'
 			temp_group.save()
 
 			temp_id = temp_group.temp_id
@@ -406,5 +410,57 @@ def delete_apply(request):
 
 	com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
 	com_group.delete()
+
+	return redirect('/student/personal_center_stu/?tag=2')
+
+
+def delete_apply(request):
+	context = {}
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	img_path = stu_info.photo
+	context['stu_name'] = stu_info.stu_name
+	context['stu_num'] = stu_info.stu_number
+	context['photo'] = img_path
+
+	com_id = request.GET.get('p1')
+	group_id = request.GET.get('p2')
+	kind = request.GET.get('p3')
+
+	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
+
+	if kind == '1':
+		stu_id_list = models.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
+		stu_id_list.delete()
+
+		teach_id_list = teacher_model.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
+		teach_id_list.delete()
+
+		com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
+		com_group.delete()
+	else:
+		temp_apply = competition_model.temp_com_group_basic_info()
+		temp_apply.group_id = group_info
+		temp_apply.com_id = com_info
+
+		com_group_list = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
+		for i in com_group_list:
+			com_group = i
+		temp_apply.group_name = com_group.group_name
+		temp_apply.group_num = com_group.group_num
+		temp_apply.com_group = com_group.com_group
+		temp_apply.product_name = com_group.product_name
+		temp_apply.else_info = com_group.else_info
+		temp_apply.apply_type = '2'
+		temp_apply.save()
+
+		stu_list = student_model.com_stu_info.objects.filter(com_id=com_info, group_id=group_info)
+		for stu in stu_list:
+			student_model.temp_com_stu_info.objects.create(temp_id=temp_apply, stu_id=stu.stu_id,
+			                                               is_leader=stu.is_leader)
+
+		teach_list = teacher_model.com_teach_info.objects.filter(com_id=com_info, group_id=group_info)
+		for teach in teach_list:
+			teacher_model.temp_com_teach_info.objects.create(temp_id=temp_apply, teach_id=teach.teach_id)
 
 	return redirect('/student/personal_center_stu/?tag=2')

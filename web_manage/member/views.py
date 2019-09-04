@@ -14,6 +14,12 @@ import teacher.models as teacher_model
 
 
 # Create your views here.
+#学科竞赛委员主页
+def index(request):
+	context = {}
+	return render(request, "member/index.html", context)
+
+
 # 学科委员-比赛管理
 def com_manage(request):
 	context = {}
@@ -21,19 +27,6 @@ def com_manage(request):
 
 	context['com_list'] = com_list
 	return render(request, 'member/com_management.html', context)
-
-
-# 学科委员-设置竞赛状态
-def set_com_status(request):
-	if request.method == "POST":
-		context = {}
-		com_id = request.GET.get('p')
-		com = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
-		status = request.POST.get('status')
-		if status != None:
-			com.com_status = status
-			com.save()
-	return redirect('/member/com_manage/')
 
 
 # 学科委员-比赛详情
@@ -156,7 +149,6 @@ def com_edit(request):
 			com_info.if_web = 1
 			com_info.com_web = com_web
 		com_info.num_teach = num_teach
-		com_info.com_status = 0
 		com_info.save()
 
 		# 组别信息
@@ -393,14 +385,7 @@ def add_com_complete(request):
 			com_info.if_web = 1
 			com_info.com_web = com_web
 		com_info.num_teach = num_teach
-		com_info.com_status = 0
-
-		# 待修改
-		"""
-		try:
-			com_info.save()
-		except 	IntegrityError:
-		"""
+		com_info.save()
 
 		if sort_list != '0':
 			list = sort_list.split("/")
@@ -443,7 +428,7 @@ def add_com_complete(request):
 			# 重命名文件
 			com_publish.com_attachment = "com_attach\\" + str(com_info.com_id) + "\\" + str(
 				com_info.com_id) + "." + f_name
-			print(com_publish.com_attachment)
+			#print(com_publish.com_attachment)
 			url = settings.MEDIA_ROOT + 'com_attach\\' + str(com_info.com_id)
 			# 判断路径是否存在
 			isExists = os.path.exists(url)
@@ -516,42 +501,61 @@ def apply_application_agree(request):
 	temp_info = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 	group_info = temp_info.group_id
 
-	# 修改小组信息
-	group_info.group_name = temp_info.group_name
-	group_info.group_num = temp_info.group_num
-	group_info.com_group = temp_info.com_group
-	group_info.product_name = temp_info.product_name
-	group_info.else_info = temp_info.else_info
-	group_info.save()
+	if temp_info.apply_type == '1':
+		# 修改小组信息
+		group_info.group_name = temp_info.group_name
+		group_info.group_num = temp_info.group_num
+		group_info.com_group = temp_info.com_group
+		group_info.product_name = temp_info.product_name
+		group_info.else_info = temp_info.else_info
+		group_info.save()
 
-	# 修改小组学生信息
-	temp_stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_info)
-	pre_stu_list = student_model.com_stu_info.objects.filter(group_id=group_info)
-	for pre_stu in pre_stu_list:
-		pre_stu.delete()
-	for temp_stu in temp_stu_list:
-		new_stu = student_model.com_stu_info()
-		new_stu.com_id = group_info.com_id
-		new_stu.group_id = group_info
-		new_stu.stu_id = temp_stu.stu_id
-		new_stu.is_leader = temp_stu.is_leader
-		new_stu.save()
-		temp_stu.delete()
+		# 修改小组学生信息
+		temp_stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_info)
+		pre_stu_list = student_model.com_stu_info.objects.filter(group_id=group_info)
+		for pre_stu in pre_stu_list:
+			pre_stu.delete()
+		for temp_stu in temp_stu_list:
+			new_stu = student_model.com_stu_info()
+			new_stu.com_id = group_info.com_id
+			new_stu.group_id = group_info
+			new_stu.stu_id = temp_stu.stu_id
+			new_stu.is_leader = temp_stu.is_leader
+			new_stu.save()
+			temp_stu.delete()
 
-	# 修改指导教师信息
-	temp_teach_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=temp_info)
-	pre_teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_info)
-	for pre_teach in pre_teach_list:
-		pre_teach.delete()
-	for temp_teach in temp_teach_list:
-		new_teach = teacher_model.com_teach_info()
-		new_teach.com_id = group_info.com_id
-		new_teach.group_id = group_info
-		new_teach.teach_id = temp_teach.teach_id
-		new_teach.save()
-		temp_teach.delete()
+		# 修改指导教师信息
+		temp_teach_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=temp_info)
+		pre_teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_info)
+		for pre_teach in pre_teach_list:
+			pre_teach.delete()
+		for temp_teach in temp_teach_list:
+			new_teach = teacher_model.com_teach_info()
+			new_teach.com_id = group_info.com_id
+			new_teach.group_id = group_info
+			new_teach.teach_id = temp_teach.teach_id
+			new_teach.save()
+			temp_teach.delete()
 
-	temp_info.delete()
+		temp_info.delete()
+	else:
+		temp_stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_info)
+		pre_stu_list = student_model.com_stu_info.objects.filter(group_id=group_info)
+		for pre_stu in pre_stu_list:
+			pre_stu.delete()
+		for temp_stu in temp_stu_list:
+			temp_stu.delete()
+
+		temp_teach_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=temp_info)
+		pre_teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_info)
+		for pre_teach in pre_teach_list:
+			pre_teach.delete()
+		for temp_teach in temp_teach_list:
+			temp_teach.delete()
+
+		temp_info.delete()
+		group_info.delete()
+
 
 	return redirect('/member/apply_application/')
 

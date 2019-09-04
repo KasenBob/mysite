@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block title %}
-    学科竞赛|个人中心
+    学科竞赛|指导教师
 {% endblock %}
 
 {% block content %}
@@ -30,41 +30,7 @@
                             个人信息
                         </a>
                     </div>
-                    {% if request.session.user_power == '3' %}
-                        <div class="panel-heading">
-                            <h4>学科竞赛委员</h4>
-                        </div>
-                        <div class="list-group">
-                            <a href="/member/com_manage/" class="list-group-item {% block active6 %}{% endblock %}">
-                                比赛
-                            </a>
-                            <a href="#" class="list-group-item {% block active7 %}{% endblock %}">
-                                新闻
-                            </a>
-                            <a href="#" class="list-group-item {% block active8 %}{% endblock %}">
-                                奖项
-                            </a>
-                            <a class="list-group-item" data-toggle="collapse" href="#collapseExample"
-                               aria-expanded="false" aria-controls="collapseExample">
-                                申请<span class="caret"></span>
-                            </a>
 
-                            <div class="collapse" id="collapseExample">
-                                <div class="list-group">
-                                    <a href="/member/apply_application/"
-                                       class="list-group-item {% block active9 %}{% endblock %}">
-                                        报名信息申请
-                                    </a>
-                                    <a href="#" class="list-group-item {% block active10 %}{% endblock %}">
-                                        XX信息申请
-                                    </a>
-                                    <a href="#" class="list-group-item {% block activ11 %}{% endblock %}">
-                                        XX信息申请
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
                 </div>
             </div>
             <div class="col-md-10">

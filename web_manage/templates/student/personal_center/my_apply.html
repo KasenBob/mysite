@@ -25,7 +25,6 @@
             <th>序号</th>
             <th>比赛</th>
             <th>指导老师</th>
-            <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -43,23 +42,11 @@
                         {% endif %}
                     {% endfor %}
                 </td>
-                {% if com.com_status == 0 %}
-                    <td>报名中</td>
-                {% endif %}
-                {% if com.com_status == 1 %}
-                    <td>报名结束</td>
-                {% endif %}
-                {% if com.com_status == 2 %}
-                    <td>比赛中</td>
-                {% endif %}
-                {% if com.com_status == 3 %}
-                    <td>已结束</td>
-                {% endif %}
                 <td>
                     <a href="/student/apply_detail?p1={{ com.com_id }}&p2={{ group.group_id }}" class="btn btn-default"
                        role="button" style="display:inline-block;">详情</a>
 
-                    {% if com.com_status == 0 %}
+                    {% if com.com_status == '0' %}
                         <div class="dropdown" style="display:inline-block;">
                             <button class="btn btn-primary" id="dLabel{{ forloop.counter }}" type="button"
                                     data-toggle="dropdown" aria-haspopup="true"
@@ -109,7 +96,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">还是算了</button>
-                                    <a href="/student/delete_apply?p1={{ com.com_id }}&p2={{ group.group_id }}"
+                                    <a href="/student/delete_apply?p1={{ com.com_id }}&p2={{ group.group_id }}&p3=1"
                                        class="btn btn-primary" role="button">我意已决</a>
                                 </div>
                             </div>
@@ -127,7 +114,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">还是算了</button>
-                                    <a href="#" class="btn btn-primary" role="button">我意已决</a>
+                                    <a href="/student/delete_apply?p1={{ com.com_id }}&p2={{ group.group_id }}&p3=2"
+                                       class="btn btn-primary" role="button">我意已决</a>
                                 </div>
                             </div>
                         </div>
