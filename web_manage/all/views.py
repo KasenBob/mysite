@@ -68,3 +68,6 @@ def logout(request):
 		return redirect("/home/")
 	request.session.flush()
 	return redirect("/home/")
+
+def time_line(request):
+	return render(request,"TimeLine/timeline.html")

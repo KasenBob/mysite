@@ -108,7 +108,7 @@
 }
 
 .VivaTimeline dl dd .events .events-body .events-desc {
-    
+    text-indent: 2em;
     padding: 0 15px;
 }
 

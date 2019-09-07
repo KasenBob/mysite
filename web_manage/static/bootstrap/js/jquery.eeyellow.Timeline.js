@@ -117,7 +117,39 @@
             }
         },
         
+        //自動輪播
+        _carousel: function(_container) {
+            var self = this;
+            if(_container == undefined){
+                self.target
+                    .find('.events-footer .active')
+                    .each(function(){
+                        var nextTarget;
+                        if($(this).is(':last-child')){
+                            nextTarget = $(this).siblings().first();
+                        }
+                        else{
+                            nextTarget = $(this).next();
+                        }
+                        self._carousel(nextTarget);
+                    });
+            }
+            else{
+                var target = _container.data().target;
 
+                _container
+                    .addClass('active')
+                    .siblings()
+                    .removeClass('active');
+                    
+                _container
+                    .closest('.events-footer')
+                    .siblings('.events-body')
+                    .find('.row')
+                    .eq(target).show()
+                    .siblings().hide();  
+            }
+        }
     }
 
     //公開方法

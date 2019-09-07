@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response, get_object_or_404, redirect, re
 from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, FileResponse
+from django.core.cache import cache
+import time
 from django.conf import settings
 import datetime
 from . import models
@@ -25,10 +27,17 @@ def com_list(request):
 		if user_info.have_alter == '0':
 			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
 
-	com_basic_info = models.com_basic_info.objects.all()
-	for com in com_basic_info:
-		com.update_status()
-	context['com_list'] = com_basic_info
+	key = 'com_list'
+	if cache.has_key(key):
+		com_list = cache.get(key)
+	else:
+		com_list = models.com_basic_info.objects.all()
+		for com in com_list:
+			com.update_status()
+
+	cache.set(key, com_list, 3600 - int(time.time() % 3600))
+
+	context['com_list'] = com_list
 	return render(request, 'competition/com_list.html', context)
 
 
