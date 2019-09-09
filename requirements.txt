@@ -5,6 +5,7 @@ billiard==3.3.0.23
 celery==3.1.26.post2
 celery-with-redis==3.0
 Django==2.2.3
+django-celery==3.3.1
 django-redis==4.10.0
 kombu==3.0.37
 meld3==2.0.0
@@ -12,7 +13,7 @@ Pillow==6.1.0
 pycodestyle==2.5.0
 PyMySQL==0.9.3
 pytz==2019.1
-redis==3.3.8
+redis==2.10.6
 sqlparse==0.3.0
 supervisor==4.0.4
 virtualenv==16.6.2
