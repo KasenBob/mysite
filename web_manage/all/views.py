@@ -5,12 +5,14 @@ from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
 import datetime
 from . import models
+from .tasks import sendmail
 import os
 
 
 # Create your views here.
 def home(request):
 	context = {}
+	sendmail.delay('test@test.com')
 	return render(request, 'home/home.html', context)
 
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'teacher',
 	'competition',
 	'member',
+	'djcelery',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,27 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static\\media\\').replace('\\', '/')
 MEDIA_URL = '/media/'
+
+# Celery
+import djcelery
+
+djcelery.setup_loader()  # 加载djcelery
+
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_ENABLE_UTC = True
+
+# celery内容等消息的格式设置
+CELERY_ACCEPT_CONTENT = ['application/json', ]
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+BROKER_URL = 'redis://127.0.0.1:6379/0'  # redis作为中间件
+# celery结果返回，可用于跟踪结果
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+BROKER_TRANSPORT = 'redis'
+
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'  # Backend数据库
+CELERY_WORKER_CONCURRENCY = 5
+# celery 的 worker 执行多少个任务后进行重启操作
+CELERY_WORKER_MAX_TASKS_PER_CHILD = 200
+
