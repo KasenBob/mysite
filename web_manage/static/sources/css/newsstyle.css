@@ -1,0 +1,22 @@
+html,body{
+	background-color: #2B2C30;
+}
+
+.chongshu{
+	height: 700px;
+}
+
+#newsboard{
+	padding-top: 128px;
+	background-color: #2B2C30;
+	color: white;
+	padding-bottom: 30px;
+}
+
+.caption p{
+	color:#DCDCDC
+}
+
+.caption h3{
+	color: white;
+}
