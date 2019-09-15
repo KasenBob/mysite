@@ -25,6 +25,7 @@ urlpatterns = [
 	path('student/', include('student.urls')),
 	path('teacher/', include('teacher.urls')),
 	path('member/', include('member.urls')),
+	path('news/',include('news.urls')),
 	# 静态资源
 	re_path(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
 ]

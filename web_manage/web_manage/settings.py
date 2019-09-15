@@ -165,7 +165,7 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 BROKER_TRANSPORT = 'redis'
 
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'  # Backend数据库
-CELERY_WORKER_CONCURRENCY = 5
+CELERY_WORKER_CONCURRENCY = 2
 # celery 的 worker 执行多少个任务后进行重启操作
-CELERY_WORKER_MAX_TASKS_PER_CHILD = 200
+CELERY_WORKER_MAX_TASKS_PER_CHILD = 20
 

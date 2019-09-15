@@ -8,7 +8,20 @@ class series_info(models.Model):
 	id = models.AutoField(primary_key=True)
 	name = models.CharField(max_length=50, unique=True)
 	introduction = models.TextField(null=True, blank=True)
-	photo = models.ImageField(upload_to='series_photo', null=True, blank=True)
+	photo = models.ImageField(upload_to='series_photo/', null=True, blank=True)
+	now_com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True,
+	                               blank=True)
+
+	def update_com_id(self):
+		com_list = com_basic_info.objects.filter(series_id=self.id).order_by('-begin_regit')
+		flag = 1
+		for new_com in com_list:
+			if flag == 1:
+				now_com_id = new_com.com_id
+				flag = 0
+			else:
+				break
+		self.save()
 
 
 # 竞赛基本信息

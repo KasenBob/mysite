@@ -12,9 +12,10 @@ import all.models as all_model
 import student.models as student_model
 import teacher.models as teacher_model
 
+
 # Create your views here.
 # 竞赛列表
-def com_list(request):
+def series_list(request):
 	context = {}
 	# 没有登录或者还未修改个人信息都无法报名
 	try:
@@ -27,18 +28,31 @@ def com_list(request):
 		if user_info.have_alter == '0':
 			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
 
-	key = 'com_list'
+	key = 'series_list'
 	if cache.has_key(key):
-		com_list = cache.get(key)
+		temp_series_list = cache.get(key)
 	else:
-		com_list = models.com_basic_info.objects.all()
-		for com in com_list:
-			com.update_status()
+		temp_series_list = models.series_info.objects.all()
 
-	cache.set(key, com_list, 3600 - int(time.time() % 3600))
+	l1 = len(temp_series_list)
+	series_list = []
+	temp = []
+	flag = 1
+	for series in temp_series_list:
+		series.update_com_id()
+		temp.append(series)
+		if flag == l1:
+			series_list.append(temp)
+			temp = []
+		elif flag % 4 == 0:
+			series_list.append(temp)
+			temp = []
+		flag += 1
 
-	context['com_list'] = com_list
-	return render(request, 'competition/com_list.html', context)
+	cache.set(key, temp_series_list, 3600 - int(time.time() % 3600))
+
+	context['series_list'] = series_list
+	return render(request, 'competition/series_list.html', context)
 
 
 # 竞赛详情
@@ -48,12 +62,12 @@ def com_detail(request):
 	try:
 		is_login = request.session['is_login']
 	except KeyError:
-		return redirect("/competition/com_list/")
+		return redirect("/competition/series_list/")
 	else:
 		user_num = request.session['user_number']
 		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
 		if user_info.have_alter == '0':
-			return redirect("/competition/com_list/")
+			return redirect("/competition/series_list/")
 
 	if request.method == 'GET':
 		id = request.GET.get('id')

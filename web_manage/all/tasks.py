@@ -6,6 +6,7 @@ import time
 
 
 # 异步任务
+"""
 @task
 def sendmail(email):
 	print('start send email to %s' % email)
@@ -20,3 +21,4 @@ def some_task():
 	time.sleep(5)
 	print('success')
 	return True
+"""

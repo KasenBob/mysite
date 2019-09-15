@@ -50,6 +50,7 @@ def com_detail_manage(request):
 			t += 1
 		context['sort_list'] = sort_list
 	context['com_info'] = com_info
+	print(com_info.begin_regit)
 	context['com_need'] = com_need
 	context['com_publish'] = com_publish
 	return render(request, 'member/com_detail.html', context)
@@ -93,8 +94,6 @@ def com_edit(request):
 		end_time = request.POST.get('end_time', None)
 		# end_time = datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
 		if_com_sort = request.POST.get('if_com_sort', '0')
-		print(if_com_sort)
-		print(type(if_com_sort))
 		sort_list = request.POST.get('sort_list', '0')
 		com_web = request.POST.get('com_web', '0')
 		num_teach = request.POST.get('num_teach', '0')
@@ -130,6 +129,9 @@ def com_edit(request):
 		com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 		com_info.com_name = name
 		com_info.begin_regit = begin_regit
+
+		print(begin_regit)
+
 		com_info.end_regit = end_regit
 		com_info.begin_time = begin_time
 		com_info.end_time = end_time
@@ -191,7 +193,6 @@ def com_edit(request):
 			# 重命名文件
 			com_publish.com_attachment = "com_attach\\" + str(com_info.com_id) + "\\" + str(
 				com_info.com_id) + "." + f_name
-			print(com_publish.com_attachment)
 			url = settings.MEDIA_ROOT + 'com_attach\\' + str(com_info.com_id)
 			# 判断路径是否存在
 			isExists = os.path.exists(url)

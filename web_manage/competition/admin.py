@@ -13,4 +13,4 @@ class com_basic_info_Admin(admin.ModelAdmin):
 
 @admin.register(series_info)
 class series_info_Admin(admin.ModelAdmin):
-	list_display = ('id','name','introduction','photo',)
+	list_display = ('id','name','introduction','photo','now_com_id',)

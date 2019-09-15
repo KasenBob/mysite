@@ -1,5 +1,5 @@
-{% load staticfiles %}
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -7,152 +7,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 插入标题 -->
     <title>{% block title %}{% endblock %}</title>
-    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'bootstrap/css/jquery.eeyellow.Timeline.css' %}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'sources/js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'sources/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'sources/js/script.js' %}"></script>
+    <link href="{% static 'sources/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'sources/css/indexstyle.css' %}" rel="stylesheet">
+
     <!-- 插入css -->
     {% block css %}{% endblock %}
-    <style>
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
 </head>
 
-<body style=" padding-top: 80px; ">
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- 弹出侧边栏 -->
-            <button type="button" class="btn btn-default navbar-btn" aria-label="Left Align" id="conbtn">
-                <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
-            </button>&nbsp;&nbsp;
-
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-
-                <a class="navbar-brand" style="margin-left: 0px;" href="/home/">学科竞赛</a>
-
-                <li class="{% block is_activate1 %}{% endblock %}">
-                    <a href="/home/">首页</a>
-                </li>
-
-                <li class="{% block is_activate2 %}{% endblock %}">
-                    <a href="/news_list/">新闻</a>
-                </li>
-
-                <li class="{% block is_activate3 %}{% endblock %}">
-                    <a href="/competition/com_list/">竞赛</a>
-                </li>
-            </ul>
-            <!-- 查询 -->
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">查询</button>
-            </form>
-
-            <ul class="nav navbar-nav navbar-right">
-                {% if request.session.is_login and request.session.user_power == '0' %}
-                    <li role="presentation" class="dropdown">
-                        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            {{ request.session.user_number }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
-                            <li><a href="/student/personal_center_stu/">总览</a></li>
-                            <li><a href="#">消息</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">关注比赛</a></li>
-                            <li><a href="/student/personal_center_stu?tag=2">报名信息</a></li>
-                            <li><a href="#">参赛经历</a></li>
-                            <li><a href="#">奖项</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/logout/">登出</a></li>
-                        </ul>
+<body>
+<header>
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="{% static 'sources/img/logo.png' %}" alt="logo" id="logo"/>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="{% block is_activate1 %}{% endblock %}">
+                        <a href="/home/">首页</a>
                     </li>
-                {% elif request.session.is_login and request.session.user_power == '1' %}
-                    <li role="presentation" class="dropdown">
-                        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            {{ request.session.user_number }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
-                            <li><a href="/teacher/personal_center_teach">个人中心</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/teacher/personal_center_teach/">参赛小组</a></li>
-                            <li><a href="#">参赛经历</a></li>
-                            <li><a href="#">获奖结果</a></li>
-                            <li><a href="#">指导记录</a></li>
-                            <li><a href="#">个人中心</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/logout/">登出</a></li>
-                        </ul>
+                    <li class="{% block is_activate2 %}{% endblock %}">
+                        <a href="/news/news_list/">新闻</a>
                     </li>
-                {% elif request.session.is_login and request.session.user_power == '5' %}
-                    <li role="presentation" class="dropdown">
-                        <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">
-                            {{ request.session.user_number }}
-                            <span class="caret"></span>
-                        </a>
-                        <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
-                            <li><a href="/member/index/">学科竞赛委员入口</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/logout/">登出</a></li>
-                        </ul>
+                    <li class="{% block is_activate3 %}{% endblock %}">
+                        <a href="/competition/series_list/">竞赛</a>
                     </li>
-                {% else %}
-                    <!-- Button trigger modal -->
-                    <a href="/login/" class="btn btn-default navbar-btn" role="button">
-                        登录
-                    </a>
-                    <!-- Modal -->
-                {% endif %}
-            </ul>
-        </div>
-    </div>
+                </ul>
+                <form class="navbar-form navbar-left dist" id="search-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="查询" autocomplete="on" name="seach">
+                        <button type="submit" class="btn btn-default" id="search-submit"><i
+                                class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if request.session.is_login and request.session.user_power == '0' %}
+                        <li role="presentation" class="dropdown">
+                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                {{ request.session.user_number }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <li><a href="/student/personal_center_stu/">总览</a></li>
+                                <li><a href="#">消息</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">关注比赛</a></li>
+                                <li><a href="/student/personal_center_stu?tag=2">报名信息</a></li>
+                                <li><a href="#">参赛经历</a></li>
+                                <li><a href="#">奖项</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout/">登出</a></li>
+                            </ul>
+                        </li>
+                    {% elif request.session.is_login and request.session.user_power == '1' %}
+                        <li role="presentation" class="dropdown">
+                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                {{ request.session.user_number }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <li><a href="/teacher/personal_center_teach">个人中心</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/teacher/personal_center_teach/">参赛小组</a></li>
+                                <li><a href="#">参赛经历</a></li>
+                                <li><a href="#">获奖结果</a></li>
+                                <li><a href="#">指导记录</a></li>
+                                <li><a href="#">个人中心</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout/">登出</a></li>
+                            </ul>
+                        </li>
+                    {% elif request.session.is_login and request.session.user_power == '5' %}
+                        <li role="presentation" class="dropdown">
+                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                {{ request.session.user_number }}
+                                <span class="caret"></span>
+                            </a>
+                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <li><a href="/member/index/">学科竞赛委员入口</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout/">登出</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#" class="glyphicon glyphicon-envelope"></a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">用户
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/login/">登录</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="/login/">登录</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+
+<nav id="cebian" class="navbar-left">
+    <ul class="list-group" id="cebianneirong">
+        <li class="list-group-item"><i class="glyphicon glyphicon-user"></i>
+            <h4> 某同学</h4>
+        </li>
+        <li class="divider"></li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Morbi leo risus</li>
+        <li class="list-group-item">Porta ac consectetur ac</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <span class="glyphicon glyphicon-menu-right" id="cebiankaiguan"></span>
 </nav>
-<script>
-    $(document).ready(function () {
-        $("#conbtn").click(function () {
-            $("#cebian").toggle(100);
-        });
-    });
-</script>
 
-<nav id="cebian" class="navbar-left"
-     style="background-color: white;width: 15%; position: fixed;z-index: 2;padding: 0 0 5% 2%;overflow: auto;top:50px;border: solid rgb(240,240,240) 3px;height: 100%; display: none;">
-    <h2>导航栏</h2>
+
+{% block content %}
+
+{% endblock %}
+
+<footer id="dibu">
     <div>
-        这个功能<br>这个功能<br>这个功能
-    </div>
-</nav>
-<!--  正文 -->
-{% block content %}{% endblock %}
-
-
-<footer class="footer navbar navbar-default" style="margin: 0;width: 100%;">
-    <div style="width: 80%;margin: 0 auto;text-align: center;">
         地址：广东惠州市演达大道46号 邮编：516007<br>
         总机：0752-2529000 E-mail:webmaster@hzu.edu.cn<br>
         版权所有©惠州学院 粤ICP备********号
     </div>
 </footer>
+
+{% block js %}
+
+{% endblock %}
 
 </body>
 </html>

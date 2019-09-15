@@ -5,14 +5,14 @@ from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
 import datetime
 from . import models
-from .tasks import sendmail
+#from .tasks import sendmail
 import os
 
 
 # Create your views here.
 def home(request):
 	context = {}
-	sendmail.delay('test@test.com')
+	#sendmail.delay('test@test.com')
 	return render(request, 'home/home.html', context)
 
 
@@ -71,5 +71,4 @@ def logout(request):
 	request.session.flush()
 	return redirect("/home/")
 
-def time_line(request):
-	return render(request,"TimeLine/timeline.html")
+
