@@ -10,7 +10,7 @@ class depart_info(models.Model):
 # 专业信息
 class major_info(models.Model):
 	major_name = models.CharField(max_length=25, primary_key=True)
-	depart = models.ForeignKey('depart_info', to_field='depart_name', on_delete=models.DO_NOTHING)
+	depart = models.ForeignKey('depart_info', to_field='depart_name', on_delete=models.CASCADE)
 
 
 # 年级信息
@@ -36,4 +36,5 @@ class jurisdiction(models.Model):
 	account = models.ForeignKey('user_login_info', to_field='account', on_delete=models.CASCADE)
 	status = models.CharField(max_length=10,
 	                          choices=(
-	                          ("0", "学生"), ("1", "指导教师"), ("2", "辅导员"), ("3", "学院领带"), ("4", "学校领导"), ("5", "学科委员")))
+		                          ("0", "学生"), ("1", "指导教师"), ("2", "辅导员"), ("3", "学院领带"), ("4", "学校领导"),
+		                          ("5", "学科委员")))

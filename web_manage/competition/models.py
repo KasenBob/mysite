@@ -24,11 +24,18 @@ class series_info(models.Model):
 		self.save()
 
 
+# 系列针对院系
+class series_depart(models.Model):
+	id = models.AutoField(primary_key=True)
+	series_id = models.ForeignKey('series_info', to_field='id', on_delete=models.CASCADE)
+	depart_name = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.CASCADE)
+
+
 # 竞赛基本信息
 class com_basic_info(models.Model):
 	com_id = models.AutoField(primary_key=True)
 	com_name = models.CharField(max_length=50, unique=True)
-	series_id = models.ForeignKey('series_info', to_field='id', on_delete=models.DO_NOTHING, null=True, blank=True)
+	series_id = models.ForeignKey('series_info', to_field='id', on_delete=models.SET_NULL, null=True, blank=True)
 	begin_regit = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
 	end_regit = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
 	begin_time = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)
@@ -59,7 +66,7 @@ class com_basic_info(models.Model):
 
 # 竞赛发布信息
 class com_publish_info(models.Model):
-	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.DO_NOTHING)
+	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.CASCADE)
 	apply_announce = models.TextField(null=True, blank=True)
 	apply_step = models.TextField(null=True, blank=True)
 	com_attachment = models.FileField(upload_to='com_attach', null=True, blank=True)
@@ -68,14 +75,14 @@ class com_publish_info(models.Model):
 # 竞赛组别信息
 class com_sort_info(models.Model):
 	id = models.AutoField(primary_key=True)
-	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.DO_NOTHING)
+	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.CASCADE)
 	sort_name = models.CharField(max_length=50)
 
 
 # 竞赛小组信息
 class com_group_basic_info(models.Model):
 	group_id = models.AutoField(primary_key=True)
-	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.DO_NOTHING, default='')
+	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True, blank=True)
 	group_name = models.CharField(max_length=25, null=True, blank=True)
 	group_num = models.IntegerField(default=1)
 	com_group = models.ForeignKey('com_sort_info', to_field='id', on_delete=models.SET_NULL, null=True, blank=True)
