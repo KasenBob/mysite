@@ -24,10 +24,10 @@ SECRET_KEY = '-o0-g!(a=)%b%!(4r+e)mu5kn!6x7nma4rfn0_&+_vk%#5ebe$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# HOST settings
 ALLOWED_HOSTS = ['*']
 
 # Application definition
-
 INSTALLED_APPS = [
 	'django.contrib.admin',
 	'django.contrib.auth',
@@ -40,7 +40,10 @@ INSTALLED_APPS = [
 	'teacher',
 	'competition',
 	'member',
+	'news',
 	'djcelery',
+	'ckeditor',
+	'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -136,17 +139,18 @@ DATE_FORMAT = 'Y-m-d'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static').replace('\\', '/'),
 	# 资源地址
 ]
 
+# Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static\\media\\').replace('\\', '/')
 MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = "article_images"
 
-# Celery
+# Celery settings
 import djcelery
 
 djcelery.setup_loader()  # 加载djcelery
@@ -169,3 +173,37 @@ CELERY_WORKER_CONCURRENCY = 2
 # celery 的 worker 执行多少个任务后进行重启操作
 CELERY_WORKER_MAX_TASKS_PER_CHILD = 20
 
+# Email settings
+# 邮件发送配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = 'hzuyzk@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'Ab2223601'
+# 收件人看到的发件人
+EMAIL_FROM = 'KasenBob<hzuyzk@163.com>'  # 需要和邮箱号码一致
+
+# editor
+CKEDITOR_CONFIGS = {
+	'default': {
+		'toolbar': (
+			['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+			['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+			['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+			['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
+			['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+			['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+			['Link', 'Unlink', 'Anchor'],
+			['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+			['Styles', 'Format', 'Font', 'FontSize'],
+			['TextColor', 'BGColor'],
+			['Maximize', 'ShowBlocks', '-', 'About', 'pbckcode'],
+		),
+	}
+}
+
+#新闻分页
+EACH_PAGE_BLOGS_NUMBER = 1

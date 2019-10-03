@@ -11,16 +11,18 @@
     <link href="{% static 'sources/css/jquery.eeyellow.Timeline.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block is_activate3 %}
+{% block is_activate4 %}
     active
 {% endblock %}
 
 {% block content %}
     <div class="shijianzhou htmleaf-container">
         <div class="biaoti">
-            <h1>竞赛</h1>
-            <h4><span id="qiebiao" class="qiehuan">列表</span><span> / </span> <span id="qiezhou"
-                                                                                   class="qiehuan">时间轴</span></h4>
+            <h1>竞赛介绍</h1>
+            <h4>
+                <span id="qiebiao" class="qiehuan" style="color: #6CB670;">列表</span><span> / </span>
+                <span id="qiezhou" class="qiehuan">时间轴</span>
+            </h4>
             <div class="border"></div>
         </div>
 
@@ -36,27 +38,36 @@
                                         <div class="circ"></div>
                                         <div class="time"></div>
                                         <div class="events">
-                                            <div class="events-header">一月竞赛</div>
+                                            <div class="events-header">竞赛名称</div>
                                             <div class="events-body">
                                                 <div class="row">
                                                     <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
+                                                        <p class="jieshaoneirong">
+                                                            简介内容</p>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="events-footer"></div>
+                                            <div class="events-footer"><a class="btn btn-transparent quanbubisai"
+                                                                          id="qhsjz">查看详情</a></div>
+                                        </div>
+                                    </dd>
+                                    <dd class="pos-left clearfix">
+                                        <div class="circ"></div>
+                                        <div class="time"></div>
+                                        <div class="events">
+                                            <div class="events-header">竞赛名称</div>
+                                            <div class="events-body">
+                                                <div class="row">
+                                                    <div class="events-desc">
+                                                        <p class="jieshaoneirong">
+                                                            简介内容</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="events-footer"><a class="btn btn-transparent quanbubisai"
+                                                                          id="qhsjz">查看详情</a></div>
                                         </div>
                                     </dd>
                                     <dt>February</dt>
@@ -64,252 +75,92 @@
                                         <div class="circ"></div>
                                         <div class="time"></div>
                                         <div class="events">
-                                            <div class="events-header">二月竞赛</div>
+                                            <div class="events-header">竞赛名称</div>
                                             <div class="events-body">
                                                 <div class="row">
                                                     <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
+                                                        <p class="jieshaoneirong">
+                                                            简介内容</p>
+
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="events-footer"></div>
+                                            <div class="events-footer"><a class="btn btn-transparent quanbubisai"
+                                                                          id="qhsjz">查看详情</a></div>
                                         </div>
                                     </dd>
                                     <dt>March</dt>
-                                    <dd class="pos-left clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">三月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>April</dt>
-                                    <dd class="pos-right clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">四月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
-
                                     <dt>May</dt>
-                                    <dd class="pos-left clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">五月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>June</dt>
-                                    <dd class="pos-right clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">六月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>July</dt>
-                                    <dd class="pos-left clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">七月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>August</dt>
-                                    <dd class="pos-right clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">八月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>September</dt>
-                                    <dd class="pos-left clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">九月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>October</dt>
-                                    <dd class="pos-right clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">十月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>November</dt>
-                                    <dd class="pos-left clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">十一月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                     <dt>December</dt>
-                                    <dd class="pos-right clearfix">
-                                        <div class="circ"></div>
-                                        <div class="time"></div>
-                                        <div class="events">
-                                            <div class="events-header">十二月竞赛</div>
-                                            <div class="events-body">
-                                                <div class="row">
-                                                    <div class="events-desc">
-                                                        <button class="btn btn-transparent dangebisai">蓝桥杯</button>
-                                                        <button class="btn btn-transparent dangebisai">天梯赛</button>
-                                                        <button class="btn btn-transparent dangebisai">ACM</button>
-                                                        <button class="btn btn-transparent dangebisai">计算机设计大赛</button>
-                                                        <button class="btn btn-transparent dangebisai">大创</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="events-footer"></div>
-                                        </div>
-                                    </dd>
                                 </dl>
                             </div>
                         </div>
+                    </div>
+                    <div class="zuihouanniu">
+                        <a class="btn btn-transparent quanbubisai" id="qhlb">切换至列表</a>
                     </div>
                 </div>
 
                 <div id="biao">
 
-                    {% for series_info in series_list %}
-                        <div class="row">
-                            {% for series in series_info %}
-                                <div class="col-md-3 col-sm-6">
-                                    <div class="table-bordered">
-                                        <img class="img-responsive myimg" src="{% static 'media/series_photo/1.jpg' %}"
-                                             alt="com_logo">
-                                        <div class="member">
-                                            <h3>{{ series.name }}</h3>
-                                            <p>{{ series.introduction }}</p>
-                                            <a herf="" class="btn btn-transparent">更多详情</a>
-                                        </div>
-                                    </div>
+                    <div class="biaoti">
+                        <h1 class="biaoti">个人赛</h1>
+                        <div class="border"></div>
+                    </div>
+
+                    {% for series_list in series_list_one %}
+                    <div class="row">
+                        {% for series in series_list %}
+                        <div class="col-md-3 col-sm-6">
+                            <div class="table-bordered">
+                                <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
+                                <div class="member">
+                                    <h3>{{ series.name }}</h3>
+                                    <p>{{ series.introduction }}</p>
+                                    <a class="btn btn-transparent">更多详情</a>
                                 </div>
-                            {% endfor %}
+                            </div>
                         </div>
+                        {% endfor %}
+                    </div>
                     {% endfor %}
 
+                    <div class="biaoti">
+                        <h1 class="biaoti">团队赛</h1>
+                        <div class="border"></div>
+                    </div>
+
+                    {% for series_list in series_list_all %}
+                    <div class="row">
+                        {% for series in series_list %}
+                        <div class="col-md-3 col-sm-6">
+                            <div class="table-bordered">
+                                <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
+                                <div class="member">
+                                    <h3>{{ series.name }}</h3>
+                                    <p>{{ series.introduction }}</p>
+                                    <a class="btn btn-transparent">更多详情</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="zuihouanniu">
+                        <a class="btn btn-transparent quanbubisai" id="qhsjz">切换时间轴</a>
+                    </div>
+
                 </div>
-
             </div>
-
         </div>
-    </div>
     </div>
 
 {% endblock %}

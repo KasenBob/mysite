@@ -17,33 +17,75 @@
     <div id="fengcai">
         <div class="container">
             <div class="row">
-                <h1 class="h1s">学生风采</h1>
-                <div class="border"></div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="{% static 'sources/img/6661.jpg' %}" class="img-responsive"/>
+                <div id="zhuping1">
+                    <h1 class="h1s">学生风采</h1>
+                    <div class="border"></div>
+                    <div class="col-md-6">
+                        <img src="img/6661.jpg" style="width: 558px;height: 372px;" class="img-responsive"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>第十届“蓝桥杯”全国软件和信息技术专业人才大赛</h3>
+                        <p>
+                            第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。我校信息科学技术学院派出25名选手参加比赛，最终24人获奖！
+                            其中，JAVA 软件开发大学B组获得二等奖1项、三等奖1项，C/C++程序设计大学B组获得二等奖7项、三等奖4项、优秀奖11项。
+                        </p>
+                        <p>
+                            本届大赛由工业和信息化部主办,共有来自全国31个省、市、自治区1200 多所高校的6万余名选手报名参加个人赛的角逐。
+                            我校信息科学技术学院共有145名学生报名参赛，经过省赛筛选后，25名学生进入国赛总决赛。
+                        </p>
+                        <a href="#" class="btn btn-transparent">了解更多</a>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>第十届“蓝桥杯”全国软件和信息技术专业人才大赛</h3>
-                    <p>
-                        第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。我校信息科学技术学院派出25名选手参加比赛，最终24人获奖！
-                        其中，JAVA 软件开发大学B组获得二等奖1项、三等奖1项，C/C++程序设计大学B组获得二等奖7项、三等奖4项、优秀奖11项。
-                    </p>
-                    <p>
-                        本届大赛由工业和信息化部主办,共有来自全国31个省、市、自治区1200 多所高校的6万余名选手报名参加个人赛的角逐。
-                        我校信息科学技术学院共有145名学生报名参赛，经过省赛筛选后，25名学生进入国赛总决赛。
-                    </p>
-                    <a href="#" class="btn btn-transparent">了解更多</a>
+
+                <div id="zhuping2" style="display: none;">
+                    <h1 class="h1s">第二标题</h1>
+                    <div class="border"></div>
+                    <div class="col-md-6">
+                        <img src="img/6662.jpg" style="width: 558px;height: 372px;" class="img-responsive"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>第二个标题</h3>
+                        <p>
+                            第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。我校信息科学技术学院派出25名选手参加比赛，最终24人获奖！
+                            其中，JAVA 软件开发大学B组获得二等奖1项、三等奖1项，C/C++程序设计大学B组获得二等奖7项、三等奖4项、优秀奖11项。
+                        </p>
+                        <p>
+                            本届大赛由工业和信息化部主办,共有来自全国31个省、市、自治区1200 多所高校的6万余名选手报名参加个人赛的角逐。
+                            我校信息科学技术学院共有145名学生报名参赛，经过省赛筛选后，25名学生进入国赛总决赛。
+                        </p>
+                        <a href="#" class="btn btn-transparent">了解更多</a>
+                    </div>
+                </div>
+
+                <div id="zhuping3" style="display: none;">
+                    <h1 class="h1s">第三标题</h1>
+                    <div class="border"></div>
+                    <div class="col-md-6">
+                        <img src="img/6663.png" style="width: 558px;height: 372px;" class="img-responsive"/>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>第三个标题</h3>
+                        <p>
+                            第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。我校信息科学技术学院派出25名选手参加比赛，最终24人获奖！
+                            其中，JAVA 软件开发大学B组获得二等奖1项、三等奖1项，C/C++程序设计大学B组获得二等奖7项、三等奖4项、优秀奖11项。
+                        </p>
+
+                        <a href="#" class="btn btn-transparent">了解更多</a>
+                    </div>
                 </div>
             </div>
+
             <div class="row">
-                <p style="text-align: center;line-height: 75px;">。。。</p>
+                <p style="text-align: center;line-height: 75px;font-size: 18px;" id="sandian">
+                    <span id="zhu1" class="tcolor">○</span>
+                    <span id="zhu2">○</span>
+                    <span id="zhu3">○</span>
+                </p>
             </div>
         </div>
     </div>
 
-    <div id="jingsaixinxi">
+    <div id="msg">
         <div class="container">
             <div class="row">
                 <div class="col-md-7 col-sm-12">
@@ -52,10 +94,11 @@
 
                     <div class="col-sm-6 col-md-4 shoutiaoweizhi">
                         <div class="thumbnail shoutiaoneirong">
-                            <img src="{% static  'sources/img/6662.jpg' %}" alt="...">
+                            <img src="img/6662.jpg" alt="...">
                             <div class="caption shoutiaoneirong">
                                 <h3>标题日期</h3>
-                                <p>第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。我校信息科学技术学院我校信息</p>
+                                <p>第十届“蓝桥杯”全国软件和信息技术专业人才大赛全国总决赛颁奖典礼在北京大学举行。
+                                    我校信息科学技术学院我校信息</p>
                             </div>
                         </div>
                     </div>
@@ -153,7 +196,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -163,7 +206,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -173,7 +216,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -183,7 +226,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -193,7 +236,9 @@
                     </div>
                 </div>
             </div>
-
+            <div class="zuihouanniu">
+                <a class="btn btn-transparent quanbubisai" href="contestbaoming.html">竞赛报名</a>
+            </div>
 
             <div id="remen">
                 <h1 class="h1s">热门比赛</h1>
@@ -201,7 +246,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -211,7 +256,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -221,7 +266,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -231,7 +276,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="table-bordered">
-                            <img class="img-responsive myimg" src="{% static 'sources/img/acm.jpg' %}" alt="acm">
+                            <img class="img-responsive myimg" src="img/acm.jpg" alt="acm">
                             <div class="member">
                                 <h3>ACM程序设计竞赛</h3>
                                 <p>ACM大学生程序设计竞赛是由国际计算机协会主办的，一项旨在展示大学生创新能力、团队精神和在压力下编写程序、分析和解决问题能力的年度竞赛。</p>
@@ -243,8 +288,9 @@
             </div>
 
             <div id="zuihouanniu">
-                <a href="" class="btn btn-transparent quanbubisai">查看所有比赛</a>
+                <a class="btn btn-transparent quanbubisai" href="contest.html">查看所有比赛</a>
             </div>
+
         </div>
     </div>
 {% endblock %}

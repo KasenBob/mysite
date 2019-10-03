@@ -17,10 +17,12 @@
     {% block css %}{% endblock %}
 </head>
 
-<body>
+<body style="background-color: #2B2C30;">
+
 <header>
     <nav class="navbar navbar-fixed-top navbar-inverse">
         <div class="container-fluid">
+
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -40,12 +42,19 @@
                         <a href="/home/">首页</a>
                     </li>
                     <li class="{% block is_activate2 %}{% endblock %}">
-                        <a href="/news/news_list/">新闻</a>
+                        <a href="/news/news_list/">获奖新闻</a>
                     </li>
                     <li class="{% block is_activate3 %}{% endblock %}">
-                        <a href="/competition/series_list/">竞赛</a>
+                        <a href="">通知公告 </a>
+                    </li>
+                    <li class="{% block is_activate4 %}{% endblock %}">
+                        <a href="/competition/series_list/">竞赛一览</a>
+                    </li>
+                    <li class="{% block is_activate5 %}{% endblock %}">
+                        <a href="/competition/com_list/">竞赛报名</a>
                     </li>
                 </ul>
+
                 <form class="navbar-form navbar-left dist" id="search-form">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="查询" autocomplete="on" name="seach">
@@ -53,15 +62,46 @@
                                 class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </form>
-                <ul class="nav navbar-nav navbar-right">
+
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
                     {% if request.session.is_login and request.session.user_power == '0' %}
-                        <li role="presentation" class="dropdown">
-                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+
+                        <li class="dropdown" id="xiaoxiliebiao">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
-                                {{ request.session.user_number }}
-                                <span class="caret"></span>
-                            </a>
-                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <span class="glyphicon glyphicon-envelope"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h6 style="color: #6CB670;">查看全部</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">{{ request.session.user_number }}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
                                 <li><a href="/student/personal_center_stu/">总览</a></li>
                                 <li><a href="#">消息</a></li>
                                 <li role="separator" class="divider"></li>
@@ -73,14 +113,45 @@
                                 <li><a href="/logout/">登出</a></li>
                             </ul>
                         </li>
+
                     {% elif request.session.is_login and request.session.user_power == '1' %}
-                        <li role="presentation" class="dropdown">
-                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+
+                        <li class="dropdown" id="xiaoxiliebiao">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
-                                {{ request.session.user_number }}
-                                <span class="caret"></span>
-                            </a>
-                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <span class="glyphicon glyphicon-envelope"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h6 style="color: #6CB670;">查看全部</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">{{ request.session.user_number }}
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
                                 <li><a href="/teacher/personal_center_teach">个人中心</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/teacher/personal_center_teach/">参赛小组</a></li>
@@ -92,33 +163,64 @@
                                 <li><a href="/logout/">登出</a></li>
                             </ul>
                         </li>
+
                     {% elif request.session.is_login and request.session.user_power == '5' %}
-                        <li role="presentation" class="dropdown">
-                            <a id="drop4" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+
+                        <li class="dropdown" id="xiaoxiliebiao">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-envelope"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
+                                        <h6>消息内容消息内容消息内容...</h6>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <h6 style="color: #6CB670;">查看全部</h6>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
                                 {{ request.session.user_number }}
-                                <span class="caret"></span>
-                            </a>
-                            <ul id="menu1" class="dropdown-menu" aria-labelledby="drop4">
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
                                 <li><a href="/member/index/">学科竞赛委员入口</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/logout/">登出</a></li>
                             </ul>
                         </li>
+
                     {% else %}
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#" class="glyphicon glyphicon-envelope"></a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false">用户
-                                    <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/login/">登录</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="/login/">登录</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <li><a href="#" class="glyphicon glyphicon-envelope"></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">用户
+                                <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/login/">登录</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/login/">登录</a></li>
+                            </ul>
+                        </li>
                     {% endif %}
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -129,28 +231,30 @@
 <nav id="cebian" class="navbar-left">
     <ul class="list-group" id="cebianneirong">
         <li class="list-group-item"><i class="glyphicon glyphicon-user"></i>
-            <h4> 某同学</h4>
+            <h4>{{ request.session.user_number }}</h4>
         </li>
+        {% if request.session.is_login and request.session.user_power == '0' %}
         <li class="divider"></li>
-        <li class="list-group-item">Dapibus ac facilisis in</li>
-        <li class="list-group-item">Morbi leo risus</li>
-        <li class="list-group-item">Porta ac consectetur ac</li>
-        <li class="list-group-item">Vestibulum at eros</li>
+        <li class="list-group-item">学生端</li>
+        {% elif request.session.is_login and request.session.user_power == '1' %}
+        <li class="divider"></li>
+        <li class="list-group-item">指导教师端</li>
+        {% elif request.session.is_login and request.session.user_power == '5' %}
+        <li class="divider"></li>
+        <li class="list-group-item">学科委员端</li>
+        {% endif %}
     </ul>
     <span class="glyphicon glyphicon-menu-right" id="cebiankaiguan"></span>
 </nav>
-
 
 {% block content %}
 
 {% endblock %}
 
 <footer id="dibu">
-    <div>
-        地址：广东惠州市演达大道46号 邮编：516007<br>
-        总机：0752-2529000 E-mail:webmaster@hzu.edu.cn<br>
-        版权所有©惠州学院 粤ICP备********号
-    </div>
+    地址：广东惠州市演达大道46号 邮编：516007<br>
+    总机：0752-2529000 E-mail:webmaster@hzu.edu.cn<br>
+    版权所有©惠州学院 粤ICP备********号
 </footer>
 
 {% block js %}

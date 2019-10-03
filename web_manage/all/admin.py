@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import jurisdiction, depart_info, major_info, grade_info, class_info, user_login_info
+from .models import jurisdiction, depart_info, major_info, grade_info, class_info, user_login_info, Article
 
 
 # Register your models here.
@@ -31,3 +31,8 @@ class class_info_Admin(admin.ModelAdmin):
 @admin.register(user_login_info)
 class class_info_Admin(admin.ModelAdmin):
 	list_display = ('account', 'psword', 'have_login', 'have_alter', 'ip')
+
+
+@admin.register(Article)
+class Article_Admin(admin.ModelAdmin):
+	list_display = ('content',)

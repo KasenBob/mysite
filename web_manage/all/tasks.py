@@ -3,22 +3,15 @@ from celery.decorators import task
 from celery.task.schedules import crontab
 from celery.decorators import periodic_task
 import time
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 # 异步任务
-"""
 @task
-def sendmail(email):
-	print('start send email to %s' % email)
-	time.sleep(5)  # 休息5秒
-	print('success')
+def send_email_demo(user, subject, message):
+	to_who = user.email
+	from_who = settings.EMAIL_FROM  # 发件人  已经写在 配置中了 直接型配置中获取
+	print("send email to " + to_who)
+	# meg_html = '<a href="http://www.baidu.com">点击跳转</a>'  # 发送的是一个html消息 需要指定
+	send_mail(subject, message, from_who, [to_who])
 	return True
-
-
-@periodic_task(run_every=10)
-def some_task():
-	print('periodic task test!!!!!')
-	time.sleep(5)
-	print('success')
-	return True
-"""

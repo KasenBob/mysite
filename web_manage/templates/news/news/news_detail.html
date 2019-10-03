@@ -2,47 +2,40 @@
 {% load staticfiles %}
 
 {% block title %}
-    学科竞赛|竞赛一览
+    学科竞赛|获奖新闻
 {% endblock %}
 
 {% block css %}
     <link href="{% static 'sources/css/newsstyle.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block is_activate5 %}
+{% block active2 %}
     active
 {% endblock %}
 
 {% block content %}
     <div id="xwzs">
         <div class="container">
+
             <ol class="breadcrumb">
                 您的位置：
                 <li><a href="/home/">主页</a></li>
-                <li><a href="/competition/com_list/">竞赛报名</a></li>
-                <li class="active">{{ com_info.com_name }}</li>
+                <li><a href="/news/news_list/">获奖新闻</a></li>
+                <li class="active">{{ news.title }}</li>
             </ol>
+
             <div class="col-md-8">
-
                 <div class="zhengwen">
-                    <h2>[公告]{{ com_info.com_name }}报名</h2>
+                    <h2>{{ news.title }}</h2>
 
-                    <h5><span style="color: #888888;">发表日期：{{ com_publish.last_update_time }}</span><span
-                            class="xinxilaiyuan">信息来源：{{ com_publish.author.depart_name }}</span></h5>
-
-                    {{ com_publish.apply_step|safe }}
-
-                    <a class="btn btn-transparent" href="/competition/com_attach_download?id={{ com_info.com_id }}"
-                       role="button" style="display:inline-block;">
-                        下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
-                    </a>
-
-                    <div class="zuihouanniu">
-                        <a class="btn btn-transparent quanbubisai" href="baoming.html">竞赛报名</a>
-                    </div>
-
+                    <h5><span style="color: #888888;">发表日期：{{ news.last_update_time }}</span><span
+                            class="xinxilaiyuan">信息来源：{{ news.author.depart_name }}</span></h5>
+                    <p>
+                        {{ news.content|safe }}
+                    </p>
                 </div>
             </div>
+
             <div class="col-md-4">
 
                 <div id="tushuojingsai" style="margin-top: 10px;">

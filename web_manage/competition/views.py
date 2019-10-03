@@ -27,32 +27,112 @@ def series_list(request):
 		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
 		if user_info.have_alter == '0':
 			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
-
-	key = 'series_list'
-	if cache.has_key(key):
-		temp_series_list = cache.get(key)
+	# 个人赛
+	key_1 = 'series_list_one'
+	if cache.has_key(key_1):
+		temp_series_list_one = cache.get(key_1)
 	else:
-		temp_series_list = models.series_info.objects.all()
-
-	l1 = len(temp_series_list)
-	series_list = []
+		temp_series_list_one = models.series_info.objects.filter(type='0')
+	l1 = len(temp_series_list_one)
+	series_list_one = []
 	temp = []
 	flag = 1
-	for series in temp_series_list:
+	for series in temp_series_list_one:
 		series.update_com_id()
 		temp.append(series)
 		if flag == l1:
-			series_list.append(temp)
+			series_list_one.append(temp)
 			temp = []
 		elif flag % 4 == 0:
-			series_list.append(temp)
+			series_list_one.append(temp)
 			temp = []
 		flag += 1
+	cache.set(key_1, temp_series_list_one, 3600 - int(time.time() % 3600))
+	# 团体赛
+	key_2 = 'series_list_all'
+	if cache.has_key(key_2):
+		temp_series_list_all = cache.get(key_2)
+	else:
+		temp_series_list_all = models.series_info.objects.filter(type='1')
+	l2 = len(temp_series_list_all)
+	series_list_all = []
+	temp = []
+	flag = 1
+	for series in temp_series_list_all:
+		series.update_com_id()
+		temp.append(series)
+		if flag == l2:
+			series_list_all.append(temp)
+			temp = []
+		elif flag % 4 == 0:
+			series_list_all.append(temp)
+			temp = []
+		flag += 1
+	cache.set(key_2, temp_series_list_all, 3600 - int(time.time() % 3600))
 
-	cache.set(key, temp_series_list, 3600 - int(time.time() % 3600))
-
-	context['series_list'] = series_list
+	context['series_list_one'] = series_list_one
+	context['series_list_all'] = series_list_all
 	return render(request, 'competition/series_list.html', context)
+
+
+# 比赛列表
+def com_list(request):
+	context = {}
+	# 没有登录或者还未修改个人信息都无法报名
+	try:
+		is_login = request.session['is_login']
+	except KeyError:
+		context['have_login'] = "赶紧登录啦 :("
+	else:
+		user_num = request.session['user_number']
+		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
+		if user_info.have_alter == '0':
+			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
+	# 个人赛
+	key_1 = 'com_list_one'
+	if cache.has_key(key_1):
+		temp_com_list_one = cache.get(key_1)
+	else:
+		temp_com_list_one = models.com_basic_info.objects.filter(type='0')
+	l1 = len(temp_com_list_one)
+	com_list_one = []
+	temp = []
+	flag = 1
+	for com in temp_com_list_one:
+		com.update_status()
+		temp.append(com)
+		if flag == l1:
+			com_list_one.append(temp)
+			temp = []
+		elif flag % 4 == 0:
+			com_list_one.append(temp)
+			temp = []
+		flag += 1
+	cache.set(key_1, temp_com_list_one, 3600 - int(time.time() % 3600))
+	# 团体赛
+	key_2 = 'com_list_all'
+	if cache.has_key(key_2):
+		temp_com_list_all = cache.get(key_2)
+	else:
+		temp_com_list_all = models.com_basic_info.objects.filter(type='1')
+	l2 = len(temp_com_list_all)
+	com_list_all = []
+	temp = []
+	flag = 1
+	for com in temp_com_list_all:
+		temp.append(com)
+		if flag == l2:
+			com_list_all.append(temp)
+			temp = []
+		elif flag % 4 == 0:
+			com_list_all.append(temp)
+			temp = []
+		flag += 1
+	cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
+
+	context['com_list_one'] = com_list_one
+	context['com_list_all'] = com_list_all
+	return render(request, 'competition/com_list.html', context)
 
 
 # 竞赛详情
@@ -70,13 +150,9 @@ def com_detail(request):
 			return redirect("/competition/series_list/")
 
 	if request.method == 'GET':
-		id = request.GET.get('id')
-		# print(id)
+		id = request.GET.get('com_id')
 		com_info = get_object_or_404(models.com_basic_info, com_id=id)
 		com_publish = get_object_or_404(models.com_publish_info, com_id=com_info)
-		# 插入竞赛公告
-		context['inform'] = str("[通知]竞赛通知")
-		# 插入发布信息
 		context['com_publish'] = com_publish
 		context['com_info'] = com_info
 	return render(request, 'competition/com_detail.html', context)

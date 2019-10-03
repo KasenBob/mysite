@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import com_basic_info, series_info, series_depart, com_publish_info, com_sort_info, com_need_info, \
-	temp_com_group_basic_info
+	temp_com_group_basic_info, com_group_basic_info
 
 
 # Register your models here.
@@ -23,7 +23,7 @@ class series_depart_Admin(admin.ModelAdmin):
 
 @admin.register(com_publish_info)
 class com_publish_info_Admin(admin.ModelAdmin):
-	list_display = ('com_id', 'apply_announce', 'apply_step', 'com_attachment',)
+	list_display = ('com_id', 'apply_announce', 'apply_step', 'com_attachment', 'last_update_time', 'author',)
 
 
 @admin.register(com_sort_info)
@@ -44,3 +44,9 @@ class temp_com_group_basic_info_Admin(admin.ModelAdmin):
 	list_display = (
 		'temp_id', 'group_id', 'com_id', 'group_name', 'group_num', 'com_group', 'product_name', 'else_info',
 		'apply_type',)
+
+
+@admin.register(com_group_basic_info)
+class com_group_basic_info_Admin(admin.ModelAdmin):
+	list_display = (
+		'group_id', 'com_id', 'group_name', 'group_num', 'com_group', 'product_name', 'else_info',)

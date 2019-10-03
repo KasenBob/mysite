@@ -10,10 +10,11 @@
 	color: #6CB670;
 }
 
-
+#zhu1,#zhu2,#zhu3{
+	cursor: pointer;
+}
 
 #cebian {
-	
 	background-color: #333333;
 	width: 10%;
 	position: fixed;
@@ -96,6 +97,19 @@ i {
 
 }
 
+.search-submit {
+	background: none;
+	display: inline-block;
+	border: 0;
+	color: #6CB670;
+	font-size: 16px;
+	height: 32px;
+	width: 32px;
+
+}
+
+
+
 ul a {
 	color: white;
 }
@@ -113,6 +127,18 @@ ul li:hover {
 	background-color: #2B2C30;
 	color: white;
 	padding-top: 128px;
+}
+
+#fengcai p{
+	letter-spacing: 1px;
+	line-height: 24px;
+	font-family: 宋体;
+}
+
+#fengcai h3{
+	letter-spacing: 1px;
+	line-height: 36px;
+	font-family: 微软雅黑;
 }
 
 .border {
@@ -184,6 +210,8 @@ ul li:hover {
 
 .btn-transparent {
 	border: 1px solid #4e595f;
+	color: white;
+	border:#6CB670 1px solid ;
 }
 
 
@@ -194,34 +222,34 @@ ul li:hover {
 }
 
 
-#jingsaixinxi {
+#msg {
 	padding-top: 3%;
 	color: white;
 	background-color: #333439;
 	width: 100%;
 }
 
-#jingsaixinxi hrs{
+#msg hrs{
 	color: white;margin-left: 0;margin: 0;
 }
 
-#jingsaixinxi .shoutiaoweizhi{
+#msg .shoutiaoweizhi{
 	margin-top: 10px;margin-left: -18px;
 }
 
-#jingsaixinxi .shoutiaoneirong{
+#msg .shoutiaoneirong{
 	background-color: #2B2C30;border: none;color: white;
 }
 
-#jingsaixinxi .dabiaoti{
+#msg .dabiaoti{
 	font-size: 30px;
 }
 
-#jingsaixinxi .yitiao{
+#msg .yitiao{
 	margin-top: 10px;
 }
 
-#jingsaixinxi .riqi{
+#msg .riqi{
 	float: right;
 }
 
@@ -288,6 +316,10 @@ ul li:hover {
 	background-color: #2B2C30;
 	color: white;
 	text-align: center;
+	letter-spacing: 0.75px;
+	line-height: 22px;
+	font-family: 宋体;
+	
 }
 
 .h1s{
@@ -300,6 +332,20 @@ ul li:hover {
 
 #zuihouanniu{
 	margin: 30px;text-align: center;
+}
+
+.zuihouanniu{
+	margin: 30px;text-align: center;
+}
+
+#xiaoxiliebiao li{
+	color:white;
+	width: 256px;
+	cursor: pointer;
+}
+
+.xiaoxiriqi{
+	font-size: 14px;
 }
 
 

@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf import settings
-from django.urls import path,re_path,include
+from django.urls import path, re_path, include
 from django.views.static import serve
+from django.conf.urls.static import static
 
 urlpatterns = [
 	path('admin/', admin.site.urls),
@@ -25,7 +26,10 @@ urlpatterns = [
 	path('student/', include('student.urls')),
 	path('teacher/', include('teacher.urls')),
 	path('member/', include('member.urls')),
-	path('news/',include('news.urls')),
+	path('news/', include('news.urls')),
 	# 静态资源
 	re_path(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
+	# editor
+	path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

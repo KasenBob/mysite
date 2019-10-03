@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
@@ -32,9 +34,14 @@ class user_login_info(models.Model):
 	ip = models.CharField(max_length=25)
 
 
+# 权限信息
 class jurisdiction(models.Model):
 	account = models.ForeignKey('user_login_info', to_field='account', on_delete=models.CASCADE)
 	status = models.CharField(max_length=10,
 	                          choices=(
 		                          ("0", "学生"), ("1", "指导教师"), ("2", "辅导员"), ("3", "学院领带"), ("4", "学校领导"),
 		                          ("5", "学科委员")))
+
+
+class Article(models.Model):
+	content = RichTextUploadingField('文章标题')
