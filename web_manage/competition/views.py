@@ -94,6 +94,7 @@ def com_list(request):
 		temp_com_list_one = cache.get(key_1)
 	else:
 		temp_com_list_one = models.com_basic_info.objects.filter(type='0')
+	temp_com_list_one.filter(com_status='0')
 	l1 = len(temp_com_list_one)
 	com_list_one = []
 	temp = []
@@ -115,6 +116,7 @@ def com_list(request):
 		temp_com_list_all = cache.get(key_2)
 	else:
 		temp_com_list_all = models.com_basic_info.objects.filter(type='1')
+	temp_com_list_all.filter(com_status='0')
 	l2 = len(temp_com_list_all)
 	com_list_all = []
 	temp = []
@@ -181,6 +183,8 @@ def com_apply_first(request):
 	context = {}
 	if request.method == 'GET':
 		id = request.GET.get('id')
+		leader_id = request.session.get('user_number')
+		leader = get_object_or_404(student_model.stu_basic_info, stu_number=leader_id)
 		# 获取竞赛组别信息
 		group_list = models.com_sort_info.objects.filter(com_id=id)
 		# 获取竞赛报名所需信息
