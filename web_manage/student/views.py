@@ -108,28 +108,26 @@ def personal_center_stu(request):
 	tag = request.GET.get('tag')
 	# 获取图片
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
-	img_path = stu_info.photo
-	context['stu_name'] = stu_info.stu_name
-	context['stu_num'] = stu_info.stu_number
-	context['photo'] = img_path
-	if tag == '2':
+	context['stu_info'] = stu_info
+	if tag == '1':
 		apply_list = models.com_stu_info.objects.filter(stu_id=stu_info.stu_number).order_by('-group_id')
-		com_list = []
-		teach_list = []
-		group_list = []
+		apply_one_list = []
+		apply_all_list = []
+		leader_list = []
 		for apply in apply_list:
-			group_list.append(apply.group_id)
-			com = get_object_or_404(competition_model.com_basic_info, com_id=apply.com_id.com_id)
-			com.update_status()
-			com_list.append(com)
-			teach_info = teacher_model.com_teach_info.objects.filter(com_id=com.com_id, group_id=apply.group_id)
-			temp = []
-			for teach in teach_info:
-				teach = get_object_or_404(teacher_model.teach_basic_info, tea_number=teach.teach_id.tea_number)
-				temp.append(teach)
-			teach_list.append(temp)
-		apply_info = zip(com_list, teach_list, group_list)
-		context['apply_info'] = apply_info
+			if apply.com_id.type == '0':
+				apply_one_list.append(apply)
+			else:
+				apply_all_list.append(apply)
+				group = apply.group_id
+				stu_list = models.com_stu_info.objects.filter(group_id=group)
+				for stu in stu_list:
+					if stu.is_leader == 1:
+						leader_list.append(stu)
+		apply_all = zip(apply_all_list, leader_list)
+		
+		context['apply_one_list'] = apply_one_list
+		context['apply_all'] = apply_all
 		return render(request, 'student/personal_center/my_apply.html', context)
 
 	return render(request, 'student/personal_center/overview.html', context)

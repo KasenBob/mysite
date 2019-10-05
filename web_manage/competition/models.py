@@ -10,7 +10,7 @@ class series_info(models.Model):
 	name = models.CharField(max_length=50, unique=True)
 	introduction = models.TextField(null=True, blank=True)
 	photo = models.ImageField(upload_to='series_photo', null=True, blank=True)
-	type = models.CharField(max_length=10, choices=(('0','个人赛'),('1','团体赛')), default='0')
+	type = models.CharField(max_length=10, choices=(('0', '个人赛'), ('1', '团体赛')), default='0')
 	now_com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True,
 	                               blank=True)
 
@@ -53,7 +53,6 @@ class com_basic_info(models.Model):
 	com_status = models.CharField(max_length=10, choices=(('0', '报名中'), ('1', '报名结束'), ('2', '比赛中'), ('3', '比赛结束')),
 	                              default='0')
 
-
 	def update_status(self):
 		now_time = datetime.now()
 		print(now_time)
@@ -95,6 +94,8 @@ class com_group_basic_info(models.Model):
 	com_group = models.ForeignKey('com_sort_info', to_field='id', on_delete=models.SET_NULL, null=True, blank=True)
 	product_name = models.CharField(max_length=50, null=True, blank=True)
 	else_info = models.TextField(default='', null=True, blank=True)
+	apply_time = models.DateTimeField(auto_now=True)
+	status = models.CharField(max_length=10, choices=(('0', '未成功'), ('1', '已成功')), default='0')
 
 
 # 竞赛报名表所需信息信息

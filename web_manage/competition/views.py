@@ -192,6 +192,7 @@ def com_apply_first(request):
 		# 获取竞赛信息
 		com_info = get_object_or_404(models.com_basic_info, com_id=id)
 
+		context['leader'] = leader
 		context['com_info'] = com_info
 		context['info_list'] = info_list
 		context['group_list'] = group_list
@@ -223,7 +224,7 @@ def com_apply_first(request):
 		# 获取页面学号输入
 		stu_list = []
 		for i in range(1, num + 1):
-			name = str("stu_num" + str(i))
+			name = str("stu_name" + str(i))
 			temp = request.POST.get(name)
 			temp = temp.strip()
 			if temp != None and temp != "":
@@ -232,7 +233,7 @@ def com_apply_first(request):
 		stu_info_list = []
 		for stu in stu_list:
 			try:
-				name = student_model.stu_basic_info.objects.get(stu_number=stu)
+				name = student_model.stu_basic_info.objects.get(stu_name=stu)
 			except ObjectDoesNotExist:
 				# 回到first页面
 				context['message'] = '无法搜索到学号对应学生信息，请确认学号无误'
@@ -463,5 +464,4 @@ def com_apply_second(request):
 				teach.group_id = get_object_or_404(models.com_group_basic_info, group_id=group_id)
 				teach.teach_id = i
 				teach.save()
-		return redirect('/student/personal_center_stu/?tag=2')
-	return redirect('/student/personal_center_stu/?tag=2')
+		return render(request, 'competition/apply/com_apply_succeed.html', context)

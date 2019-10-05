@@ -6,48 +6,40 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="thumbnail">
-                    <img src="/media/{{ photo }}" alt="不给看不给看">
-                    <div class="caption">
-                        <h3>{% block username %}{% endblock %}</h3>
-                        <h3>
-                            <small>{% block usernumber %}{% endblock %}</small>
-                        </h3>
+    <div id="gerenzhongxin_content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="/media/{{ stu_info.photo }}" alt="暂无头像"
+                                 style="width: 63px;height: 63px;border: 2px solid white;border-radius: 20px;">
+                        </div>
+                        <p class="xingming">{{ stu_info.stu_name }}</p>
+                        <p class="banji">{{ stu_info.department.depart_name }}{{ stu_info.major.major_name }}
+                            {{ stu_info.grade.grade_name }}{{ stu_info.stu_class.class_name }}</p>
+                        <p style="margin-top: 0;font-size: 10px;">
+                            <a href="">修改密码</a>
+                            |
+                            <a href="/logout/">登出</a>
+                        </p>
                     </div>
-                </div>
-                <p>
-                    <a href="/student/alter_info_stu/" class="btn btn-default btn-lg" role="button"
-                       style="margin-left: auto;margin-right: auto;display: block;width:75%;">编辑个人信息</a>
-                </p>
-            </div>
-            <div class="col-md-9">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <ul class="nav nav-tabs">
-                            <li role="presentation" class="{% block active1 %}{% endblock %}">
-                                <a href="/student/personal_center_stu/">总览</a></li>
-                            <li role="presentation" class="{% block active2 %}{% endblock %}">
-                                <a href="/student/personal_center_stu?tag=1">关注比赛</a></li>
-                            <li role="presentation" class="{% block active3 %}{% endblock %}">
-                                <a href="/student/personal_center_stu?tag=2">报名信息</a></li>
-                            <li role="presentation" class="{% block active4 %}{% endblock %}">
-                                <a href="/student/personal_center_stu?tag=3">参赛经历</a></li>
-                            <li role="presentation" class="{% block active5 %}{% endblock %}">
-                                <a href="/student/personal_center_stu?tag=3">奖项</a></li>
-                        </ul>
-                    </div>
-                    <div class="panel-body">
-                        {% block body %}
 
-                        {% endblock %}
+                    <div class="list-group" id="gongnenglan">
+                        <a href="#" class="list-group-item {% block is_activate1 %}{% endblock %}">
+                            <span class="glyphicon glyphicon-home"></span>我的报名
+                        </a>
                     </div>
                 </div>
+
+                <div class="col-md-9">
+                    {% block body %}
+
+                    {% endblock %}
+                </div>
+
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}
 

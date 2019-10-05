@@ -1,130 +1,50 @@
 {% extends 'student/personal_center/base.html' %}
 {% load staticfiles %}
 
-{% block active3 %}
+{% block css %}
+    <link href="{% static 'sources/css/gerenzhongxinStyle.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block is_activate1 %}
     active
 {% endblock %}
 
-{% block username %}
-    {{ stu_name }}
-{% endblock %}
-
-{% block usernumber %}
-    {{ stu_num }}
-{% endblock %}
-
 {% block body %}
-    <div class="page-header">
-        <h2>
-            报名信息
-        </h2>
+    <div class="panel panel-default" style="border: none;" id="caozuomianban">
+        <div class="panel-heading"
+             style="background-color: #333439;color: white;border: none;height: 50px;padding-top: 15px;">
+            <h3 class="panel-title">个人赛</h3>
+        </div>
+        <div class="panel-body" style="background-color: #2B2C30;">
+            {% for apply in apply_one_list %}
+                <div class="geren">
+                    <p>{{ apply.com_id.com_name }}</p>
+                    <span>报名时间：{{ apply.group_id.apply_time }}<a href="baomingxiangqing.html"
+                                                                 class="btn btn-transparent">详情</a></span>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>序号</th>
-            <th>比赛</th>
-            <th>指导老师</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for com,teach,group in apply_info %}
-            <tr>
-                <th>{{ forloop.counter }}</th>
-                <td>{{ com.com_name }}</td>
-                <td>
-                    {% for tea in teach %}
-                        {% if not forloop.last %}
-                            {{ tea.tea_name }} |
-                        {% else %}
-                            {{ tea.tea_name }}
-                        {% endif %}
-                    {% endfor %}
-                </td>
-                <td>
-                    <a href="/student/apply_detail?p1={{ com.com_id }}&p2={{ group.group_id }}" class="btn btn-default"
-                       role="button" style="display:inline-block;">详情</a>
 
-                    {% if com.com_status == '0' %}
-                        <div class="dropdown" style="display:inline-block;">
-                            <button class="btn btn-primary" id="dLabel{{ forloop.counter }}" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                修改
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dLabel{{ forloop.counter }}"
-                                style="text-align: center;">
-                                <li>
-                                    <a href="/student/stu_apply_edit/?p1={{ com.com_id }}&p2={{ group.group_id }}">修改</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a data-toggle="modal" data-target="#delete1{{ forloop.counter }}">撤销</a>
-                                </li>
-                            </ul>
-                        </div>
-                    {% else %}
-                        <div class="dropdown" style="display:inline-block;">
-                            <button class="btn btn-primary" id="dLabel{{ forloop.counter }}" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                申请
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dLabel{{ forloop.counter }}"
-                                style="text-align: center;">
-                                <li>
-                                    <a href="/student/stu_apply_edit/?p1={{ com.com_id }}&p2={{ group.group_id }}">修改</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a data-toggle="modal" data-target="#delete2{{ forloop.counter }}">撤销</a>
-                                </li>
-                            </ul>
-                        </div>
-                    {% endif %}
-
-                    <!-- 修改 撤销弹出模态框 -->
-                    <div class="modal fade bs-example-modal-sm" id="delete1{{ forloop.counter }}" tabindex="-1"
-                         role="dialog"
-                         aria-labelledby="mySmallModalLabel">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4>确定要撤销该报名信息吗？</h4>
-                                    <h4>删除后报名将取消</h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">还是算了</button>
-                                    <a href="/student/delete_apply?p1={{ com.com_id }}&p2={{ group.group_id }}&p3=1"
-                                       class="btn btn-primary" role="button">我意已决</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 申请 撤销弹出模态框 -->
-                    <div class="modal fade bs-example-modal-sm" id="delete2{{ forloop.counter }}" tabindex="-1"
-                         role="dialog"
-                         aria-labelledby="mySmallModalLabel">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <h4>确定要撤销该报名信息吗？</h4>
-                                    <h4>待学科委员确认后才会撤销</h4>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">还是算了</button>
-                                    <a href="/student/delete_apply?p1={{ com.com_id }}&p2={{ group.group_id }}&p3=2"
-                                       class="btn btn-primary" role="button">我意已决</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            {% empty %}
-
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="panel panel-default" style="border: none;">
+        <div class="panel-heading"
+             style="background-color: #333439;color: white;border: none;height: 50px;padding-top: 15px;">
+            <h3 class="panel-title">团队赛</h3>
+        </div>
+        <div class="panel-body" style="background-color: #2B2C30;">
+            {% for apply,leader in apply_all %}
+                <div class="tuandui">
+                    <p>{{ apply.com_id.com_name }}</p>
+                    <span> 发起者：{{ leader.stu_id.stu_name }}</span>
+                    <br>
+                    <span> 报名时间：{{ apply.group_id.apply_time }}</span>
+                    <br>
+                    <span> 状态：{{ apply.group_id.status }}</span>
+                    <a href="#" class="btn btn-transparent">详情</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="bgc2" style="height: 128px;"></div>
+    </div>
 {% endblock %}
+
