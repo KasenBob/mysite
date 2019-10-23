@@ -9,7 +9,7 @@ django-celery==3.3.1
 django-redis==4.10.0
 kombu==3.0.37
 meld3==2.0.0
-Pillow==6.1.0
+Pillow==6.2.0
 pycodestyle==2.5.0
 PyMySQL==0.9.3
 pytz==2019.1
