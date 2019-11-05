@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import jurisdiction, depart_info, major_info, grade_info, class_info, user_login_info, Article
+from .models import jurisdiction, depart_info, major_info, grade_info, class_info, user_login_info, Article, inform
 
 
 # Register your models here.
@@ -36,3 +36,7 @@ class class_info_Admin(admin.ModelAdmin):
 @admin.register(Article)
 class Article_Admin(admin.ModelAdmin):
 	list_display = ('content',)
+
+@admin.register(inform)
+class inform_Admin(admin.ModelAdmin):
+	list_display = ('Recipient_acc', 'From_acc', 'content', 'create_time',)

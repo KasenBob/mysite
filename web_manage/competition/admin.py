@@ -23,7 +23,7 @@ class series_depart_Admin(admin.ModelAdmin):
 
 @admin.register(com_publish_info)
 class com_publish_info_Admin(admin.ModelAdmin):
-	list_display = ('com_id', 'apply_announce', 'apply_step', 'com_attachment', 'last_update_time', 'author',)
+	list_display = ('com_id', 'apply_announce', 'com_attachment', 'last_update_time', 'author',)
 
 
 @admin.register(com_sort_info)

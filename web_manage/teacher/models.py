@@ -15,7 +15,6 @@ class teach_basic_info(models.Model):
 	                            blank=True)
 	department = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.SET_NULL, null=True,
 	                               blank=True)
-	major = models.ForeignKey('all.major_info', to_field='major_name', on_delete=models.SET_NULL, null=True, blank=True)
 	ID_number = models.CharField(max_length=25)
 	email = models.EmailField(max_length=255, null=True, blank=True)
 	phone_number = models.CharField(max_length=25, null=True, blank=True)
@@ -27,6 +26,7 @@ class com_teach_info(models.Model):
 	com_id = models.ForeignKey('competition.com_basic_info', to_field='com_id', on_delete=models.CASCADE)
 	group_id = models.ForeignKey('competition.com_group_basic_info', to_field='group_id', on_delete=models.CASCADE)
 	teach_id = models.ForeignKey('teach_basic_info', to_field='tea_number', on_delete=models.CASCADE)
+	status = models.CharField(max_length=10, choices=(('0', '未确认'), ('1', '已确认')), default='0')
 
 
 # 报名修改信息-教师

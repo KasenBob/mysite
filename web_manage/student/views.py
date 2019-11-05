@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
 from datetime import datetime
+from django.core.paginator import Paginator
 from . import models
 import os
 import all.models as all_model
@@ -24,7 +25,7 @@ def alter_info_stu(request):
 	class_info = all_model.class_info.objects.all()
 
 	context = {}
-	context['stu'] = stu_info
+	context['stu_info'] = stu_info
 	context['depart_info'] = depart_info
 	context['major_info'] = major_info
 	context['grade_info'] = grade_info
@@ -42,23 +43,20 @@ def alter_info_stu(request):
 
 		if ID_number == None or ID_number == "":
 			context['message'] = "请务必填写身份证号！"
-			return render(request, 'student/alter_info_stu.html', context)
+			return render(request, 'student/personal_center/my_info.html', context)
 
 		bank_number = request.POST.get('bank_number')
 		phone_number = request.POST.get('phone_number')
 
 		if phone_number == None or phone_number == "":
 			context['message'] = "请务必填写手机号码！"
-			return render(request, 'student/alter_info_stu.html', context)
+			return render(request, 'student/personal_center/my_info.html', context)
 
 		email = request.POST.get('email')
 
 		if email == None or email == "":
 			context['message'] = "请务必填写邮箱！"
-			return render(request, 'student/alter_info_stu.html', context)
-
-		photo = request.FILES.get("photo")
-		# print(photo)
+			return render(request, 'student/personal_center/my_info.html', context)
 
 		stu_info = models.stu_basic_info.objects.get(stu_number=nid)
 		# stu_info.stu_number = stu_number
@@ -72,21 +70,6 @@ def alter_info_stu(request):
 		stu_info.bank_number = bank_number
 		stu_info.phone_number = phone_number
 		stu_info.email = email
-		if photo != None:
-			f_name = photo.name
-			f_name = f_name.split('.')[-1].lower()
-			# 重命名照片
-			stu_info.photo = "stu_photo\\" + nid + "\\" + 'head' + '.' + f_name
-			url = settings.MEDIA_ROOT + 'stu_photo\\' + nid
-			# 判断路径是否存在
-			isExists = os.path.exists(url)
-			if not isExists:
-				os.makedirs(url)
-			photo_url = open(settings.MEDIA_ROOT + "stu_photo\\" + nid + "\\" + 'head' + '.' + f_name,
-			                 'wb')
-			for chunk in photo.chunks():
-				photo_url.write(chunk)
-			photo_url.close()
 
 		stu_info.save()
 		# 更改修改状态
@@ -96,81 +79,164 @@ def alter_info_stu(request):
 		user_login.have_alter = '1'
 		user_login.save()
 
-		return redirect('/home/')
+		return redirect('/student/personal_center_stu?tag=3')
 	# stu_info = stu_basic_Form()
-	return render(request, 'student/alter_info_stu.html', context)
+	return render(request, 'student/personal_center/alter_info.html', context)
 
 
-# 学生个人中心
-def personal_center_stu(request):
+# 修改头像
+def alter_avatar(request):
 	context = {}
-	# 获取标签
-	tag = request.GET.get('tag')
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+	if request.method == "POST":
+		photo = request.FILES.get("avatar_file")
+		if photo != None:
+			f_name = photo.name
+			f_name = f_name.split('.')[-1].lower()
+			# 重命名照片
+			stu_info.photo = "stu_photo\\" + stu_info.stu_number + "\\" + 'head' + '.' + f_name
+			url = settings.MEDIA_ROOT + 'stu_photo\\' + stu_info.stu_number
+			# 判断路径是否存在
+			isExists = os.path.exists(url)
+			if not isExists:
+				os.makedirs(url)
+			photo_url = open(settings.MEDIA_ROOT + "stu_photo\\" + stu_info.stu_number + "\\" + 'head' + '.' + f_name,
+			                 'wb')
+			for chunk in photo.chunks():
+				photo_url.write(chunk)
+			photo_url.close()
+			stu_info.save()
+	return render(request, 'student/personal_center/alter_avatar.html', context)
+
+
+# 学生个人中心-报名
+def personal_center_stu_apply(request):
+	context = {}
 	# 获取图片
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
 	context['stu_info'] = stu_info
-	if tag == '1':
-		apply_list = models.com_stu_info.objects.filter(stu_id=stu_info.stu_number).order_by('-group_id')
-		apply_one_list = []
-		apply_all_list = []
-		leader_list = []
-		for apply in apply_list:
-			if apply.com_id.type == '0':
-				apply_one_list.append(apply)
-			else:
-				apply_all_list.append(apply)
-				group = apply.group_id
-				stu_list = models.com_stu_info.objects.filter(group_id=group)
-				for stu in stu_list:
-					if stu.is_leader == 1:
-						leader_list.append(stu)
-		apply_all = zip(apply_all_list, leader_list)
-		
-		context['apply_one_list'] = apply_one_list
-		context['apply_all'] = apply_all
-		return render(request, 'student/personal_center/my_apply.html', context)
+	apply_list = models.com_stu_info.objects.filter(stu_id=stu_info.stu_number).order_by('-group_id')
+	apply_one_list = []
+	apply_all_list = []
+	leader_list = []
+	for apply in apply_list:
+		if apply.com_id.type == '0' and apply.com_id.com_status != '3':
+			apply_one_list.append(apply)
+		elif apply.com_id.type == '1' and apply.com_id.com_status != '3':
+			apply_all_list.append(apply)
+			group = apply.group_id
+			stu_list = models.com_stu_info.objects.filter(group_id=group)
+			for stu in stu_list:
+				if stu.is_leader == 1:
+					leader_list.append(stu)
+	apply_all = zip(apply_all_list, leader_list)
 
-	return render(request, 'student/personal_center/overview.html', context)
+	context['apply_one_list'] = apply_one_list
+	context['apply_all'] = apply_all
+	return render(request, 'student/personal_center/my_apply.html', context)
 
 
-# 学生个人中心-报名详情
-def apply_detail(request):
+# 学生个人中心-信息
+def personal_center_stu_message(request):
+	context = {}
+	# 获取图片
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+	informs_list = all_model.inform.objects.filter(
+		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number']))
+
+	paginator = Paginator(informs_list, 2)  # 每?篇进行分页
+	page_num = request.GET.get('page', 1)  # 获取url的页面参数（GET请求）
+	page_of_informs = paginator.get_page(page_num)
+	current_page_num = page_of_informs.number  # 获取当前页码
+	# 获取当前前后各两页的页码范围
+	page_range = list(range(max(current_page_num - 2, 1), current_page_num)) + \
+	             list(range(current_page_num, min(current_page_num + 2, paginator.num_pages) + 1))
+	# 加上省略页面标记
+	if page_range[0] - 1 >= 2:
+		page_range.insert(0, '...')
+	if paginator.num_pages - page_range[-1] >= 2:
+		page_range.append('...')
+	# 加上首页和尾页
+	if page_range[0] != 1:
+		page_range.insert(0, 1)
+	if page_range[-1] != paginator.num_pages:
+		page_range.append(paginator.num_pages)
+
+	if request.GET.get('p') != None:
+		inform_id = request.GET.get('p')
+		print(inform_id)
+		context['inform'] = all_model.inform.objects.get(pk=inform_id)
+	else:
+		context['inform'] = informs_list[0]
+
+	print(context['inform'])
+
+	context['page_of_informs'] = page_of_informs
+	context['page_range'] = page_range
+	context['informs'] = informs_list
+	return render(request, 'student/personal_center/my_message.html', context)
+
+
+# 学生个人中心-个人信息
+def personal_center_stu_info(request):
+	context = {}
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+	return render(request, 'student/personal_center/my_info.html', context)
+
+
+# 学生个人中心-奖项
+def personal_center_stu_award(request):
+	context = {}
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+	return render(request, 'student/personal_center/my_award.html', context)
+
+
+# 学生个人中心-我的经历
+def personal_center_stu_experience(request):
+	context = {}
+	# 获取图片
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+	return render(request, 'student/personal_center/my_experience.html', context)
+
+
+# 学生个人中心-查看报名详情
+def stu_apply_detail(request):
 	context = {}
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
-	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
-	img_path = stu_info.photo
-	context['stu_name'] = stu_info.stu_name
-	context['stu_num'] = stu_info.stu_number
-	context['photo'] = img_path
-	# 获取竞赛报名所需信息
-	info_list = get_object_or_404(competition_model.com_need_info, com_id=com_id)
-	# 获取竞赛id和小组id，通过这两个id确定具体比赛具体小组
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	com_info.update_status()
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
+	depart_list = all_model.depart_info.objects.all()
 
-	stu_list = []
-	stu_id_list = models.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
-	for stu_info in stu_id_list:
-		temp = get_object_or_404(models.stu_basic_info, stu_number=stu_info.stu_id.stu_number)
-		stu_list.append((temp))
+	info_list = get_object_or_404(competition_model.com_need_info, com_id=com_id)
+	stu_list = models.com_stu_info.objects.filter(group_id=group_info)
+	teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_info)
+	sort_list = competition_model.com_sort_info.objects.filter(com_id=com_info)
 
-	teach_list = []
-	teach_id_list = teacher_model.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
-	for teach_info in teach_id_list:
-		temp = get_object_or_404(teacher_model.teach_basic_info, tea_number=teach_info.teach_id.tea_number)
-		teach_list.append(temp)
+	# 判断修改情况
+	leader = ""
+	flag = 0
+	for stu in stu_list:
+		if stu.is_leader == 1:
+			leader = stu
+			break
+	if leader.stu_id.stu_number == request.session['user_number']:
+		flag = 1
 
-	com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
-	for competition in com_group:
-		com_group_info = competition
-
-	context['stu_list'] = stu_list
+	context['modify_flag'] = flag
 	context['info_list'] = info_list
+	context['stu_list'] = stu_list
 	context['teach_list'] = teach_list
-	context['com_group_info'] = com_group_info
-
-	return render(request, "student/personal_center/apply_detail.html", context)
+	context['sort_list'] = sort_list
+	context['group_info'] = group_info
+	context['depart_list'] = depart_list
+	return render(request, 'student/personal_center/apply_detail.html', context)
 
 
 # 学生个人中心-修改报名信息
@@ -284,14 +350,12 @@ def stu_apply_edit(request):
 		if flag_teanum:
 			for i in range(1, flag_teanum + 1):
 				teach = request.POST.get(str('tea_name' + str(i))).strip()
-				depart = request.POST.get(str('depart' + str(i)))
-				teacher = teacher_model.teach_basic_info.objects.filter(tea_name=teach, department=depart)
+				teacher = teacher_model.teach_basic_info.objects.get(tea_number=teach)
 				if not teacher:
 					context['message'] = "指导教师信息不正确哦 X D "
 					return render(request, 'student/personal_center/stu_apply_edit.html', context)
 				else:
-					for info in teacher:
-						teach_list.append(info)
+					teach_list.append(teacher)
 		# 对组别信息进行判断
 		if flag_group == 1:
 			sort = request.POST.get("sort")
@@ -382,36 +446,11 @@ def stu_apply_edit(request):
 				teach.temp_id = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 				teach.teach_id = i
 				teach.save()
-		return redirect('/student/personal_center_stu?tag=2')
+		return redirect('/student/personal_center_stu_apply')
 	return render(request, 'student/personal_center/stu_apply_edit.html', context)
 
 
 # 学生个人中心-撤销报名
-def delete_apply(request):
-	context = {}
-	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
-	img_path = stu_info.photo
-	context['stu_name'] = stu_info.stu_name
-	context['stu_num'] = stu_info.stu_number
-	context['photo'] = img_path
-
-	com_id = request.GET.get('p1')
-	group_id = request.GET.get('p2')
-	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
-	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
-
-	stu_id_list = models.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
-	stu_id_list.delete()
-
-	teach_id_list = teacher_model.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
-	teach_id_list.delete()
-
-	com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
-	com_group.delete()
-
-	return redirect('/student/personal_center_stu/?tag=2')
-
-
 def delete_apply(request):
 	context = {}
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
@@ -436,7 +475,7 @@ def delete_apply(request):
 
 		com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
 		com_group.delete()
-	else:
+	elif kind != '1':
 		temp_apply = competition_model.temp_com_group_basic_info()
 		temp_apply.group_id = group_info
 		temp_apply.com_id = com_info
@@ -461,4 +500,4 @@ def delete_apply(request):
 		for teach in teach_list:
 			teacher_model.temp_com_teach_info.objects.create(temp_id=temp_apply, teach_id=teach.teach_id)
 
-	return redirect('/student/personal_center_stu/?tag=2')
+	return redirect('/student/personal_center_stu_apply')

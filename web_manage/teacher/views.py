@@ -12,6 +12,33 @@ import student.models as student_model
 
 
 # Create your views here.
+# 修改头像
+def alter_avatar(request):
+	context = {}
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=request.session['user_number'])
+	context['teach_info'] = teach_info
+	if request.method == "POST":
+		photo = request.FILES.get("avatar_file")
+		if photo != None:
+			f_name = photo.name
+			f_name = f_name.split('.')[-1].lower()
+			# 重命名照片
+			teach_info.photo = "teach_photo\\" + teach_info.tea_number + "\\" + 'head' + '.' + f_name
+			url = settings.MEDIA_ROOT + 'teach_photo\\' + teach_info.tea_number
+			# 判断路径是否存在
+			isExists = os.path.exists(url)
+			if not isExists:
+				os.makedirs(url)
+			photo_url = open(
+				settings.MEDIA_ROOT + "teach_photo\\" + teach_info.tea_number + "\\" + 'head' + '.' + f_name,
+				'wb')
+			for chunk in photo.chunks():
+				photo_url.write(chunk)
+			photo_url.close()
+			teach_info.save()
+	return render(request, 'teacher/personal_center/alter_avatar.html', context)
+
+
 # 教师修改个人信息
 def alter_info_teach(request):
 	context = {}
@@ -19,35 +46,31 @@ def alter_info_teach(request):
 	teach_info = get_object_or_404(models.teach_basic_info, tea_number=nid)
 	profess_info = models.profess_info.objects.all()
 	depart_info = all_model.depart_info.objects.all()
-	major_info = all_model.major_info.objects.all()
 
-	context['teach'] = teach_info
+	context['teach_info'] = teach_info
 	context['profess_info'] = profess_info
 	context['depart_info'] = depart_info
-	context['major_info'] = major_info
 
 	if request.method == "POST":
 		# tea_number = request.POST.get('tea_number')
 		# tea_name = request.POST.get('tea_name')
 		profess = request.POST.get('profess')
 		department = request.POST.get('department')
-		major = request.POST.get('major')
 		ID_number = request.POST.get('ID_number')
 		phone_number = request.POST.get('phone_number')
 		email = request.POST.get('email')
-		photo = request.POST.get('photo')
 
 		if ID_number == 'None' or ID_number == "":
 			context['message'] = "请务必填写身份证号！"
-			return render(request, 'teacher/alter_info_teach.html', context)
+			return render(request, 'teacher/personal_center/alter_info_teach.html', context)
 
 		if phone_number == 'None' or phone_number == "":
 			context['message'] = "请务必填写手机号码！"
-			return render(request, 'teacher/alter_info_teach.html', context)
+			return render(request, 'teacher/personal_center/alter_info_teach.html', context)
 
 		if email == 'None' or email == "":
 			context['message'] = "请务必填写邮箱！"
-			return render(request, 'teacher/alter_info_teach.html', context)
+			return render(request, 'teacher/personal_center/alter_info_teach.html', context)
 
 		photo = request.FILES.get("photo")
 		# print(photo)
@@ -57,26 +80,9 @@ def alter_info_teach(request):
 		# tea_info.tea_name = tea_name
 		tea_info.profess = get_object_or_404(models.profess_info, profess_name=profess)
 		tea_info.department = get_object_or_404(all_model.depart_info, depart_name=department)
-		tea_info.major = get_object_or_404(all_model.major_info, major_name=major)
 		tea_info.ID_number = ID_number
 		tea_info.phone_number = phone_number
 		tea_info.email = email
-
-		if photo != None:
-			f_name = photo.name
-			f_name = f_name.split('.')[-1].lower()
-			# 重命名
-			tea_info.photo = "teach_photo\\" + nid + "\\" + 'head' + '.' + f_name
-			url = settings.MEDIA_ROOT + 'teach_photo\\' + nid
-			# 判断路径是否存在
-			isExists = os.path.exists(url)
-			if not isExists:
-				os.makedirs(url)
-			photo_url = open(
-				settings.MEDIA_ROOT + "teach_photo\\" + nid + "\\" + 'head' + '.' + f_name, 'wb')
-			for chunk in photo.chunks():
-				photo_url.write(chunk)
-			photo_url.close()
 
 		tea_info.save()
 		# 更改修改状态
@@ -85,45 +91,166 @@ def alter_info_teach(request):
 		user_login.have_alter = '1'
 		user_login.save()
 
-		return redirect('/home/')
+		return redirect('/teacher/personal_center_teach_info')
 
-	return render(request, 'teacher/alter_info_teach.html', context)
+	return render(request, 'teacher/personal_center/alter_info_teach.html', context)
 
 
-# 教师个人中心
-def personal_center_teach(request):
+# 教师个人中心-个人信息
+def personal_center_teach_info(request):
 	context = {}
 	teach_id = request.session['user_number']
 	# 获取教师信息
 	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
-	# 获取教师竞赛消息
-	teach_com_list = models.com_teach_info.objects.filter(teach_id=teach_info)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+	return render(request, 'teacher/personal_center/my_info.html', context)
 
-	com_list = []
-	stu_list = []
-	group_list = []
 
-	for teach in teach_com_list:
-		com = get_object_or_404(competition_model.com_basic_info, com_id=teach.com_id.com_id)
-		temp_group_list = competition_model.com_group_basic_info.objects.filter(group_id=teach.group_id.group_id,
-		                                                                        com_id=teach.com_id)
-		for group in temp_group_list:
-			group_list.append(group)
-		temp_stu_list = student_model.com_stu_info.objects.filter(group_id=teach.group_id, com_id=teach.com_id)
-		temp_list = []
-		for stu in temp_stu_list:
-			stu_info = get_object_or_404(student_model.stu_basic_info, stu_number=stu.stu_id.stu_number)
-			temp_list.append(stu_info)
-		stu_list.append(temp_list)
-		com_list.append(com)
-	"""
-	print(com_list)
-	print(stu_list)
-	print(group_list)
-	"""
-	info_list = zip(com_list, stu_list, group_list)
-	context['info_list'] = info_list
-	return render(request, 'teacher/personal_center/index.html', context)
+# 教师个人中心-指导申请
+def personal_center_teach_apply(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+
+	# 未确认的指导申请
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	# 指导申请发起人
+	leader_apply = []
+	for apply in com_apply:
+		group_id = apply.group_id
+		leader = student_model.com_stu_info.objects.filter(group_id=group_id, is_leader=1)
+		for i in leader:
+			leader_apply.append(i)
+
+	confirm_apply = zip(leader_apply, com_apply)
+	context['confirm_apply'] = confirm_apply
+
+	return render(request, 'teacher/personal_center/my_apply.html', context)
+
+
+# 教师个人中心-参赛小组
+def personal_center_teach_team(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+
+	# 正在参赛小组
+	apply_list = models.com_teach_info.objects.filter(teach_id=teach_info.tea_number).order_by('-group_id')
+
+	apply_one_list = []
+	apply_all_list = []
+	stu_list_one = []
+	stu_list_all = []
+	for apply in apply_list:
+		if apply.com_id.type == '0' and apply.group_id.status == '1':
+			apply_one_list.append(apply)
+			group = apply.group_id
+			stu = get_object_or_404(student_model.com_stu_info, group_id=group)
+			stu_list_one.append(stu)
+		elif apply.com_id.type == '1' and apply.group_id.status == '1':
+			apply_all_list.append(apply)
+			group = apply.group_id
+			stu = student_model.com_stu_info.objects.filter(group_id=group)
+			stu_list_all.append(stu)
+
+	apply_one = zip(apply_one_list, stu_list_one)
+	apply_all = zip(apply_all_list, stu_list_all)
+
+	context['apply_one'] = apply_one
+	context['apply_all'] = apply_all
+
+	return render(request, 'teacher/personal_center/my_team.html', context)
+
+
+# 教师个人中心-参赛经历
+def personal_center_teach_experience(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+	return render(request, 'teacher/personal_center/my_experience.html', context)
+
+
+# 教师个人中心-获奖结果
+def personal_center_teach_award(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+	return render(request, 'teacher/personal_center/my_award.html', context)
+
+
+# 教师个人中心-指导记录
+def personal_center_teach_record(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	apply_number = len(com_apply)
+	context['apply_number'] = apply_number
+	return render(request, 'teacher/personal_center/my_record.html', context)
+
+
+# 小组总体报名情况
+def verify_all_apply(group_id):
+	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=group_id)
+	com_teach_list = models.com_teach_info.objects.filter(group_id=group_id)
+	flag = 1
+	for com_stu in com_stu_list:
+		if com_stu.status == '0':
+			flag = 0
+			break
+	if flag == 1:
+		for com_teach in com_teach_list:
+			if com_teach.status == '0':
+				flag = 0
+				break
+	if flag == 1:
+		group_info.status = '1'
+		group_info.save()
+
+
+# 教师个人中心-确认报名
+def confirm_apply(request):
+	context = {}
+	teach_id = request.session['user_number']
+	com_id = request.GET.get('p1')
+	group_id = request.GET.get('p2')
+	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
+
+	com_teach_info = models.com_teach_info.objects.filter(teach_id=teach_id, group_id=group_id)
+	for com_teach in com_teach_info:
+		com_teach.status = '1'
+		com_teach.save()
+
+	verify_all_apply(group_id)
+
+	return redirect('/teacher/personal_center_teach_apply/')
 
 
 # 教师个人中心-驳回报名
@@ -144,7 +271,7 @@ def reject_apply(request):
 	com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
 	com_group.delete()
 
-	return redirect('/teacher/personal_center_teach/')
+	return redirect('/teacher/personal_center_teach_apply/')
 
 
 # 教师个人中心-竞赛详情
@@ -152,30 +279,22 @@ def teach_apply_deatil(request):
 	context = {}
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
-	# 获取竞赛报名所需信息
-	info_list = get_object_or_404(competition_model.com_need_info, com_id=com_id)
-	# 获取竞赛id和小组id，通过这两个id确定具体比赛具体小组
+	type = request.GET.get('p3')
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	com_info.update_status()
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
+	depart_list = all_model.depart_info.objects.all()
 
-	stu_list = []
-	stu_id_list = student_model.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
-	for stu_info in stu_id_list:
-		temp = get_object_or_404(student_model.stu_basic_info, stu_number=stu_info.stu_id.stu_number)
-		stu_list.append((temp))
+	info_list = get_object_or_404(competition_model.com_need_info, com_id=com_id)
+	stu_list = student_model.com_stu_info.objects.filter(group_id=group_info)
+	teach_list = models.com_teach_info.objects.filter(group_id=group_info)
+	sort_list = competition_model.com_sort_info.objects.filter(com_id=com_info)
 
-	teach_list = []
-	teach_id_list = models.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
-	for teach_info in teach_id_list:
-		temp = get_object_or_404(models.teach_basic_info, tea_number=teach_info.teach_id.tea_number)
-		teach_list.append(temp)
-
-	com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
-	for competition in com_group:
-		com_group_info = competition
-
-	context['stu_list'] = stu_list
+	context['type'] = type
 	context['info_list'] = info_list
+	context['stu_list'] = stu_list
 	context['teach_list'] = teach_list
-	context['com_group_info'] = com_group_info
+	context['sort_list'] = sort_list
+	context['group_info'] = group_info
+	context['depart_list'] = depart_list
 	return render(request, "teacher/personal_center/apply_detail.html", context)

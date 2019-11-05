@@ -37,10 +37,12 @@
                         下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
                     </a>
 
+                    {% if request.session.user_power == '0' %}
                     <div class="zuihouanniu">
                         <a class="btn btn-transparent quanbubisai"
                            href="/competition/com_apply_first?id={{ com_info.com_id }}">竞赛报名</a>
                     </div>
+                    {% endif %}
 
                 </div>
             </div>

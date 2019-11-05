@@ -14,6 +14,27 @@ import teacher.models as teacher_model
 
 
 # Create your views here.
+
+# 小组总体报名情况
+def verify_all_apply(group_id):
+	group_info = get_object_or_404(models.com_group_basic_info, group_id=group_id)
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=group_id)
+	com_teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_id)
+	flag = 1
+	for com_stu in com_stu_list:
+		if com_stu.status == '0':
+			flag = 0
+			break
+	if flag == 1:
+		for com_teach in com_teach_list:
+			if com_teach.status == '0':
+				flag = 0
+				break
+	if flag == 1:
+		group_info.status = '1'
+		group_info.save()
+
+
 # 竞赛列表
 def series_list(request):
 	context = {}
@@ -153,8 +174,27 @@ def com_detail(request):
 
 	if request.method == 'GET':
 		id = request.GET.get('com_id')
-		com_info = get_object_or_404(models.com_basic_info, com_id=id)
-		com_publish = get_object_or_404(models.com_publish_info, com_id=com_info)
+
+		object_flag = 0
+		try:
+			com_info = models.com_basic_info.objects.get(com_id=id)
+		except ObjectDoesNotExist:
+			object_flag = 1
+
+		if object_flag != 0:
+			context['warn'] = ""
+			return redirect('/competition/com_list')
+
+		object_flag = 0
+		try:
+			com_publish = models.com_publish_info.objects.get(com_id=com_info)
+		except ObjectDoesNotExist:
+			object_flag = 1
+
+		if object_flag != 0:
+			context['warn'] = ""
+			return redirect('/competition/com_list')
+
 		context['com_publish'] = com_publish
 		context['com_info'] = com_info
 	return render(request, 'competition/com_detail.html', context)
@@ -447,6 +487,9 @@ def com_apply_second(request):
 			stu.stu_id = i
 			if number == 1:
 				stu.is_leader = 1
+				stu.status = '1'
+			else:
+				stu.status = '0'
 			number += 1
 			stu.save()
 
@@ -463,5 +506,32 @@ def com_apply_second(request):
 				teach.com_id = get_object_or_404(models.com_basic_info, com_id=id)
 				teach.group_id = get_object_or_404(models.com_group_basic_info, group_id=group_id)
 				teach.teach_id = i
+				teach.status = '0'
 				teach.save()
 		return render(request, 'competition/apply/com_apply_succeed.html', context)
+
+
+# 确认报名信息
+def verify_apply(request):
+	context = {}
+	user_id = request.GET.get('p1')
+	group_id = request.GET.get('p2')
+
+	group = get_object_or_404(models.com_group_basic_info, group_id=group_id)
+
+	if user_id == '1':
+		stu = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
+		com_stu_list = student_model.com_stu_info.objects.filter(group_id=group, stu_id=stu)
+		for com_stu in com_stu_list:
+			com_stu.status = '1'
+			com_stu.save()
+		verify_all_apply(group_id)
+		return redirect('/student/personal_center_stu_apply')
+	else:
+		teach = get_object_or_404(teacher_model.teach_basic_info, tea_number=request.session['user_number'])
+		com_teach_list = teacher_model.com_stu_info.objects.filter(group_id=group, teach_id=teach)
+		for com_teach in com_teach_list:
+			com_teach.status = '1'
+			com_teach.save()
+		verify_all_apply(group_id)
+		return redirect('/student/personal_center_stu_apply')

@@ -4,7 +4,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class news(models.Model):
-	title = models.CharField(max_length=25)
+	title = models.CharField(max_length=225)
 	content = RichTextUploadingField()
 	author = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.SET_NULL, null=True,
 	                           blank=True)

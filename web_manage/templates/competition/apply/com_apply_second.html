@@ -24,7 +24,7 @@
 
                 {% for stu in stu_list %}
                     <div id="jibenxinxi">
-                        <h3>学生信息</h3>
+                        <h3>学生信息（{{ forloop.counter }}）</h3>
                         <div class="form-group">
                             {% if info_list.stu_num %}
                                 学号：<input type="text" class="form-control" autocomplete="on"

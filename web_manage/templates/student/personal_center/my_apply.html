@@ -1,11 +1,7 @@
 {% extends 'student/personal_center/base.html' %}
 {% load staticfiles %}
 
-{% block css %}
-    <link href="{% static 'sources/css/gerenzhongxinStyle.css' %}" rel="stylesheet">
-{% endblock %}
-
-{% block is_activate1 %}
+{% block per_activate1 %}
     active
 {% endblock %}
 
@@ -19,9 +15,26 @@
             {% for apply in apply_one_list %}
                 <div class="geren">
                     <p>{{ apply.com_id.com_name }}</p>
-                    <span>报名时间：{{ apply.group_id.apply_time }}<a href="baomingxiangqing.html"
-                                                                 class="btn btn-transparent">详情</a></span>
+                    <span>报名时间：{{ apply.group_id.apply_time }}
+                        <br>
+                        {% if apply.group_id.status == '0' %}
+                            <span> 报名状态：未成功</span>
+                        {% else %}
+                            <span> 报名状态：已成功</span>
+                        {% endif %}
+                        <br>
+                        {% if apply.com_id.com_status == '0' %}
+                            <span> 比赛状态：报名中</span>
+                        {% elif apply.com_id.com_status == '1' %}
+                            <span> 比赛状态：报名结束</span>
+                        {% elif apply.com_id.com_status == '2' %}
+                            <span> 比赛状态：比赛中</span>
+                        {% endif %}
+                        <a href="/student/stu_apply_detail?p1={{ apply.com_id.com_id }}&p2={{ apply.group_id.group_id }}"
+                           class="btn btn-transparent">详情</a></span>
                 </div>
+                {% empty %}
+                <h4>暂无报名</h4>
             {% endfor %}
         </div>
     </div>
@@ -39,12 +52,25 @@
                     <br>
                     <span> 报名时间：{{ apply.group_id.apply_time }}</span>
                     <br>
-                    <span> 状态：{{ apply.group_id.status }}</span>
-                    <a href="#" class="btn btn-transparent">详情</a>
+                    {% if apply.group_id.status == '0' %}
+                        <span> 报名状态：未成功</span>
+                    {% else %}
+                        <span> 报名状态：已成功</span>
+                    {% endif %}
+                    <br>
+                    {% if apply.com_id.com_status == '0' %}
+                        <span> 比赛状态：报名中</span>
+                    {% elif apply.com_id.com_status == '1' %}
+                        <span> 比赛状态：报名结束</span>
+                    {% elif apply.com_id.com_status == '2' %}
+                        <span> 比赛状态：比赛中</span>
+                    {% endif %}
+                    <a href="/student/stu_apply_detail?p1={{ apply.com_id.com_id }}&p2={{ apply.group_id.group_id }}"
+                       class="btn btn-transparent">详情</a>
                 </div>
             {% endfor %}
         </div>
-        <div class="bgc2" style="height: 128px;"></div>
     </div>
+    <div class="bgc2" style="height: 128px;"></div>
 {% endblock %}
 

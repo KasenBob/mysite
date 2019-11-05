@@ -27,6 +27,7 @@ class com_stu_info(models.Model):
 	group_id = models.ForeignKey('competition.com_group_basic_info', to_field='group_id', on_delete=models.CASCADE)
 	stu_id = models.ForeignKey('stu_basic_info', to_field='stu_number', on_delete=models.CASCADE)
 	is_leader = models.BooleanField(default=0)
+	status = models.CharField(max_length=10, choices=(('0', '未确认'), ('1', '已确认')), default='0')
 
 
 # 报名修改信息-学生

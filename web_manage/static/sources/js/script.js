@@ -52,23 +52,23 @@ $(document).ready(function() {
 		$("#qiebiao").css("color", "white");
 	});
 
-	
+
 
 	$("#zhu1").click(function() {
 		$("#zhu1").addClass("tcolor");
 		$("#zhu2").removeClass("tcolor");
 		$("#zhu3").removeClass("tcolor");
-		$("#zhuping2").css("display","none");
-		$("#zhuping3").css("display","none");
+		$("#zhuping2").css("display", "none");
+		$("#zhuping3").css("display", "none");
 		$("#zhuping1").fadeIn(500);
 	});
-	
+
 	$("#zhu2").click(function() {
 		$("#zhu2").addClass("tcolor");
 		$("#zhu3").removeClass("tcolor");
 		$("#zhu1").removeClass("tcolor");
-		$("#zhuping1").css("display","none");
-		$("#zhuping3").css("display","none");
+		$("#zhuping1").css("display", "none");
+		$("#zhuping3").css("display", "none");
 		$("#zhuping2").fadeIn(500);
 	});
 
@@ -76,12 +76,17 @@ $(document).ready(function() {
 		$("#zhu3").addClass("tcolor");
 		$("#zhu2").removeClass("tcolor");
 		$("#zhu1").removeClass("tcolor");
-		$("#zhuping2").css("display","none");
-		$("#zhuping1").css("display","none");
+		$("#zhuping2").css("display", "none");
+		$("#zhuping1").css("display", "none");
 		$("#zhuping3").fadeIn(500);
 	});
 
+	
 
+
+
+
+	/* 筛选栏的js */
 
 
 });

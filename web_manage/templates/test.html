@@ -5,11 +5,17 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="./">
+<form>
     {% csrf_token %}
-    {{ form.media }}
-    {{ form.as_p }}
-    <p><input type="submit" value="post"></p>
+    <div class="form-group">
+        <label for="body">...</label>
+        <h4>早上好</h4>
+        <div>
+            {{ form.media }}
+            {{ form.body }}
+        </div>
+    </div>
+    <!-- 提交按钮 -->
 </form>
 </body>
 </html>

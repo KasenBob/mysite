@@ -8,4 +8,5 @@ urlpatterns = [
 	path('com_attach_download/', views.com_attach_download, name='com_attach_download'),
 	path('com_apply_first/', views.com_apply_first, name='com_apply_first'),
 	path('com_apply_second/', views.com_apply_second, name='com_apply_second'),
+	path('verify_apply/', views.verify_apply, name='verify_apply'),
 ]

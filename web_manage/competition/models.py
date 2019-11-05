@@ -19,7 +19,7 @@ class series_info(models.Model):
 		flag = 1
 		for new_com in com_list:
 			if flag == 1:
-				now_com_id = new_com.com_id
+				self.now_com_id = new_com
 				flag = 0
 			else:
 				break
@@ -55,7 +55,6 @@ class com_basic_info(models.Model):
 
 	def update_status(self):
 		now_time = datetime.now()
-		print(now_time)
 		if now_time >= self.begin_regit and now_time < self.end_regit:
 			self.com_status = '0'
 		elif now_time >= self.end_regit and now_time < self.begin_time:
@@ -70,8 +69,8 @@ class com_basic_info(models.Model):
 # 竞赛发布信息
 class com_publish_info(models.Model):
 	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.CASCADE)
+	title = models.CharField(max_length=225, null=True, blank=True)
 	apply_announce = RichTextUploadingField(null=True, blank=True)
-	apply_step = RichTextUploadingField(null=True, blank=True)
 	com_attachment = models.FileField(upload_to='com_attach', null=True, blank=True)
 	last_update_time = models.DateTimeField(auto_now=True)
 	author = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.SET_NULL, null=True,
