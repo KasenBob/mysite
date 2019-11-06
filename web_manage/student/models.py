@@ -42,3 +42,14 @@ class stu_fllow_com_info(models.Model):
 	stu_id = models.ForeignKey('stu_basic_info', to_field='stu_number', on_delete=models.CASCADE)
 	com_id = models.ForeignKey('competition.com_basic_info', to_field='com_id', on_delete=models.CASCADE)
 	status = models.BooleanField(default=0)
+
+
+# 学生通知
+class stu_inform(models.Model):
+	Recipient_acc = models.ForeignKey('all.user_login_info', related_name="Recipient_acc", to_field='account',
+	                                  on_delete=models.CASCADE)
+	From_acc = models.ForeignKey('all.user_login_info', related_name="From_acc", to_field='account',
+	                             on_delete=models.CASCADE)
+	title = models.CharField(max_length=225, null=True, blank=True)
+	content = models.TextField(max_length=500, null=True, blank=True)
+	create_time = models.DateTimeField(auto_now=True)

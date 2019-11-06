@@ -114,8 +114,8 @@ def com_list(request):
 	if cache.has_key(key_1):
 		temp_com_list_one = cache.get(key_1)
 	else:
-		temp_com_list_one = models.com_basic_info.objects.filter(type='0')
-	temp_com_list_one.filter(com_status='0')
+		temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
+	#temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
 	l1 = len(temp_com_list_one)
 	com_list_one = []
 	temp = []
@@ -132,17 +132,20 @@ def com_list(request):
 		flag += 1
 	cache.set(key_1, temp_com_list_one, 3600 - int(time.time() % 3600))
 	# 团体赛
+	
 	key_2 = 'com_list_all'
 	if cache.has_key(key_2):
 		temp_com_list_all = cache.get(key_2)
 	else:
-		temp_com_list_all = models.com_basic_info.objects.filter(type='1')
-	temp_com_list_all.filter(com_status='0')
+		temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
+
+	#temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
 	l2 = len(temp_com_list_all)
 	com_list_all = []
 	temp = []
 	flag = 1
 	for com in temp_com_list_all:
+		com.update_status()
 		temp.append(com)
 		if flag == l2:
 			com_list_all.append(temp)
@@ -151,7 +154,7 @@ def com_list(request):
 			com_list_all.append(temp)
 			temp = []
 		flag += 1
-	cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
+	#cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
 
 	context['com_list_one'] = com_list_one
 	context['com_list_all'] = com_list_all

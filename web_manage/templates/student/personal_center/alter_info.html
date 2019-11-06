@@ -105,8 +105,42 @@
                             </div>
                         </div>
                         <div id="zuihouanniu">
-                            <button class="btn btn-transparent quanbubisai" type="submit">确认修改</button>
+                            <a class="btn btn-transparent quanbubisai" data-toggle="modal"
+                               data-target="#myModal">提交信息</a>
                         </div>
+
+                        <!-- 模态框 -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+
+                                <div class="modal-content" style="background-color: #2B2C30;border: none;">
+
+                                    <div class="modal-header" style="border-bottom: #666666 solid 1px;">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">修改理由</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <p>输入修改原因</p>
+                                        <div id="chaxunduiyou">
+                                            <select name="liyou" style="background-color: #333439;height: 30px">
+                                                <option>扩展信息填错了</option>
+                                                <option>基本信息需要变动</option>
+                                                <option>其他</option>
+                                            </select>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer" style="border-top: #666666 solid 1px;">
+                                        <button type="submit" class="tijiaoanniu">提交</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 模态框结束 -->
+
                     </form>
                 </div>
             </div>

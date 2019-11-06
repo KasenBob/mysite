@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import stu_basic_info, com_stu_info, temp_com_stu_info, stu_fllow_com_info
+from .models import stu_basic_info, com_stu_info, temp_com_stu_info, stu_fllow_com_info, stu_inform
 
 
 # Register your models here.
@@ -23,3 +23,8 @@ class temp_com_stu_info_Admin(admin.ModelAdmin):
 @admin.register(stu_fllow_com_info)
 class stu_fllow_com_info_Admin(admin.ModelAdmin):
 	list_display = ('stu_id', 'com_id', 'status',)
+
+
+@admin.register(stu_inform)
+class stu_inform_Admin(admin.ModelAdmin):
+	list_display = ('Recipient_acc', 'From_acc', 'title', 'content', 'create_time')

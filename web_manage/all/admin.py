@@ -39,4 +39,4 @@ class Article_Admin(admin.ModelAdmin):
 
 @admin.register(inform)
 class inform_Admin(admin.ModelAdmin):
-	list_display = ('Recipient_acc', 'From_acc', 'content', 'create_time',)
+	list_display = ('title', 'content', 'create_time',)

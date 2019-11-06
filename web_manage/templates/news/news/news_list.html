@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
-
 {% block title %}
     学科竞赛|获奖新闻
 {% endblock %}
@@ -10,7 +9,7 @@
     <link href="{% static 'sources/css/newsstyle.css' %}" rel="stylesheet">
 {% endblock %}
 
-{% block active2 %}
+{% block is_activate2 %}
     active
 {% endblock %}
 
@@ -102,11 +101,11 @@
                     <div id="rukouanniu">
                         <a class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
-                            <span>竞赛介绍</span>
+                            <span>竞赛一览</span>
                         </a>
                         <a class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
-                            <span>竞赛报名</span>
+                            <span>比赛报名</span>
                         </a>
                         <a class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>

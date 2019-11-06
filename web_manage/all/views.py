@@ -9,9 +9,13 @@ import datetime
 from . import models
 import student.models as student_model
 import teacher.models as teacher_model
+import news.models  as news_model
+import competition.models as com_model
 from .tasks import send_email_demo
 from .forms import ArticleForm
 import os
+from django.core.cache import cache
+import time
 
 
 # Create your views here.
@@ -28,6 +32,55 @@ def home(request):
 	'''
 	context = {}
 	# sendmail.delay('test@test.com')
+
+	# 新闻列表
+	key_1 = 'news_list'
+	if cache.has_key(key_1):
+		new_list = cache.get(key_1)
+	else:
+		new_list = news_model.news.objects.all().order_by('-created_time')
+	cache.set(key_1, new_list, 3600 - int(time.time() % 3600))
+	i = 0
+	news_list =[]
+	for new in new_list:
+		if i == 0:
+			top_new = new
+		elif i < 10:
+			news_list.append(new)
+		i += 1
+	context['top_new'] = top_new
+	context['news_list'] = news_list
+
+	#通知列表
+	key_2 = 'inform_list'
+	if cache.has_key(key_2):
+		inform_list = cache.get(key_2)
+	else:
+		inform_list = models.inform.objects.all().order_by('-create_time')
+	cache.set(key_2, inform_list, 3600 - int(time.time() % 3600))
+	i = 0
+	informs_list = []
+	for form in inform_list:
+		if i < 10:
+			informs_list.append(form)
+		i += 1
+	context['informs_list'] = informs_list
+
+	#正在进行比赛
+	key_3 = 'com_list'
+	if cache.has_key(key_3):
+		com_list = cache.get(key_3)
+	else:
+		com_list = com_model.com_basic_info.objects.filter(com_status='0').order_by('-begin_regit')
+	cache.set(key_3, com_list, 3600 - int(time.time() % 3600))
+	i = 0
+	show_com_list = []
+	for com in com_list:
+		if i < 4:
+			show_com_list.append(com)
+		i += 1
+	context['show_com_list'] = show_com_list
+
 	return render(request, 'home/home.html', context)
 
 

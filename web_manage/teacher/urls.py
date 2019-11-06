@@ -8,6 +8,7 @@ urlpatterns = [
 	path('personal_center_teach_team/', views.personal_center_teach_team, name='personal_center_teach_team'),
 	path('personal_center_teach_experience/', views.personal_center_teach_experience,
 	     name='personal_center_teach_experience'),
+	path('personal_center_teach_message/', views.personal_center_teach_message, name='personal_center_teach_message'),
 	path('personal_center_teach_award/', views.personal_center_teach_award, name='personal_center_teach_award'),
 	path('personal_center_teach_record/', views.personal_center_teach_record, name='personal_center_teach_record'),
 	path('teach_apply_deatil/', views.teach_apply_deatil, name='teach_apply_deatil'),

@@ -252,6 +252,50 @@ def confirm_apply(request):
 
 	return redirect('/teacher/personal_center_teach_apply/')
 
+# 教师个人中心-通知信息
+def personal_center_teach_message(request):
+	context = {}
+
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=request.session['user_number'])
+	context['teach_info'] = teach_info
+	informs_list = models.teach_inform.objects.filter(
+		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number']))
+
+	inform_flag = 0
+	if len(informs_list) == 0:
+		inform_flag = 0
+	else:
+		inform_flag = 1
+
+	paginator = Paginator(informs_list, 2)  # 每?篇进行分页
+	page_num = request.GET.get('page', 1)  # 获取url的页面参数（GET请求）
+	page_of_informs = paginator.get_page(page_num)
+	current_page_num = page_of_informs.number  # 获取当前页码
+	# 获取当前前后各两页的页码范围
+	page_range = list(range(max(current_page_num, 1), current_page_num)) + \
+	             list(range(current_page_num, min(current_page_num, paginator.num_pages) + 1))
+	# 加上省略页面标记
+	if page_range[0] - 1 >= 2:
+		page_range.insert(0, '...')
+	if paginator.num_pages - page_range[-1] >= 2:
+		page_range.append('...')
+	# 加上首页和尾页
+	if page_range[0] != 1:
+		page_range.insert(0, 1)
+	if page_range[-1] != paginator.num_pages:
+		page_range.append(paginator.num_pages)
+
+	if request.GET.get('p') != None:
+		inform_id = request.GET.get('p')
+		context['inform'] = models.teach_inform.objects.get(pk=inform_id)
+	else:
+		context['inform'] = informs_list[0]
+
+	context['page_of_informs'] = page_of_informs
+	context['page_range'] = page_range
+	context['informs'] = informs_list
+
+	return render(request, 'teacher/personal_center/my_message.html', context)
 
 # 教师个人中心-驳回报名
 def reject_apply(request):

@@ -48,10 +48,8 @@ class Article(models.Model):
 
 
 class inform(models.Model):
-	Recipient_acc = models.ForeignKey('user_login_info', related_name="Recipient_acc", to_field='account', on_delete=models.CASCADE)
-	From_acc = models.ForeignKey('user_login_info', related_name="From_acc", to_field='account', on_delete=models.CASCADE)
 	title = models.CharField(max_length=225, null=True, blank=True)
 	content = models.TextField(max_length=500, null=True, blank=True )
-	create_time = models.DateTimeField(auto_now=True)
+	create_time = models.DateField(auto_now=True)
 
 

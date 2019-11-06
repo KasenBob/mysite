@@ -33,3 +33,14 @@ class com_teach_info(models.Model):
 class temp_com_teach_info(models.Model):
 	temp_id = models.ForeignKey('competition.temp_com_group_basic_info', to_field='temp_id', on_delete=models.CASCADE)
 	teach_id = models.ForeignKey('teach_basic_info', to_field='tea_number', on_delete=models.CASCADE)
+
+
+# 教师通知
+class teach_inform(models.Model):
+	Recipient_acc = models.ForeignKey('all.user_login_info', related_name="Recipient", to_field='account',
+	                                  on_delete=models.CASCADE)
+	From_acc = models.ForeignKey('all.user_login_info', related_name="From", to_field='account',
+	                             on_delete=models.CASCADE)
+	title = models.CharField(max_length=225, null=True, blank=True)
+	content = models.TextField(max_length=500, null=True, blank=True)
+	create_time = models.DateTimeField(auto_now=True)

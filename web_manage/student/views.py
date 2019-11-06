@@ -40,6 +40,7 @@ def alter_info_stu(request):
 		grade = request.POST.get('grade')
 		stu_class = request.POST.get('stu_class')
 		ID_number = request.POST.get('ID_number')
+		liyou = request.POST.get('liyou')
 
 		if ID_number == None or ID_number == "":
 			context['message'] = "请务必填写身份证号！"
@@ -79,7 +80,7 @@ def alter_info_stu(request):
 		user_login.have_alter = '1'
 		user_login.save()
 
-		return redirect('/student/personal_center_stu?tag=3')
+		return redirect('/student/personal_center_stu_info')
 	# stu_info = stu_basic_Form()
 	return render(request, 'student/personal_center/alter_info.html', context)
 
@@ -140,19 +141,25 @@ def personal_center_stu_apply(request):
 # 学生个人中心-信息
 def personal_center_stu_message(request):
 	context = {}
-	# 获取图片
+
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
 	context['stu_info'] = stu_info
-	informs_list = all_model.inform.objects.filter(
+	informs_list = models.stu_inform.objects.filter(
 		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number']))
+
+	inform_flag = 0
+	if len(informs_list) == 0:
+		inform_flag = 0
+	else:
+		inform_flag = 1
 
 	paginator = Paginator(informs_list, 2)  # 每?篇进行分页
 	page_num = request.GET.get('page', 1)  # 获取url的页面参数（GET请求）
 	page_of_informs = paginator.get_page(page_num)
 	current_page_num = page_of_informs.number  # 获取当前页码
 	# 获取当前前后各两页的页码范围
-	page_range = list(range(max(current_page_num - 2, 1), current_page_num)) + \
-	             list(range(current_page_num, min(current_page_num + 2, paginator.num_pages) + 1))
+	page_range = list(range(max(current_page_num, 1), current_page_num)) + \
+	             list(range(current_page_num, min(current_page_num, paginator.num_pages) + 1))
 	# 加上省略页面标记
 	if page_range[0] - 1 >= 2:
 		page_range.insert(0, '...')
@@ -166,12 +173,9 @@ def personal_center_stu_message(request):
 
 	if request.GET.get('p') != None:
 		inform_id = request.GET.get('p')
-		print(inform_id)
-		context['inform'] = all_model.inform.objects.get(pk=inform_id)
+		context['inform'] = models.stu_inform.objects.get(pk=inform_id)
 	else:
 		context['inform'] = informs_list[0]
-
-	print(context['inform'])
 
 	context['page_of_informs'] = page_of_informs
 	context['page_range'] = page_range

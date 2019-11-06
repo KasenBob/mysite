@@ -7,13 +7,13 @@ from . import models
 def news_list(request):
 	context = {}
 	news_list = models.news.objects.all()
-	paginator = Paginator(news_list, settings.EACH_PAGE_BLOGS_NUMBER)  # 每?篇进行分页
+	paginator = Paginator(news_list, 3)  # 每?篇进行分页
 	page_num = request.GET.get('page',1) #获取url的页面参数（GET请求）
 	page_of_news = paginator.get_page(page_num)
 	current_page_num = page_of_news.number#获取当前页码
 	#获取当前前后各两页的页码范围
-	page_range = list(range(max(current_page_num - 2, 1), current_page_num)) + \
-	             list(range(current_page_num, min(current_page_num + 2, paginator.num_pages) + 1))
+	page_range = list(range(max(current_page_num - 1, 1), current_page_num)) + \
+	             list(range(current_page_num, min(current_page_num + 1, paginator.num_pages) + 1))
 	# 加上省略页面标记
 	if page_range[0] - 1 >= 2:
 		page_range.insert(0, '...')
