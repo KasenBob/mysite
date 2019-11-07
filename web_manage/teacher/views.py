@@ -266,8 +266,9 @@ def personal_center_teach_message(request):
 		inform_flag = 0
 	else:
 		inform_flag = 1
+	context['inform_flag'] = inform_flag
 
-	paginator = Paginator(informs_list, 2)  # 每?篇进行分页
+	paginator = Paginator(informs_list, 4)  # 每?篇进行分页
 	page_num = request.GET.get('page', 1)  # 获取url的页面参数（GET请求）
 	page_of_informs = paginator.get_page(page_num)
 	current_page_num = page_of_informs.number  # 获取当前页码
@@ -288,7 +289,7 @@ def personal_center_teach_message(request):
 	if request.GET.get('p') != None:
 		inform_id = request.GET.get('p')
 		context['inform'] = models.teach_inform.objects.get(pk=inform_id)
-	else:
+	elif inform_flag == 1:
 		context['inform'] = informs_list[0]
 
 	context['page_of_informs'] = page_of_informs

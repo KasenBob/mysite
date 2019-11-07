@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect, render
 from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, Http404, FileResponse
+from django.http import HttpResponse, Http404, FileResponse, JsonResponse
 from django.conf import settings
 from django.core.mail import send_mail
 from django.conf import settings
@@ -16,6 +16,8 @@ from .forms import ArticleForm
 import os
 from django.core.cache import cache
 import time
+from django.core import serializers
+import json
 
 
 # Create your views here.
@@ -41,7 +43,7 @@ def home(request):
 		new_list = news_model.news.objects.all().order_by('-created_time')
 	cache.set(key_1, new_list, 3600 - int(time.time() % 3600))
 	i = 0
-	news_list =[]
+	news_list = []
 	for new in new_list:
 		if i == 0:
 			top_new = new
@@ -51,7 +53,7 @@ def home(request):
 	context['top_new'] = top_new
 	context['news_list'] = news_list
 
-	#通知列表
+	# 通知列表
 	key_2 = 'inform_list'
 	if cache.has_key(key_2):
 		inform_list = cache.get(key_2)
@@ -66,7 +68,7 @@ def home(request):
 		i += 1
 	context['informs_list'] = informs_list
 
-	#正在进行比赛
+	# 正在进行比赛
 	key_3 = 'com_list'
 	if cache.has_key(key_3):
 		com_list = cache.get(key_3)
@@ -146,3 +148,5 @@ def article(request):
 	form = ArticleForm()
 	context['form'] = form
 	return render(request, 'test.html', context)
+
+

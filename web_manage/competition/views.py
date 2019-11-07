@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404, redirect, render
 from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
-from django.http import HttpResponse, Http404, FileResponse
+from django.http import HttpResponse, Http404, FileResponse, JsonResponse
 from django.core.cache import cache
 import time
 from django.conf import settings
@@ -11,6 +11,8 @@ import os
 import all.models as all_model
 import student.models as student_model
 import teacher.models as teacher_model
+from django.core import serializers
+import json
 
 
 # Create your views here.
@@ -538,3 +540,12 @@ def verify_apply(request):
 			com_teach.save()
 		verify_all_apply(group_id)
 		return redirect('/student/personal_center_stu_apply')
+
+
+def select_mate_first(request):
+	context = {}
+	name = request.GET.get('name')
+	mate_list = student_model.stu_basic_info.objects.filter(stu_name=name)
+	mate_list = json.loads(serializers.serialize('json', mate_list))
+	context['mate_list'] = mate_list
+	return JsonResponse(context)

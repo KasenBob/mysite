@@ -29,14 +29,14 @@
                     {% for num in stu_num %}
                         {% if num == 1 %}
                             <div class="form-group">
-                                学生姓名：<input type="text" class="form-control" autocomplete="on"
-                                            name="stu_name{{ num }}" value="{{ leader.stu_name }}"
-                                            style="background-color: #2F383D;border: 0;">
+                                学生姓名：<input type="text" class="form-control" placeholder="查询" autocomplete="on"
+                                            name="stu_name{{ num }}" value="{{ leader.stu_name }}">
                             </div>
                         {% else %}
                             <div class="form-group">
-                                学生姓名：<input type="text" class="form-control" autocomplete="on"
-                                            name="stu_name{{ num }}">
+                                学生姓名：<input type="text" class="form-control" data-toggle="modal" data-target="#myModal"
+                                            placeholder="查询" autocomplete="on" name="stu_name{{ num }}"
+                                            readonly="readonly" style="background-color: rgb(47,56,61)">
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -91,6 +91,83 @@
                 </div>
 
             </form>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content" style="background-color: #2B2C30;border: none;">
+
+                        <div class="modal-header" style="border-bottom: #666666 solid 1px;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">选择队员</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p style="display: inline-block;">查找队员请输入队员全名: </p>
+                            <div id="chaxunduiyou" style="display: inline-block;">
+                                <input id="mate_name" type="text" class="form-control" placeholder="查询"
+                                       style="width:65%;display: inline-block;">
+                                <button id="mate_button" class="tijiaoanniu" style="margin-left: 10px;width: 25%"
+                                        value="查找" onclick="search_name()">查找
+                                </button>
+                            </div>
+                            <div id="chaxunjieguo">
+                                <table id="mate_list" class="table">
+
+                                </table>
+                            </div>
+                        </div>
+
+                        <script>
+
+                            function search_name() {
+                                var name = $("#mate_name").val();
+                                var url = "/competition/select_mate_first?name=" + name;
+                                $.ajax({
+                                    type: 'get',
+                                    url: url,
+                                    data: {},
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        if (data["mate_list"].length>0) {
+
+                                            var mate_list = data["mate_list"];
+                                            var myHtml = "<tr><td>学号</td><td>姓名</td><td>班级</td><td>操作</td></tr>";
+                                            for (var i = 0; i < mate_list.length; i++) {
+
+                                                var tmp = mate_list[i];
+                                                var pk = tmp.pk;
+                                                alert(pk)
+                                                var name = tmp.fields.stu_name;
+                                                var num = tmp.fields.stu_num;
+                                                var sClass = tmp.fields.grade + tmp.fields.major + tmp.fields.stu_class;
+                                                myHtml += "<tr><td>" + pk + "</td><td>" + name + "</td><td>" + sClass + "</td><td><button class=\"tijiaoanniu\" style=\"height:80%;width:80%\">选择</button></td></tr>";
+
+
+                                            }
+
+                                            $("#mate_list").html(myHtml);
+
+
+                                        }else{
+                                            $("#mate_list").empty();
+                                            alert("别爱我，没结果");
+                                        }
+
+
+                                    },
+                                    error: function (error) {
+                                        alert('error');
+                                    }
+                                })
+                            }
+
+                        </script>
+
+                        <div class="modal-footer" style="border-top: #666666 solid 1px;">
+                            <a class="btn btn-transparent" data-dismiss="modal">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

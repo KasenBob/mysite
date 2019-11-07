@@ -319,10 +319,23 @@ ul li:hover {
 	color: white;
 	border: 1px solid #6CB670;
 	background-color: transparent;
+	outline:none;
 }
 
 .tijiaoanniu:hover{
 	background-color: #6CB670;
+}
+
+.tijiaoanniu:active{
+	bborder: 1px solid #6CB670;
+}
+
+.tijiaoanniu:visited{
+	border: 1px solid #6CB670;
+}
+
+.tijiaoanniu:link{
+	border: 1px solid #6CB670;
 }
 
 #dibu{
