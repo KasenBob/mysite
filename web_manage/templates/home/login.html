@@ -6,49 +6,48 @@
 {% endblock %}
 
 {% block content %}
-    {% if message %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                    aria-hidden="true">&times;</span></button>
-            </strong>{{ message }}
-        </div>
-    {% endif %}
     <div class="container">
-        <div class="row">
+        <div class="row" style="margin-top: 50px;margin-left: 128px">
+            <img src="img/hzxy.png">
+        </div>
 
-            <div class="col-md-6" style="padding-top: 20%; padding-bottom: 20%">
-                <div class="thumbnail" style="border: 0px">
-                    <img src="/media/web_photo/qrcode.png" alt="...">
-                    <div class="caption">
-                        <p style="text-align: center">
-                            请使用微信手机客户端<br>
-                            扫码登录
-                        </p>
-                    </div>
+        <style>
+            .zhuyeshuru {
+                width: 93.4%;
+                margin-bottom: 20px;
+                padding: 10px;
+                float: left;
+                background-color: transparent;
+                border: none;
+                font-size: 15px;
+                border-bottom: 1px solid white;
+                outline: none;
+                color: #FFF;
+            }
+        </style>
+
+        <div class="row" style="color: white;margin-top: 128px;padding-left: 128px">
+
+            <div class="col-md-6" style="border-right: 1px solid white">
+                <h1>登 录</h1>
+                <form action="/login/" method="post">
+                    {% csrf_token %}
+                    <input name="username" type="text" placeholder="用户名"
+                           class="zhuyeshuru"><br>
+                    <input name="password" type="password" placeholder="密码"
+                           class="zhuyeshuru"><br>
+                    <button type="submit" class="tijiaoanniu">登录</button>
+                </form>
+                <div style="height: 100px">
+
                 </div>
             </div>
 
-            <div class="col-md-6" style="padding-top: 20%; padding-bottom: 20%">
-                <form class='form-login' action="/login/" method="post"  style="width:75%;">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="id_username">账号：</label>
-                        <input type="text" name='account' class="form-control" id="id_username"
-                               placeholder="账号">
-                    </div>
-                    <div class="form-group">
-                        <label for="id_password">密码：</label>
-                        <input type="password" name='psword' class="form-control" id="id_password"
-                               placeholder="密码">
-                    </div>
-                    <button type="button" class="btn btn-default float-xs-left"
-                            data-dismiss="modal">
-                        忘记密码
-                    </button>
-                    <button type="reset" class="btn btn-default">重置</button>
-                    <button type="submit" class="btn btn-primary pull-right">登录</button>
-                </form>
+            <div class="col-md-4" style="margin-left: 50px">
+                <img src="img/rjxx.png" style="height: 320px;width: 320px">
+                <p style="text-align: center">扫描二维码进行登录</p>
             </div>
+
         </div>
     </div>
 {% endblock %}

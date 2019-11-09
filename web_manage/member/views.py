@@ -16,19 +16,19 @@ from .forms import ArticleForm
 
 
 # Create your views here.
-
+# 增加竞赛系列
 def add_series(request):
 	context = {}
 	return render(request, 'member/add_series.html', context)
 
 
+# 竞赛系列
 def my_series(request):
 	context = {}
 	series_list = competition_model.series_info.objects.all().order_by('name')
 	context['series_list'] = series_list
 	for series in series_list:
 		series.update_com_id()
-
 
 	paginator = Paginator(series_list, 4)  # 每?篇进行分页
 	page_num = request.GET.get('page', 1)  # 获取url的页面参数（GET请求）
@@ -54,14 +54,50 @@ def my_series(request):
 	return render(request, 'member/my_series.html', context)
 
 
+# 进行中的比赛
 def my_com_ing(request):
 	context = {}
+	com_list = competition_model.com_basic_info.objects.exclude(com_status='3')
+	context['com_list'] = com_list
 	return render(request, 'member/my_com_ing.html', context)
 
 
+# 历届比赛
 def my_com_ed(request):
 	context = {}
+
 	return render(request, 'member/my_com_ed.html', context)
+
+
+# 比赛详情-参赛名单
+def com_apply_detail(request):
+	context = {}
+	com_id = request.GET.get('p')
+	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	need_info = get_object_or_404(competition_model.com_need_info, com_id=com_id)
+
+	com_group_list = competition_model.com_group_basic_info.objects.filter(com_id=com_info)
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=com_group_list)
+	com_teach_list = teacher_model.com_teach_info.objects.filter(group_id=com_group_list)
+
+	if com_info.type == '0':
+		com_group_list = competition_model.com_group_basic_info.objects.filter(com_id=com_info)
+		print(com_group_list)
+		com_apply_list = []
+		stu_list = []
+		teach_list = []
+		for com_group in com_group_list:
+			com_stu = student_model.com_stu_info.objects.get(group_id=com_group)
+			stu_list.append(com_stu)
+			com_teach = teacher_model.com_teach_info.objects.get(group_id=com_group)
+			teach_list.append(com_teach)
+
+		com_apply_list = zip(com_group_list, stu_list, teach_list)
+
+	context['com_info'] = com_info
+	context['need_info'] = need_info
+	context['com_apply_list'] = com_apply_list
+	return render(request, 'member/com_apply_detail.html', context)
 
 
 def com_manage(request):

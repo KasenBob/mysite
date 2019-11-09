@@ -103,16 +103,26 @@
 
 
                 {% if info_list.tea_num %}
-                    <div id="tuozhanxinxi">
-                        <h3 style="display: block;">指导教师信息</h3>
-                        {% for teach in teach_list %}
+                    {% for teach in teach_list %}
+                        <div id="tuozhanxinxi">
+                            <h3 style="display: block;">指导教师信息({{ forloop.counter }})</h3>
                             <div class="form-group">
-                                指导教师({{ forloop.counter }})：
+                                姓名：
                                 <input type="text" class="form-control" autocomplete="on" readonly="readonly"
                                        value="{{ teach.teach_id.tea_name }}">
                             </div>
-                        {% endfor %}
-                    </div>
+                            <div class="form-group">
+                                院系：
+                                <input type="text" class="form-control" autocomplete="on" readonly="readonly"
+                                       value="{{ teach.teach_id.department.depart_name }}">
+                            </div>
+                            <div class="form-group">
+                                邮箱：
+                                <input type="text" class="form-control" autocomplete="on" readonly="readonly"
+                                       value="{{ teach.teach_id.email }}">
+                            </div>
+                        </div>
+                    {% endfor %}
                 {% endif %}
 
 

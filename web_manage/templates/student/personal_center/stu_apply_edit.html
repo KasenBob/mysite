@@ -19,88 +19,17 @@
                 <h1>{{ com_info.com_name }}报名</h1>
                 <hr>
 
-                {% for stu in stu_list %}
-                    <div id="jibenxinxi">
-                        <h3>学生信息({{ forloop.counter }})</h3>
+                <div id="jibenxinxi">
+                    {% for stu in stu_list %}
                         <div class="form-group">
+                            学生姓名：
                             {% if info_list.stu_num %}
-                                学号：<input type="text" class="form-control" autocomplete="on"
-                                          name="stu_num{{ forloop.counter }}" value="{{ stu.stu_id.stu_number }}">
+                                <input type="text" class="form-control" autocomplete="on"
+                                       name="stu_num{{ forloop.counter }}" value="{{ stu.stu_id.stu_number }}">
                             {% endif %}
                         </div>
-
-                        <div class="form-group">
-                            {% if info_list.stu_name %}
-                                姓名：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.stu_name }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.ID_number %}
-                                身份证号：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                            value="{{ stu.stu_id.ID_number }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.sex %}
-                                性别：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.sex }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.depart %}
-                                院系：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.department.depart_name }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.major %}
-                                专业：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.major.major_name }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.grade %}
-                                年级：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.grade.grade_name }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.stu_class %}
-                                班级：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.stu_class.class_name }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.email %}
-                                邮件：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                          value="{{ stu.stu_id.email }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.phone_num %}
-                                联系方式：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                            value="{{ stu.stu_id.phone_number }}">
-                            {% endif %}
-                        </div>
-
-                        <div class="form-group">
-                            {% if info_list.bank_number %}
-                                银行卡号：<input type="text" class="form-control" autocomplete="on" readonly="readonly"
-                                            value="{{ stu.stu_id.bank_number }}">
-                            {% endif %}
-                        </div>
-                    </div>
-                {% endfor %}
-
+                    {% endfor %}
+                </div>
 
                 {% if info_list.tea_num %}
                     <div id="tuozhanxinxi">
@@ -108,11 +37,8 @@
                         {% for teach in teach_list %}
                             <div class="form-group">
                                 指导教师({{ forloop.counter }})：
-                                <select name="tea_name{{ forloop.counter }}" class="form-control" style="width:150px">
-                                    <option value="{{ teach.tea_number }}">
-                                        {{ teach.teach_id.tea_name }}--{{ teach.teach_id.tea_number }}
-                                    </option>
-                                </select>
+                                <input type="text" class="form-control" autocomplete="on" placeholder="{{ teach.teach_id.tea_name }}"
+                                       name="tea_name{{ forloop.counter }}" value="{{ teach.teach_id.tea_number }}">
                             </div>
                         {% endfor %}
                     </div>
@@ -125,11 +51,12 @@
                     {% if info_list.group_name %}
                         <div class="form-group">
                             小组名称：<input type="text" class="form-control" autocomplete="on" name="group_name"
-                                        readonly="readonly" value="{{ group_info.group_name }}">
+                                        value="{{ group_info.group_name }}">
                         </div>
                     {% endif %}
 
                     {% if info_list.com_group %}
+                        组别：
                         <select name="sort" class="form-control" style="width:200px">
                             {% for sort in sort_list %}
                                 {% if sort == group_info.com_group %}
@@ -148,14 +75,14 @@
                     {% if info_list.product_name %}
                         <div class="form-group">
                             作品名称：<input type="text" class="form-control" autocomplete="on" name="product_name"
-                                        readonly="readonly" value="{{ group_info.product_name }}">
+                                        value="{{ group_info.product_name }}">
                         </div>
                     {% endif %}
 
                     {% if info_list.else_info %}
                         <div class="form-group">
                             备注：<input type="text" class="form-control" autocomplete="on" name="else_info"
-                                      readonly="readonly" value="{{ group_info.else_info }}">
+                                      value="{{ group_info.else_info }}">
                         </div>
                     {% endif %}
 

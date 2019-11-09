@@ -9,7 +9,7 @@ $(document).ready(function() {
 	var contentHeight = document.body.scrollHeight,
 		winHeight = window.innerHeight;
 	if (winHeight > contentHeight) {
-		$("footer").addClass("navbar-fixed-bottom");
+		$("#dibu").addClass("navbar-fixed-bottom");
 	}
 
 

@@ -25,28 +25,32 @@
                 <hr>
 
                 <div id="jibenxinxi">
+
                     <h3>学生信息</h3>
                     {% for num in stu_num %}
                         {% if num == 1 %}
                             <div class="form-group">
-                                学生姓名：<input type="text" class="form-control" placeholder="查询" autocomplete="on"
-                                            name="stu_name{{ num }}" value="{{ leader.stu_name }}">
+                                学生姓名：<input type="text" class="form-control xuanren" placeholder="查询" autocomplete="on"
+                                            name="stu_num{{ num }}" value="{{ leader.stu_number }}">
                             </div>
                         {% else %}
                             <div class="form-group">
-                                学生姓名：<input type="text" class="form-control" data-toggle="modal" data-target="#myModal"
-                                            placeholder="查询" autocomplete="on" name="stu_name{{ num }}"
+                                学生姓名：<input type="text" class="form-control xuanren" data-toggle="modal"
+                                            data-target="#myModal"
+                                            placeholder="查询" autocomplete="on" name="stu_num{{ num }}"
                                             readonly="readonly" style="background-color: rgb(47,56,61)">
                             </div>
                         {% endif %}
                     {% endfor %}
+
                 </div>
 
                 <div id="tuozhanxinxi">
                     <h3 style="display: block;">指导教师信息</h3>
                     {% for tea in tea_num %}
                         <div class="form-group">
-                            指导教师姓名:<input type="text" class="form-control" autocomplete="on" name="tea_name{{ tea }}">
+                            指导教师姓名:<input type="text" class="form-control xuanren" autocomplete="on"
+                                          name="tea_name{{ tea }}">
                         </div>
                     {% endfor %}
                 </div>
@@ -87,10 +91,11 @@
 
                 </div>
                 <div id="zuihouanniu">
-                    <button type="submit" class="apply_button">下一步</button>
+                    <button type="submit" class="tijiaoanniu">下一步</button>
                 </div>
 
             </form>
+            <!-- 选人 -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content" style="background-color: #2B2C30;border: none;">
@@ -102,6 +107,7 @@
                         </div>
                         <div class="modal-body">
                             <p style="display: inline-block;">查找队员请输入队员全名: </p>
+                            <p id="back_fill" style="display: none;"></p>
                             <div id="chaxunduiyou" style="display: inline-block;">
                                 <input id="mate_name" type="text" class="form-control" placeholder="查询"
                                        style="width:65%;display: inline-block;">
@@ -118,6 +124,26 @@
 
                         <script>
 
+                            function cc(temp) {
+
+                                var hang = $(temp.parentNode).parent().prevAll().length;
+                                var lie = 2;
+
+                                var str = "#mate_list tr:eq("+hang+") td:nth-child(1)";
+
+
+
+
+                                var back_name = $("#back_fill").text();
+                                var a = document.getElementsByName(back_name);
+                                a[0].value = $(str).text();
+
+
+                                {#$("input[name='stu_num1']").val(123);#}
+                                {#$("input[name='stu_num1']").text("123");#}
+
+                            }
+
                             function search_name() {
                                 var name = $("#mate_name").val();
                                 var url = "/competition/select_mate_first?name=" + name;
@@ -127,7 +153,7 @@
                                     data: {},
                                     dataType: 'json',
                                     success: function (data) {
-                                        if (data["mate_list"].length>0) {
+                                        if (data["mate_list"].length > 0) {
 
                                             var mate_list = data["mate_list"];
                                             var myHtml = "<tr><td>学号</td><td>姓名</td><td>班级</td><td>操作</td></tr>";
@@ -135,11 +161,12 @@
 
                                                 var tmp = mate_list[i];
                                                 var pk = tmp.pk;
-                                                alert(pk)
+
                                                 var name = tmp.fields.stu_name;
                                                 var num = tmp.fields.stu_num;
                                                 var sClass = tmp.fields.grade + tmp.fields.major + tmp.fields.stu_class;
-                                                myHtml += "<tr><td>" + pk + "</td><td>" + name + "</td><td>" + sClass + "</td><td><button class=\"tijiaoanniu\" style=\"height:80%;width:80%\">选择</button></td></tr>";
+                                                myHtml += "<tr><td>" + pk + "</td><td>" + name + "</td><td>" + sClass + "</td><td><button data-toggle=\"modal\"\n" +
+                                                    "                                            data-target=\"#myModal\" onclick=\"cc(this)\" class=\"xuanta tijiaoanniu\" style=\"height:80%;width:80%\">选择</button></td></tr>";
 
 
                                             }
@@ -147,7 +174,7 @@
                                             $("#mate_list").html(myHtml);
 
 
-                                        }else{
+                                        } else {
                                             $("#mate_list").empty();
                                             alert("别爱我，没结果");
                                         }
@@ -159,6 +186,24 @@
                                     }
                                 })
                             }
+
+                        </script>
+
+                        <script>
+                            $(document).ready(function () {
+                                $(".xuanren").click(function () {
+
+                                    $("#back_fill").text(this.name);
+
+
+                                })
+
+
+                            })
+                        </script>
+
+                        <script>
+
 
                         </script>
 

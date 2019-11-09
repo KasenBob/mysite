@@ -33,14 +33,24 @@ def alter_info_stu(request):
 
 	# print(context['stu'][0])
 	if request.method == "POST":
-		# stu_number = request.POST.get('stu_number')
-		# stu_name = request.POST.get('stu_name')
+		stu_number = request.POST.get('stu_number')
+		stu_number = get_object_or_404(models.stu_basic_info, stu_number=stu_number)
+		stu_name = request.POST.get('stu_name')
 		department = request.POST.get('department')
+		department = get_object_or_404(all_model.depart_info, depart_name=department)
 		major = request.POST.get('major')
+		major = get_object_or_404(all_model.major_info, major_name=major)
 		grade = request.POST.get('grade')
+		grade = get_object_or_404(all_model.grade_info, grade_name=grade)
 		stu_class = request.POST.get('stu_class')
+		stu_class = get_object_or_404(all_model.class_info, class_name=stu_class)
+		sex = request.POST.get('sex')
 		ID_number = request.POST.get('ID_number')
-		liyou = request.POST.get('liyou')
+		reason = request.POST.get('liyou')
+
+		if major.depart != department:
+			context['message'] = "专业与院系不符！"
+			return render(request, 'student/personal_center/my_info.html', context)
 
 		if ID_number == None or ID_number == "":
 			context['message'] = "请务必填写身份证号！"
@@ -60,14 +70,25 @@ def alter_info_stu(request):
 			return render(request, 'student/personal_center/my_info.html', context)
 
 		stu_info = models.stu_basic_info.objects.get(stu_number=nid)
+		temp_stu_info = models.temp_stu_basic_info()
+		temp_stu_info.stu_number = stu_number
+		temp_stu_info.stu_name = stu_name
+		temp_stu_info.department = department
+		temp_stu_info.major = major
+		temp_stu_info.grade = grade
+		temp_stu_info.stu_class = stu_class
+		temp_stu_info.ID_number = ID_number
+		temp_stu_info.sex = sex
+		temp_stu_info.reason = reason
+		temp_stu_info.save()
 		# stu_info.stu_number = stu_number
 		# stu_info.stu_name = stu_name
 
-		stu_info.department = get_object_or_404(all_model.depart_info, depart_name=department)
-		stu_info.major = get_object_or_404(all_model.major_info, major_name=major)
-		stu_info.grade = get_object_or_404(all_model.grade_info, grade_name=grade)
-		stu_info.stu_class = get_object_or_404(all_model.class_info, class_name=stu_class)
-		stu_info.ID_number = ID_number
+		# stu_info.department = get_object_or_404(all_model.depart_info, depart_name=department)
+		# stu_info.major = get_object_or_404(all_model.major_info, major_name=major)
+		# stu_info.grade = get_object_or_404(all_model.grade_info, grade_name=grade)
+		# stu_info.stu_class = get_object_or_404(all_model.class_info, class_name=stu_class)
+		# stu_info.ID_number = ID_number
 		stu_info.bank_number = bank_number
 		stu_info.phone_number = phone_number
 		stu_info.email = email
@@ -370,15 +391,15 @@ def stu_apply_edit(request):
 		if flag_proname == 1:
 			product_name = request.POST.get('product_name').strip()
 
+		pre_group_info = competition_model.com_group_basic_info.objects.get(group_id=group_info.group_id)
 		# 报名中 - 直接修改
-		if com_info.com_status == '0':
+		if pre_group_info.status == '0':
 			pre_stu_list = models.com_stu_info.objects.filter(group_id=group_info)
 			for pre_stu in pre_stu_list:
 				pre_stu.delete()
 			pre_teach_list = teacher_model.com_teach_info.objects.filter(group_id=group_info)
 			for pre_teach in pre_teach_list:
 				pre_teach.delete()
-			pre_group_info = competition_model.com_group_basic_info.objects.get(group_id=group_info.group_id)
 			pre_group_info.delete()
 			com_group = competition_model.com_group_basic_info()
 			com_group.com_id = com_info

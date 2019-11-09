@@ -16,40 +16,17 @@
         </div>
 
         <div class="panel-body">
-            <div class="geren">
-                <h3 class="jingsaiing-biaoti">第11届蓝桥杯校内选拔赛</h3>
-                <span>报名开始时间：2019-09-18</span><br>
-                <span>报名结束时间：2019-09-22</span><br>
-                <span>
-										比赛状态：报名中
-										<a href="mingdan.html" class="btn btn-transparent pull-right"
-                                           target="_blank">详情</a>
-										<a href="geren_com_fabujingsai.html"
-                                           class="btn btn-transparent pull-right">修改</a>
-									</span>
-            </div>
-
-            <div class="geren">
-                <h3 class="jingsaiing-biaoti">第11届蓝桥杯校内选拔赛</h3>
-                <span>报名开始时间：2019-09-18</span><br>
-                <span>报名结束时间：2019-09-22</span><br>
-                <span>
-										比赛状态：报名中
-										<a href="#" class="btn btn-transparent pull-right">详情</a>
-										<a href="#" class="btn btn-transparent pull-right">修改</a>
-									</span>
-            </div>
-
-            <div class="geren">
-                <h3 class="jingsaiing-biaoti">第11届蓝桥杯校内选拔赛</h3>
-                <span>报名开始时间：2019-09-18</span><br>
-                <span>报名结束时间：2019-09-22</span><br>
-                <span>
-										比赛状态：报名中
-										<a href="#" class="btn btn-transparent pull-right">详情</a>
-										<a href="#" class="btn btn-transparent pull-right">修改</a>
-									</span>
-            </div>
+            {% for com in com_list %}
+                <div class="geren">
+                    <h3 class="jingsaiing-biaoti">{{ com.com_name }}</h3>
+                    <span>
+                        比赛状态：{{ com.get_com_status_display }}
+                        <a href="/member/com_apply_detail?p={{ com.com_id }}" class="btn btn-transparent pull-right">参赛名单</a>
+                        <a href="geren_com_fabujingsai.html"
+                           class="btn btn-transparent pull-right">修改比赛信息</a>
+                    </span>
+                </div>
+            {% endfor %}
         </div>
 
     </div>

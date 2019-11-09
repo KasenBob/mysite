@@ -117,7 +117,7 @@ def com_list(request):
 		temp_com_list_one = cache.get(key_1)
 	else:
 		temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
-	#temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
+	# temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
 	l1 = len(temp_com_list_one)
 	com_list_one = []
 	temp = []
@@ -134,14 +134,14 @@ def com_list(request):
 		flag += 1
 	cache.set(key_1, temp_com_list_one, 3600 - int(time.time() % 3600))
 	# 团体赛
-	
+
 	key_2 = 'com_list_all'
 	if cache.has_key(key_2):
 		temp_com_list_all = cache.get(key_2)
 	else:
 		temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
 
-	#temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
+	# temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
 	l2 = len(temp_com_list_all)
 	com_list_all = []
 	temp = []
@@ -156,7 +156,7 @@ def com_list(request):
 			com_list_all.append(temp)
 			temp = []
 		flag += 1
-	#cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
+	# cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
 
 	context['com_list_one'] = com_list_one
 	context['com_list_all'] = com_list_all
@@ -266,19 +266,23 @@ def com_apply_first(request):
 		flag_else = info_list.else_info
 		flag_groupname = info_list.group_name
 
-		# 获取页面学号输入
+		# 获取页面姓名输入
 		stu_list = []
 		for i in range(1, num + 1):
-			name = str("stu_name" + str(i))
+			name = str("stu_num" + str(i))
 			temp = request.POST.get(name)
 			temp = temp.strip()
 			if temp != None and temp != "":
 				stu_list.append(temp)
+
+		print(stu_list)
+
+		"""
 		# 获取学生信息
 		stu_info_list = []
 		for stu in stu_list:
 			try:
-				name = student_model.stu_basic_info.objects.get(stu_name=stu)
+				name = student_model.stu_basic_info.objects.get(stu_number=stu)
 			except ObjectDoesNotExist:
 				# 回到first页面
 				context['message'] = '无法搜索到学号对应学生信息，请确认学号无误'
@@ -422,7 +426,7 @@ def com_apply_first(request):
 		context['stu_list'] = stu_info_list
 		context['info_list'] = info_list
 		return render(request, 'competition/apply/com_apply_second.html', context)
-
+	"""
 	return render(request, 'competition/apply/com_apply_first.html', context)
 
 
@@ -542,6 +546,7 @@ def verify_apply(request):
 		return redirect('/student/personal_center_stu_apply')
 
 
+# 选人
 def select_mate_first(request):
 	context = {}
 	name = request.GET.get('name')

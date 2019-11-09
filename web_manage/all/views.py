@@ -93,8 +93,8 @@ def login(request):
 		return redirect('/home')
 
 	if request.method == "POST":
-		t_account = request.POST.get('account', None)
-		t_psword = request.POST.get('psword', None)
+		t_account = request.POST.get('username', None)
+		t_psword = request.POST.get('password', None)
 		context = {}
 		message = "请填写正确的账号和密码！"
 		if t_account == "":

@@ -18,7 +18,7 @@
                     <span>报名时间：{{ apply.group_id.apply_time }}
                         <br>
                         {% if apply.group_id.status == '0' %}
-                            <span> 报名状态：未成功</span>
+                            <span> 报名状态：待成员确认</span>
                         {% else %}
                             <span> 报名状态：已成功</span>
                         {% endif %}
@@ -53,7 +53,7 @@
                     <span> 报名时间：{{ apply.group_id.apply_time }}</span>
                     <br>
                     {% if apply.group_id.status == '0' %}
-                        <span> 报名状态：未成功</span>
+                        <span> 报名状态：待成员确认</span>
                     {% else %}
                         <span> 报名状态：已成功</span>
                     {% endif %}
