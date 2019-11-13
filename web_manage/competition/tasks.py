@@ -14,10 +14,3 @@ def update_com_status():
 		com.update_status()
 	return True
 
-@periodic_task(run_every=crontab(hour='*'))
-def update_com_status():
-	key = 'com_list'
-	com_list = models.com_basic_info.objects.all()
-	for com in com_list:
-		com.update_status()
-	return True

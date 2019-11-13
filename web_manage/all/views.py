@@ -111,17 +111,16 @@ def login(request):
 				if user.psword == t_psword:
 					request.session['is_login'] = True
 					request.session['user_number'] = user.account
-					judge = get_object_or_404(models.jurisdiction, account=user)
-					request.session['user_power'] = judge.status
+					request.session['user_power'] = user.jurisdiction
 					# print(request.session['user_power'])
 					# print(type(request.session['user_power']))
 					# 初次登录需要修改个人信息
 					# 学生
 					# 权限修改
-					if user.have_alter == '0' and judge.status == '0':
+					if user.have_alter == '0' and user.jurisdiction == '0':
 						return redirect('/student/alter_info_stu')
 					# 指导老师
-					if user.have_alter == '0' and judge.status == '1':
+					if user.have_alter == '0' and user.jurisdiction == '1':
 						return redirect('/teacher/alter_info_teach')
 					return redirect('/home')
 				else:

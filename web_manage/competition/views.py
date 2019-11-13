@@ -245,6 +245,7 @@ def com_apply_first(request):
 		num = com_info.num_stu
 		context['stu_num'] = range(1, num + 1)
 		return render(request, 'competition/apply/com_apply_first.html', context)
+
 	if request.method == "POST":
 		id = request.GET.get('id')
 		com_info = get_object_or_404(models.com_basic_info, com_id=id)
@@ -275,9 +276,13 @@ def com_apply_first(request):
 			if temp != None and temp != "":
 				stu_list.append(temp)
 
-		print(stu_list)
+		teach_list = []
+		if flag_teanum:
+			for i in range(1, flag_teanum + 1):
+				name = str('tea_name' + str(i))
+				temp = request.POST.get(name)
+				teach_list.append(temp)
 
-		"""
 		# 获取学生信息
 		stu_info_list = []
 		for stu in stu_list:
@@ -395,7 +400,7 @@ def com_apply_first(request):
 				name = str('tea_name' + str(i))
 				temp = request.POST.get(name)
 				temp = temp.strip()
-				teach = teacher_model.teach_basic_info.objects.filter(tea_name=temp)
+				teach = teacher_model.teach_basic_info.objects.filter(tea_number=temp)
 				if len(teach) == 0:
 					# 回到first页面
 					context['message'] = '无法搜索到对应指导教师信息，请确认姓名无误'
@@ -409,6 +414,7 @@ def com_apply_first(request):
 				else:
 					# 教师信息列表中也是一个列表
 					teach_list.append(teach)
+
 			teach_list = zip(teach_list, range(1, info_list.tea_num + 1))
 			context['teach_list'] = teach_list
 		# 对组别信息进行判断
@@ -423,10 +429,12 @@ def com_apply_first(request):
 			context['else_info'] = else_info
 
 		# 跳转确认页面
+		#print(stu_info_list)
+		#print(info_list)
 		context['stu_list'] = stu_info_list
 		context['info_list'] = info_list
 		return render(request, 'competition/apply/com_apply_second.html', context)
-	"""
+
 	return render(request, 'competition/apply/com_apply_first.html', context)
 
 
@@ -546,11 +554,24 @@ def verify_apply(request):
 		return redirect('/student/personal_center_stu_apply')
 
 
-# 选人
+# 选学生
 def select_mate_first(request):
 	context = {}
 	name = request.GET.get('name')
+	#print(name)
 	mate_list = student_model.stu_basic_info.objects.filter(stu_name=name)
 	mate_list = json.loads(serializers.serialize('json', mate_list))
 	context['mate_list'] = mate_list
+	return JsonResponse(context)
+
+
+# 选指导教师
+def select_mate_second(request):
+	context = {}
+	name = request.GET.get('name')
+	#print(name)
+	mate_list = teacher_model.teach_basic_info.objects.filter(tea_name=name)
+	#print(mate_list)
+	mate_list = json.loads(serializers.serialize('json', mate_list))
+	context['mate_list2'] = mate_list
 	return JsonResponse(context)

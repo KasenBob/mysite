@@ -17,9 +17,9 @@
                 {% for imform in page_of_informs.object_list %}
                     <div class="recent-msg">
                         <a href="/teacher/personal_center_teach_message?p={{ imform.pk }}&page={{ page_of_informs.number }}">
-                            <h4>{{ imform.title }}<span class="pull-right xiaoxiriqi">{{ imform.create_time }}</span>
+                            <h4>{{ imform.title }}
                             </h4>
-                            <h6>{{ imform.content|truncatechars:30 }}</h6>
+                            <h6>{{ imform.content|truncatechars:7 }}......</h6>
                         </a>
                     </div>
                     {% empty %}
@@ -75,7 +75,10 @@
                             <h3 class="panel-title" style="text-align: center;">{{ inform.title }}</h3>
                         </div>
                         <div class="panel-body" style="background-color: #333439;color:white;">
-                            {{ inform.content }}
+                            <p style="text-indent: 2em;">{{ inform.content }}</p>
+                            <p class="pull-right">
+                                {{ inform.create_time }}
+                            </p>
                         </div>
                     </div>
                 {% else %}

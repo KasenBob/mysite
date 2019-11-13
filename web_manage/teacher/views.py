@@ -9,6 +9,7 @@ import os
 import all.models as all_model
 import competition.models as competition_model
 import student.models as student_model
+from .tasks import send_teach_inform
 
 
 # Create your views here.
@@ -53,9 +54,11 @@ def alter_info_teach(request):
 
 	if request.method == "POST":
 		# tea_number = request.POST.get('tea_number')
-		# tea_name = request.POST.get('tea_name')
+		tea_name = request.POST.get('tea_name')
 		profess = request.POST.get('profess')
+		profess = get_object_or_404(models.profess_info, profess_name=profess)
 		department = request.POST.get('department')
+		department = get_object_or_404(all_model.depart_info, depart_name=department)
 		ID_number = request.POST.get('ID_number')
 		phone_number = request.POST.get('phone_number')
 		email = request.POST.get('email')
@@ -76,14 +79,35 @@ def alter_info_teach(request):
 		# print(photo)
 
 		tea_info = models.teach_basic_info.objects.get(tea_number=nid)
+
+		flag = 1
+		if tea_info.tea_name != tea_name:
+			flag = 0
+		if tea_info.profess != profess:
+			flag = 0
+		if tea_info.department != department:
+			flag = 0
+
+		if flag == 0:
+			temp_teach_info = models.temp_teach_basic_info()
+			temp_teach_info.teach_number = tea_info
+			temp_teach_info.tea_name = tea_name
+			temp_teach_info.profess = profess
+			temp_teach_info.department = department
+			temp_teach_info.save()
+			# 发送通知
+			stu_id = tea_info.tea_number
+			title = '个人信息修改申请'
+			content = '您已成功提交个人信息修改申请，请等待学科委员审核。'
+			send_teach_inform(stu_id, title, content)
+
 		# tea_info.tea_number = tea_number
 		# tea_info.tea_name = tea_name
-		tea_info.profess = get_object_or_404(models.profess_info, profess_name=profess)
-		tea_info.department = get_object_or_404(all_model.depart_info, depart_name=department)
+		# tea_info.profess = get_object_or_404(models.profess_info, profess_name=profess)
+		# tea_info.department = get_object_or_404(all_model.depart_info, depart_name=department)
 		tea_info.ID_number = ID_number
 		tea_info.phone_number = phone_number
 		tea_info.email = email
-
 		tea_info.save()
 		# 更改修改状态
 		user_login = get_object_or_404(all_model.user_login_info, account=request.session['user_number'])
@@ -252,6 +276,7 @@ def confirm_apply(request):
 
 	return redirect('/teacher/personal_center_teach_apply/')
 
+
 # 教师个人中心-通知信息
 def personal_center_teach_message(request):
 	context = {}
@@ -297,6 +322,7 @@ def personal_center_teach_message(request):
 	context['informs'] = informs_list
 
 	return render(request, 'teacher/personal_center/my_message.html', context)
+
 
 # 教师个人中心-驳回报名
 def reject_apply(request):

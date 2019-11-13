@@ -11,7 +11,7 @@ from django.conf import settings
 def send_email_demo(user, subject, message):
 	to_who = user.email
 	from_who = settings.EMAIL_FROM  # 发件人  已经写在 配置中了 直接型配置中获取
-	print("send email to " + to_who)
 	# meg_html = '<a href="http://www.baidu.com">点击跳转</a>'  # 发送的是一个html消息 需要指定
 	send_mail(subject, message, from_who, [to_who])
 	return True
+

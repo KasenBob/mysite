@@ -22,14 +22,14 @@
                     <form class="navbar-form dist" action="/teacher/alter_info_teach/" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            姓名：
-                            <input type="text" class="form-control" autocomplete="on" name="seach" readonly="readonly"
-                                   value="{{ teach_info.tea_name }}">
-                        </div>
-                        <div class="form-group">
                             工号：
                             <input type="text" class="form-control" autocomplete="on" name="seach" readonly="readonly"
                                    value="{{ teach_info.tea_number }}">
+                        </div>
+                        <div class="form-group">
+                            姓名：
+                            <input type="text" class="form-control" autocomplete="on" name="tea_name"
+                                   value="{{ teach_info.tea_name }}">
                         </div>
                         <div class="form-group">
                             职称：

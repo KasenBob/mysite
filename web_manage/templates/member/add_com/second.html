@@ -17,12 +17,6 @@
         <div class="panel-body">
             <form action="/member/add_news/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <span>消息类型: </span>
-                <select name="msg_type">
-                    <option value="1">新闻</option>
-                    <option value="2">公告</option>
-                    <option value="3">通知</option>
-                </select>
                 <span>标题: </span><input type="text" class="form-control" name="title"
                                         style="width: 50%;display: inline-block;border: 1px solid #666666;"/>
                 <br>

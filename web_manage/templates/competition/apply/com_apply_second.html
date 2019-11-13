@@ -107,21 +107,23 @@
 
 
                 {% if info_list.tea_num %}
-                    <div id="tuozhanxinxi">
-                        <h3 style="display: block;">指导教师信息</h3>
-                        {% for teacher,i in teach_list %}
+                    {% for teacher,i in teach_list %}
+                        <div id="tuozhanxinxi">
+                            <h3 style="display: block;">指导教师（{{ forloop.counter }}）</h3>
                             <div class="form-group">
-                                指导教师：
-                                <select name="tea_name{{ i }}" class="form-control" style="width:150px">
-                                    {% for teach in teacher %}
-                                        <option value="{{ teach.tea_number }}">
-                                            {{ teach.tea_name }}--{{ teach.tea_number }}
-                                        </option>
-                                    {% endfor %}
-                                </select>
+                                {% for teach in teacher %}
+                                    工号：<input name="tea_name{{ i }}" class="form-control" autocomplete="on"
+                                              readonly="readonly" value="{{ teach.tea_number }}">
+                                    姓名：<input class="form-control" autocomplete="on"
+                                              readonly="readonly" value="{{ teach.tea_name }}">
+                                    院系：<input class="form-control" autocomplete="on"
+                                              readonly="readonly" value="{{ teach.department.depart_name }}">
+                                    邮箱:<input class="form-control" autocomplete="on"
+                                              readonly="readonly" value="{{ teach.email }}">
+                                {% endfor %}
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 {% endif %}
 
 

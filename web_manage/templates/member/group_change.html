@@ -1,0 +1,33 @@
+{% extends 'member/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    学科竞赛|个人中心
+{% endblock %}
+
+{% block member_active6 %}
+    com-xuanzhong
+{% endblock %}
+
+{% block body %}
+    <div class="panel panel-default" style="border: none;" id="caozuomianban">
+        <div class="panel-heading"
+             style="background-color: #333439;color: white;border: none;height: 50px;padding-top: 15px;">
+            <h3 class="panel-title">参赛信息修改申请</h3>
+        </div>
+        <div class="panel-body" style="background-color: #2B2C30;">
+            {% for temp_group in temp_group_list %}
+                <div class="geren1">
+                    <span>类型：{{ temp_group.get_apply_type_display }}</span><br>
+                    <span>提交时间：{{ temp_group.created_time }}</span>
+                    <span class="fun-btn pull-right">
+                        <a href="/member/apply_application_agree?p1=0&p2={{ temp_group.pk }}"
+                           class="glyphicon glyphicon-ok btn btn-transparent"></a>
+                        <a href="/member/apply_application_disagree?p1=0&p2={{ temp_group.pk }}"
+                           class="glyphicon glyphicon-remove btn btn-transparent"></a>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

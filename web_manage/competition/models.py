@@ -130,4 +130,5 @@ class temp_com_group_basic_info(models.Model):
 	                              blank=True)
 	product_name = models.CharField(max_length=50, null=True, blank=True)
 	else_info = models.TextField(default='', null=True, blank=True)
+	created_time = models.DateField(auto_now=True)
 	apply_type = models.CharField(max_length=5, choices=(('1', '修改'), ('2', '撤销')), default='1')

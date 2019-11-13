@@ -82,7 +82,6 @@ def com_apply_detail(request):
 
 	if com_info.type == '0':
 		com_group_list = competition_model.com_group_basic_info.objects.filter(com_id=com_info)
-		print(com_group_list)
 		com_apply_list = []
 		stu_list = []
 		teach_list = []
@@ -129,7 +128,6 @@ def com_detail_manage(request):
 			t += 1
 		context['sort_list'] = sort_list
 	context['com_info'] = com_info
-	print(com_info.begin_regit)
 	context['com_need'] = com_need
 	context['com_publish'] = com_publish
 	return render(request, 'member/com_detail.html', context)
@@ -208,8 +206,6 @@ def com_edit(request):
 		com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 		com_info.com_name = name
 		com_info.begin_regit = begin_regit
-
-		print(begin_regit)
 
 		com_info.end_regit = end_regit
 		com_info.begin_time = begin_time
@@ -453,7 +449,7 @@ def add_com(request):
 
 
 # 学科委员—增加新闻
-def add_news(request):
+def add_notices(request):
 	context = {}
 	form = ArticleForm()
 	context['form'] = form
@@ -462,95 +458,53 @@ def add_news(request):
 	context['com_list'] = com_list
 
 	if request.method == "POST":
-		msg_type = request.POST.get('msg_type')
+		com_id = request.POST.get('com_id')
+		com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+		com_attach = request.FILES.get('com_attach')
 
-		if msg_type == '2':
-			com_id = request.POST.get('com_id')
-			com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
-			com_attach = request.FILES.get('com_attach')
+		title = request.POST.get('title')
+		apply_form = ArticleForm(request.POST)
+		content = ''
+		if apply_form.is_valid():
+			content = apply_form.cleaned_data['content']
 
-			title = request.POST.get('title')
-			apply_form = ArticleForm(request.POST)
-			content = ''
-			if apply_form.is_valid():
-				content = apply_form.cleaned_data['content']
-
-			com_publish = competition_model.com_publish_info()
-			com_publish.com_id = com_info
-			com_publish.title = title
-			com_publish.apply_announce = content
-			if com_attach != None:
-				# 取出格式名
-				f_name = com_attach.name
-				f_name = f_name.split('.')[-1].lower()
-				# 重命名文件
-				com_publish.com_attachment = "com_attach\\" + str(com_info.com_id) + "\\" + str(
-					com_info.com_id) + "." + f_name
-				# print(com_publish.com_attachment)
-				url = settings.MEDIA_ROOT + 'com_attach\\' + str(com_info.com_id)
-				# 判断路径是否存在
-				isExists = os.path.exists(url)
-				if not isExists:
-					os.makedirs(url)
-				file_url = open(settings.MEDIA_ROOT + "com_attach\\" + str(com_info.com_id) + "\\" + str(
-					com_info.com_id) + "." + f_name,
-				                'wb')
-				for chunk in com_attach.chunks():
-					file_url.write(chunk)
-				file_url.close()
-			com_publish.save()
+		com_publish = competition_model.com_publish_info()
+		com_publish.com_id = com_info
+		com_publish.title = title
+		com_publish.apply_announce = content
+		if com_attach != None:
+			# 取出格式名
+			f_name = com_attach.name
+			f_name = f_name.split('.')[-1].lower()
+			# 重命名文件
+			com_publish.com_attachment = "com_attach\\" + str(com_info.com_id) + "\\" + str(
+				com_info.com_id) + "." + f_name
+			# print(com_publish.com_attachment)
+			url = settings.MEDIA_ROOT + 'com_attach\\' + str(com_info.com_id)
+			# 判断路径是否存在
+			isExists = os.path.exists(url)
+			if not isExists:
+				os.makedirs(url)
+			file_url = open(settings.MEDIA_ROOT + "com_attach\\" + str(com_info.com_id) + "\\" + str(
+				com_info.com_id) + "." + f_name,
+			                'wb')
+			for chunk in com_attach.chunks():
+				file_url.write(chunk)
+			file_url.close()
+		com_publish.save()
 
 	return render(request, 'member/add_com/second.html', context)
 
 
+# 修改小组信息申请
 def apply_application(request):
 	context = {}
-	apply_application_list = competition_model.temp_com_group_basic_info.objects.all()
-	pre_group_list = []
-	com_need_list = []
-	stu_pre_list = []
-	stu_apply_list = []
-	teach_pre_list = []
-	teach_apply_list = []
-
-	apply_info_list = []
-	for apply_application in apply_application_list:
-		pre_group_info = apply_application.group_id
-		com_need_info = get_object_or_404(competition_model.com_need_info, com_id=apply_application.com_id.com_id)
-
-		temp_stu_list = ''
-		temp_student_list = student_model.temp_com_stu_info.objects.filter(temp_id=apply_application)
-		for temp_student in temp_student_list:
-			temp_stu_list += str(temp_student.stu_id.stu_name) + ' '
-
-		pre_stu_list = ''
-		pre_student_list = student_model.com_stu_info.objects.filter(group_id=apply_application.group_id)
-		for pre_student in pre_student_list:
-			pre_stu_list += str(pre_student.stu_id.stu_name) + ' '
-
-		temp_teach_list = ''
-		temp_teacher_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=apply_application)
-		for temp_teacher in temp_teacher_list:
-			temp_teach_list += str(temp_teacher.teach_id.tea_name) + ' '
-
-		pre_teach_list = ''
-		pre_teacher_list = teacher_model.com_teach_info.objects.filter(group_id=apply_application.group_id)
-		for pre_teacher in pre_teacher_list:
-			pre_teach_list += str(pre_teacher.teach_id.tea_name) + ' '
-
-		pre_group_list.append(pre_group_info)
-		com_need_list.append(com_need_info)
-		stu_pre_list.append(pre_stu_list)
-		stu_apply_list.append(temp_stu_list)
-		teach_pre_list.append(pre_teach_list)
-		teach_apply_list.append(temp_teach_list)
-
-	apply_info_list = zip(com_need_list, apply_application_list, pre_group_list, stu_pre_list, stu_apply_list,
-	                      teach_pre_list, teach_apply_list)
-	context['apply_info_list'] = apply_info_list
-	return render(request, 'member/apply/apply_application.html', context)
+	temp_group_list = competition_model.temp_com_group_basic_info.objects.all()
+	context['temp_group_list'] = temp_group_list
+	return render(request, 'member/group_change.html', context)
 
 
+# 同意小组信息修改
 def apply_application_agree(request):
 	temp_id = request.GET.get('id')
 	temp_info = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
@@ -614,5 +568,77 @@ def apply_application_agree(request):
 	return redirect('/member/apply_application/')
 
 
+# 驳回小组信息修改
 def apply_application_disagree(request):
-	return
+	temp_id = request.GET.get('id')
+	temp_info = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
+
+	temp_stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_info)
+	for temp_stu in temp_stu_list:
+		temp_stu.delete()
+	temp_teach_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=temp_info)
+	for temp_teach in temp_teach_list:
+		temp_teach.delete()
+
+	return redirect('/member/apply_application/')
+
+
+# 个人信息修改申请
+def msg_application(request):
+	context = {}
+	msg_stu_list = student_model.temp_stu_basic_info.objects.all()
+	context['msg_stu_list'] = msg_stu_list
+	msg_teach_list = teacher_model.temp_teach_basic_info.objects.all()
+	context['msg_teach_list'] = msg_teach_list
+	return render(request, 'member/audit_change.html', context)
+
+
+# 通过个人信息修改申请
+def msg_application_agree(request):
+	context = {}
+	# type_id=0:学生；type_id=1:指导教师
+	type_id = request.GET.get('p1')
+	temp_id = request.GET.get('p2')
+	if type_id == '0':
+		temp_stu = get_object_or_404(student_model.temp_stu_basic_info, pk=temp_id)
+		pre_stu = temp_stu.stu_number
+		pre_stu.stu_name = temp_stu.stu_name
+		pre_stu.department = temp_stu.department
+		pre_stu.major = temp_stu.major
+		pre_stu.grade = temp_stu.grade
+		pre_stu.stu_class = temp_stu.stu_class
+		pre_stu.sex = temp_stu.sex
+		pre_stu.ID_number = temp_stu.ID_number
+		pre_stu.save()
+		temp_stu.delete()
+	else:
+		temp_teach = get_object_or_404(teacher_model.temp_teach_basic_info, pk=temp_id)
+		pre_teach = temp_teach.teach_number
+		pre_teach.tea_name = temp_teach.tea_name
+		pre_teach.profess = temp_teach.profess
+		pre_teach.department = temp_teach.department
+		pre_teach.save()
+		temp_teach.delete()
+	return redirect('/member/msg_application/')
+
+
+# 驳回个人信息修改申请
+def msg_application_disagree(request):
+	# type_id=0:学生；type_id=1:指导教师
+	type_id = request.GET.get('p1')
+	temp_id = request.GET.get('p2')
+	if type_id == '0':
+		temp_stu = get_object_or_404(student_model.temp_stu_basic_info, pk=temp_id)
+		temp_stu.delete()
+	else:
+		temp_teach = get_object_or_404(teacher_model.temp_teach_basic_info, pk=temp_id)
+		temp_teach.delete()
+	return redirect('/member/msg_application/')
+
+
+# 新闻管理
+def release_manage(request):
+	context = {}
+	news_list = news_model.news.objects.all()
+	context['news_list'] = news_list
+	return render(request, 'member/release_manage.html', context)

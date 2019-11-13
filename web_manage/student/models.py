@@ -34,6 +34,7 @@ class temp_stu_basic_info(models.Model):
 	                              blank=True)
 	sex = models.CharField(max_length=10, choices=(("男", "男"), ("女", "女")))
 	ID_number = models.CharField(max_length=25)
+	created_time = models.DateField(auto_now=True)
 	reason = models.CharField(max_length=225, null=True, blank=True)
 
 
@@ -65,7 +66,7 @@ class stu_inform(models.Model):
 	Recipient_acc = models.ForeignKey('all.user_login_info', related_name="Recipient_acc", to_field='account',
 	                                  on_delete=models.CASCADE)
 	From_acc = models.ForeignKey('all.user_login_info', related_name="From_acc", to_field='account',
-	                             on_delete=models.CASCADE)
+	                             on_delete=models.CASCADE, null=True, blank=True)
 	title = models.CharField(max_length=225, null=True, blank=True)
 	content = models.TextField(max_length=500, null=True, blank=True)
 	create_time = models.DateTimeField(auto_now=True)

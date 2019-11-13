@@ -92,20 +92,6 @@
 
                     {% elif request.session.is_login and request.session.user_power == '1' %}
 
-                        <li class="dropdown" id="xiaoxiliebiao">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-envelope"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a>
-                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
-                                        <h6>消息内容消息内容消息内容...</h6>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">{{ request.session.user_number }}
@@ -125,37 +111,6 @@
 
                     {% elif request.session.is_login and request.session.user_power == '5' %}
 
-                        <li class="dropdown" id="xiaoxiliebiao">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-envelope"></span></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a>
-                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
-                                        <h6>消息内容消息内容消息内容...</h6>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
-                                        <h6>消息内容消息内容消息内容...</h6>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <h4>消息标题<span class="pull-right xiaoxiriqi">2019-09-25</span></h4>
-                                        <h6>消息内容消息内容消息内容...</h6>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a>
-                                        <h6 style="color: #6CB670;">查看全部</h6>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
@@ -164,15 +119,15 @@
                             <ul class="dropdown-menu">
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/member/add_com/">发布竞赛</a></li>
-                                <li><a href="/member/add_com/">发布新闻</a></li>
+                                <li><a href="/member/add_news/">发布新闻</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="/member/add_com/">进行中的比赛</a></li>
-                                <li><a href="/member/add_com/">历届比赛</a></li>
+                                <li><a href="/member/my_com_ing/">进行中的比赛</a></li>
+                                <li><a href="/member/my_com_ed/">历届比赛</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/member/add_com/">新闻管理</a></li>
-                                <li><a href="/member/add_com/">竞赛系列管理</a></li>
+                                <li><a href="/member/my_series/">竞赛系列管理</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="/member/add_com/">信息修改申请</a></li>
+                                <li><a href="/member/msg_application">个人信息修改申请</a></li>
                                 <li><a href="/member/add_com/">获奖证书上传</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/member/add_com/">历届获奖统计表</a></li>
@@ -183,14 +138,12 @@
                         </li>
 
                     {% else %}
-                        <li><a href="#" class="glyphicon glyphicon-envelope"></a></li>
+                        <!--<li><a href="#" class="glyphicon glyphicon-envelope"></a></li>-->
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">用户
                                 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/login/">登录</a></li>
-                                <li role="separator" class="divider"></li>
                                 <li><a href="/login/">登录</a></li>
                             </ul>
                         </li>

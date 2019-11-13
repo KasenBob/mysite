@@ -11,6 +11,7 @@ import all.models as all_model
 import competition.models as competition_model
 import teacher.models as teacher_model
 import student.models as student_model
+from .tasks import send_stu_inform
 
 
 # Create your views here.
@@ -35,7 +36,7 @@ def alter_info_stu(request):
 	if request.method == "POST":
 		stu_number = request.POST.get('stu_number')
 		stu_number = get_object_or_404(models.stu_basic_info, stu_number=stu_number)
-		stu_name = request.POST.get('stu_name')
+		stu_name = request.POST.get('stu_name').strip()
 		department = request.POST.get('department')
 		department = get_object_or_404(all_model.depart_info, depart_name=department)
 		major = request.POST.get('major')
@@ -70,17 +71,40 @@ def alter_info_stu(request):
 			return render(request, 'student/personal_center/my_info.html', context)
 
 		stu_info = models.stu_basic_info.objects.get(stu_number=nid)
-		temp_stu_info = models.temp_stu_basic_info()
-		temp_stu_info.stu_number = stu_number
-		temp_stu_info.stu_name = stu_name
-		temp_stu_info.department = department
-		temp_stu_info.major = major
-		temp_stu_info.grade = grade
-		temp_stu_info.stu_class = stu_class
-		temp_stu_info.ID_number = ID_number
-		temp_stu_info.sex = sex
-		temp_stu_info.reason = reason
-		temp_stu_info.save()
+		flag = 1
+		if stu_info.stu_name != stu_name:
+			flag = 0
+		if stu_info.department != department:
+			flag = 0
+		if stu_info.major != major:
+			flag = 0
+		if stu_info.grade != grade:
+			flag = 0
+		if stu_info.stu_class != stu_class:
+			flag = 0
+		if stu_info.ID_number != ID_number:
+			flag = 0
+		if stu_info.sex != sex:
+			flag = 0
+
+		if flag == 0:
+			temp_stu_info = models.temp_stu_basic_info()
+			temp_stu_info.stu_number = stu_number
+			temp_stu_info.stu_name = stu_name
+			temp_stu_info.department = department
+			temp_stu_info.major = major
+			temp_stu_info.grade = grade
+			temp_stu_info.stu_class = stu_class
+			temp_stu_info.ID_number = ID_number
+			temp_stu_info.sex = sex
+			temp_stu_info.reason = reason
+			temp_stu_info.save()
+			# 发送通知
+			stu_id = stu_info.stu_number
+			title = '个人信息修改申请'
+			content = '您已成功提交个人信息修改申请，请等待学科委员审核。'
+			send_stu_inform(stu_id, title, content)
+
 		# stu_info.stu_number = stu_number
 		# stu_info.stu_name = stu_name
 
@@ -305,13 +329,15 @@ def stu_apply_edit(request):
 			if temp:
 				stu_list.append(temp)
 
+		print(stu_list)
+
 		stu_info_list = []
 		for stu in stu_list:
 			try:
 				name = models.stu_basic_info.objects.get(stu_number=stu)
 			except ObjectDoesNotExist:
 				context['message'] = '无法搜索到学号对应学生信息，请确认学号无误'
-				return render(request, 'student/personal_center/stu_apply_edit.html', context)
+				return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 			else:
 				stu_info_list.append(name)
 
@@ -342,35 +368,35 @@ def stu_apply_edit(request):
 		if flag == 0:
 			# 回到first页面
 			context['message'] = '参赛成员不符合规定哦 :('
-			return render(request, 'student/personal_center/stu_apply_edit.html', context)
+			return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 		# 判断满员
 		student_num = com_info.num_stu
 		len_stu = len(stu_info_list)
 		if flag_full == 1:
 			if len_stu != student_num:
 				context['message'] = "人数不符合规定"
-				return render(request, 'student/personal_center/stu_apply_edit.html', context)
+				return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 		# 判断学号重复
 		list1 = stu_info_list
 		list2 = list(set(list1))
 		if len(list1) != len(list2):
 			# 回到first页面
 			context['message'] = '有重复人员的哦 :('
-			return render(request, 'student/personal_center/stu_apply_edit.html', context)
+			return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 		# 判断作品名称是否为空
 		if flag_proname == 1:
 			prodect_name = request.POST.get('product_name')
 			prodect_name = prodect_name.strip()
 			if prodect_name == "":
 				context['message'] = "作品名称没有填哦 X D "
-				return render(request, 'student/personal_center/stu_apply_edit.html', context)
+				return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 		# 判断小组名称是否为空
 		if flag_groupname == 1:
 			group_name = request.POST.get('group_name')
 			group_name = group_name.strip()
 			if not group_name:
 				context['message'] = "小组名称没有填哦 X D "
-				return render(request, 'student/personal_center/stu_apply_edit.html', context)
+				return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 		# 获取教师信息
 		teach_list = []
 		if flag_teanum:
@@ -379,7 +405,7 @@ def stu_apply_edit(request):
 				teacher = teacher_model.teach_basic_info.objects.get(tea_number=teach)
 				if not teacher:
 					context['message'] = "指导教师信息不正确哦 X D "
-					return render(request, 'student/personal_center/stu_apply_edit.html', context)
+					return redirect('/student/stu_apply_detail?p1=' + com_id + '&p2=' + group_id)
 				else:
 					teach_list.append(teacher)
 		# 对组别信息进行判断
@@ -433,7 +459,7 @@ def stu_apply_edit(request):
 				teach.group_id = get_object_or_404(competition_model.com_group_basic_info, group_id=now_group_id)
 				teach.teach_id = i
 				teach.save()
-			return redirect('/student/personal_center_stu/?tag=2')
+			return redirect('/student/personal_center_stu_apply/')
 		# 其他状态 - 提交申请
 		else:
 			temp_group = competition_model.temp_com_group_basic_info()
@@ -472,7 +498,7 @@ def stu_apply_edit(request):
 				teach.temp_id = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 				teach.teach_id = i
 				teach.save()
-		return redirect('/student/personal_center_stu_apply')
+			return redirect('/student/personal_center_stu_apply/')
 	return render(request, 'student/personal_center/stu_apply_edit.html', context)
 
 
