@@ -13,6 +13,8 @@ import student.models as student_model
 import teacher.models as teacher_model
 from django.core import serializers
 import json
+from student.tasks import send_stu_inform
+from teacher.tasks import send_teach_inform
 
 
 # Create your views here.
@@ -429,8 +431,8 @@ def com_apply_first(request):
 			context['else_info'] = else_info
 
 		# 跳转确认页面
-		#print(stu_info_list)
-		#print(info_list)
+		# print(stu_info_list)
+		# print(info_list)
 		context['stu_list'] = stu_info_list
 		context['info_list'] = info_list
 		return render(request, 'competition/apply/com_apply_second.html', context)
@@ -509,6 +511,13 @@ def com_apply_second(request):
 				stu.status = '0'
 			number += 1
 			stu.save()
+			# 发送信息
+			leader = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
+			if i.stu_number != leader.stu_number:
+				stu_id = i.stu_number
+				title = '比赛报名邀请'
+				content = leader.stu_name + '邀请您参加' + com_info.com_name + ',请查看您的报名信息。'
+				send_stu_inform(stu_id, title, content)
 
 		teach_list = []
 		if flag_teanum:
@@ -525,40 +534,46 @@ def com_apply_second(request):
 				teach.teach_id = i
 				teach.status = '0'
 				teach.save()
+				# 发送信息
+				leader = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
+				teach_id = i.tea_number
+				title = '比赛指导申请'
+				content = leader.stu_name + '邀请您指导参与' + com_info.com_name + ',请查看您的指导申请信息。'
+				send_teach_inform(teach_id, title, content)
+
 		return render(request, 'competition/apply/com_apply_succeed.html', context)
 
 
 # 确认报名信息
 def verify_apply(request):
 	context = {}
-	user_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
 
 	group = get_object_or_404(models.com_group_basic_info, group_id=group_id)
 
-	if user_id == '1':
-		stu = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
-		com_stu_list = student_model.com_stu_info.objects.filter(group_id=group, stu_id=stu)
-		for com_stu in com_stu_list:
-			com_stu.status = '1'
-			com_stu.save()
-		verify_all_apply(group_id)
-		return redirect('/student/personal_center_stu_apply')
-	else:
-		teach = get_object_or_404(teacher_model.teach_basic_info, tea_number=request.session['user_number'])
-		com_teach_list = teacher_model.com_stu_info.objects.filter(group_id=group, teach_id=teach)
-		for com_teach in com_teach_list:
-			com_teach.status = '1'
-			com_teach.save()
-		verify_all_apply(group_id)
-		return redirect('/student/personal_center_stu_apply')
+	stu = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=group, stu_id=stu)
+	for com_stu in com_stu_list:
+		com_stu.status = '1'
+		com_stu.save()
+	verify_all_apply(group_id)
+
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=group)
+	for com_stu in com_stu_list:
+		if com_stu.status == '1' and com_stu.stu_id != stu:
+			stu_id = com_stu.stu_id.stu_number
+			title = '报名进度通知'
+			content = stu.stu_name + '已确认关于' + group.com_id.com_name + '的报名申请。'
+			send_stu_inform(stu_id, title, content)
+
+	return redirect('/student/personal_center_stu_apply')
 
 
 # 选学生
 def select_mate_first(request):
 	context = {}
 	name = request.GET.get('name')
-	#print(name)
+	# print(name)
 	mate_list = student_model.stu_basic_info.objects.filter(stu_name=name)
 	mate_list = json.loads(serializers.serialize('json', mate_list))
 	context['mate_list'] = mate_list
@@ -569,9 +584,9 @@ def select_mate_first(request):
 def select_mate_second(request):
 	context = {}
 	name = request.GET.get('name')
-	#print(name)
+	# print(name)
 	mate_list = teacher_model.teach_basic_info.objects.filter(tea_name=name)
-	#print(mate_list)
+	# print(mate_list)
 	mate_list = json.loads(serializers.serialize('json', mate_list))
 	context['mate_list2'] = mate_list
 	return JsonResponse(context)

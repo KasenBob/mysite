@@ -10,6 +10,7 @@ import all.models as all_model
 import competition.models as competition_model
 import student.models as student_model
 from .tasks import send_teach_inform
+from student.tasks import send_stu_inform
 
 
 # Create your views here.
@@ -145,7 +146,11 @@ def personal_center_teach_apply(request):
 	context['apply_number'] = apply_number
 
 	# 未确认的指导申请
-	com_apply = models.com_teach_info.objects.filter(status='0', teach_id=teach_info)
+	temp_com_apply = models.com_teach_info.objects.filter(teach_id=teach_info)
+	com_apply = []
+	for temp_com in temp_com_apply:
+		if temp_com.group_id.status == '0':
+			com_apply.append(temp_com)
 	# 指导申请发起人
 	leader_apply = []
 	for apply in com_apply:
@@ -262,15 +267,26 @@ def verify_all_apply(group_id):
 def confirm_apply(request):
 	context = {}
 	teach_id = request.session['user_number']
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
 
-	com_teach_info = models.com_teach_info.objects.filter(teach_id=teach_id, group_id=group_id)
+	com_teach_info = models.com_teach_info.objects.filter(teach_id=teach_info, group_id=group_info)
+	# print(com_teach_info)
 	for com_teach in com_teach_info:
 		com_teach.status = '1'
 		com_teach.save()
+
+	# 发信息
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=group_info)
+	for com_stu in com_stu_list:
+		if com_stu.status == '1':
+			stu_id = com_stu.stu_id.stu_number
+			title = '报名进度通知'
+			content = teach_info.tea_name + '教师已确认关于' + com_info.com_name + '的报名申请，请等待其他成员 / 指导教师确认报名信息。'
+			send_stu_inform(stu_id, title, content)
 
 	verify_all_apply(group_id)
 
@@ -284,7 +300,8 @@ def personal_center_teach_message(request):
 	teach_info = get_object_or_404(models.teach_basic_info, tea_number=request.session['user_number'])
 	context['teach_info'] = teach_info
 	informs_list = models.teach_inform.objects.filter(
-		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number']))
+		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number'])).order_by(
+		'-create_time')
 
 	inform_flag = 0
 	if len(informs_list) == 0:
@@ -328,12 +345,22 @@ def personal_center_teach_message(request):
 def reject_apply(request):
 	context = {}
 
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
 
 	stu_id_list = student_model.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
+	for stu in stu_id_list:
+		if stu.status == '1':
+			stu_id = stu.stu_id.stu_number
+			title = '报名驳回通知'
+			content = teach_info.tea_name + '教师已驳回关于' + com_info.com_name + '的报名申请，请重新选择指导教师后重新报名。'
+			send_stu_inform(stu_id, title, content)
 	stu_id_list.delete()
 
 	teach_id_list = models.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
@@ -350,7 +377,6 @@ def teach_apply_deatil(request):
 	context = {}
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
-	type = request.GET.get('p3')
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 	com_info.update_status()
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
@@ -361,7 +387,13 @@ def teach_apply_deatil(request):
 	teach_list = models.com_teach_info.objects.filter(group_id=group_info)
 	sort_list = competition_model.com_sort_info.objects.filter(com_id=com_info)
 
-	context['type'] = type
+	change_flag = 0
+	for teach in teach_list:
+		if teach.teach_id.tea_number == request.session['user_number']:
+			if teach.status == '0':
+				change_flag = 1
+
+	context['change_flag'] = change_flag
 	context['info_list'] = info_list
 	context['stu_list'] = stu_list
 	context['teach_list'] = teach_list

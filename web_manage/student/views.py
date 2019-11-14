@@ -12,6 +12,7 @@ import competition.models as competition_model
 import teacher.models as teacher_model
 import student.models as student_model
 from .tasks import send_stu_inform
+from teacher.tasks import send_teach_inform
 
 
 # Create your views here.
@@ -190,7 +191,8 @@ def personal_center_stu_message(request):
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
 	context['stu_info'] = stu_info
 	informs_list = models.stu_inform.objects.filter(
-		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number']))
+		Recipient_acc=get_object_or_404(all_model.user_login_info, account=request.session['user_number'])).order_by(
+		'-create_time')
 
 	inform_flag = 0
 	if len(informs_list) == 0:
@@ -272,13 +274,18 @@ def stu_apply_detail(request):
 	# 判断修改情况
 	leader = ""
 	flag = 0
+	change_flag = 0
 	for stu in stu_list:
+		# print(stu)
+		if stu.stu_id.stu_number == request.session['user_number']:
+			if stu.status == '0':
+				change_flag = 1
 		if stu.is_leader == 1:
 			leader = stu
-			break
 	if leader.stu_id.stu_number == request.session['user_number']:
 		flag = 1
 
+	context['change_flag'] = change_flag
 	context['modify_flag'] = flag
 	context['info_list'] = info_list
 	context['stu_list'] = stu_list
@@ -329,7 +336,7 @@ def stu_apply_edit(request):
 			if temp:
 				stu_list.append(temp)
 
-		print(stu_list)
+		# print(stu_list)
 
 		stu_info_list = []
 		for stu in stu_list:
@@ -484,12 +491,14 @@ def stu_apply_edit(request):
 			temp_id = temp_group.temp_id
 
 			number = 1
+			leader_id = 0
 			for i in stu_info_list:
 				stu = models.temp_com_stu_info()
 				stu.temp_id = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 				stu.stu_id = i
 				if number == 1:
 					stu.is_leader = 1
+					leader_id = stu.stu_id.stu_number
 				number += 1
 				stu.save()
 
@@ -498,6 +507,12 @@ def stu_apply_edit(request):
 				teach.temp_id = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 				teach.teach_id = i
 				teach.save()
+
+			# 申请修改小组信息
+			title = '参赛信息修改申请'
+			content = '您已成功提交关于' + com_info.com_name + '的参赛信息修改申请，请等待学科委员审核。'
+			send_stu_inform(leader_id, title, content)
+
 			return redirect('/student/personal_center_stu_apply/')
 	return render(request, 'student/personal_center/stu_apply_edit.html', context)
 
@@ -520,9 +535,21 @@ def delete_apply(request):
 
 	if kind == '1':
 		stu_id_list = models.com_stu_info.objects.filter(group_id=group_info, com_id=com_info)
+		for stu in stu_id_list:
+			if stu.status == '1' and stu.stu_id != stu_info:
+				stu_id = stu.stu_id.stu_number
+				title = "报名撤销通知"
+				content = stu_info.stu_name + '撤销了关于' + com_info.com_name + '的报名，请重新选择成员后重新报名。'
+				send_stu_inform(stu_id, title, content)
 		stu_id_list.delete()
 
 		teach_id_list = teacher_model.com_teach_info.objects.filter(group_id=group_info, com_id=com_info)
+		for teach in teach_id_list:
+			if teach.status == '1':
+				teach_id = teach.teach_id.tea_number
+				title = "报名撤销通知"
+				content = stu_info.stu_name + '撤销了关于' + com_info.com_name + '的报名。'
+				send_teach_inform(teach_id, title, content)
 		teach_id_list.delete()
 
 		com_group = competition_model.com_group_basic_info.objects.filter(group_id=int(group_id), com_id=com_info)
@@ -551,5 +578,10 @@ def delete_apply(request):
 		teach_list = teacher_model.com_teach_info.objects.filter(com_id=com_info, group_id=group_info)
 		for teach in teach_list:
 			teacher_model.temp_com_teach_info.objects.create(temp_id=temp_apply, teach_id=teach.teach_id)
+
+		stu_id = stu_info.stu_number
+		title = '报名撤销申请'
+		content = '你已成功提交关于' + com_info.com_name + '的报名撤销申请,请等待学科委员确认。'
+		send_stu_inform(stu_id, title, content)
 
 	return redirect('/student/personal_center_stu_apply')

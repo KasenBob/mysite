@@ -162,7 +162,7 @@
             </div>
 
             <div id="zuihouanniu">
-                {% if modify_flag == 0 and group_info.status == '0' %}
+                {% if modify_flag == 0 and change_flag == 1 %}
                     <a class="btn btn-transparent quanbubisai"
                        href="/competition/verify_apply?p1=1&p2={{ group_info.group_id }}">确认报名</a>
                     <a class="btn btn-transparent quanbubisai"

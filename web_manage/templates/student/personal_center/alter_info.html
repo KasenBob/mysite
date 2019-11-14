@@ -31,7 +31,7 @@
                             院系：
                             <select name="department" class="form-control">
                                 {% for depart in depart_info %}
-                                    {% if stu.department.depart_name == depart.depart_name %}
+                                    {% if stu_info.department.depart_name == depart.depart_name %}
                                         <option value="{{ depart.depart_name }}"
                                                 selected>{{ depart.depart_name }}</option>
                                     {% else %}
@@ -44,7 +44,7 @@
                             专业：
                             <select name="major" class="form-control">
                                 {% for major in major_info %}
-                                    {% if stu.major.major_name == major.major_name %}
+                                    {% if stu_info.major.major_name == major.major_name %}
                                         <option value="{{ major.major_name }}" selected>{{ major.major_name }}</option>
                                     {% else %}
                                         <option value="{{ major.major_name }}">{{ major.major_name }}</option>
@@ -56,7 +56,7 @@
                             年级：
                             <select name="grade" class="form-control">
                                 {% for grade in grade_info %}
-                                    {% if stu.grade.grade_name == grade.grade_name %}
+                                    {% if stu_info.grade.grade_name == grade.grade_name %}
                                         <option value="{{ grade.grade_name }}" selected>{{ grade.grade_name }}</option>
                                     {% else %}
                                         <option value="{{ grade.grade_name }}">{{ grade.grade_name }}</option>
@@ -68,7 +68,7 @@
                             班级：
                             <select name="stu_class" class="form-control">
                                 {% for class in class_info %}
-                                    {% if stu.stu_class.class_name == class.class_name %}
+                                    {% if stu_info.stu_class.class_name == class.class_name %}
                                         <option value="{{ class.class_name }}" selected>{{ class.class_name }}</option>
                                     {% else %}
                                         <option value="{{ class.class_name }}">{{ class.class_name }}</option>
