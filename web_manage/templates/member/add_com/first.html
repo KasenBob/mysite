@@ -5,14 +5,10 @@
     学科竞赛|个人中心
 {% endblock %}
 
-{% block member_active1 %}
-    com-xuanzhong
-{% endblock %}
-
 {% block body %}
     <div id="fabu-jingsai" class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">发布竞赛</h3>
+            <h3 class="panel-title">发布比赛</h3>
         </div>
 
         <div class="panel-body">
@@ -44,11 +40,13 @@
                             组别：<input type="checkbox" name="if_com_sort" value="1">
                             <input type="text" class="form-control" name="sort_list"
                                    style="width: 35%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/>
+                            Tips:格式：xxx/xxx/xxx
                         </div>
                         <div class="form-group">
                             官网：<input type="checkbox" name="if_if_web" value="1">
                             <input type="text" class="form-control" name="com_web"
                                    style="width: 35%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/>
+                            Tips:输入前请记得打钩!
                         </div>
                         <div class="form-group">
                             指导教师数量：<input type="number" class="form-control" name="num_teach" value="1"

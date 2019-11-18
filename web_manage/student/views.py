@@ -20,6 +20,7 @@ from teacher.tasks import send_teach_inform
 def alter_info_stu(request):
 	context = {}
 	nid = request.session.get('user_number', None)
+	user_info = get_object_or_404(all_model.user_login_info, account=nid)
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=nid)
 	depart_info = all_model.depart_info.objects.all()
 	major_info = all_model.major_info.objects.all()
@@ -32,6 +33,7 @@ def alter_info_stu(request):
 	context['major_info'] = major_info
 	context['grade_info'] = grade_info
 	context['class_info'] = class_info
+	context['user_info'] = user_info
 
 	# print(context['stu'][0])
 	if request.method == "POST":

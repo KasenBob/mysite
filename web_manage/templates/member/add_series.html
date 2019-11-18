@@ -5,10 +5,6 @@
     学科竞赛|个人中心
 {% endblock %}
 
-{% block member_active6 %}
-    com-xuanzhong
-{% endblock %}
-
 {% block body %}
     <div id="fabu-jingsai" class="panel panel-default">
         <div class="panel-heading">
@@ -16,19 +12,26 @@
         </div>
 
         <div class="panel-body">
-            <form action="/member/add_com/" method="POST" enctype="multipart/form-data">
+            <form action="/member/add_series/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <span>竞赛名称：<input type="text" class="form-control" name="series_name"
-                                  style="width: 6%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/></span>
-                <span>简介：<input type="text" class="form-control" name="series_intro"
-                                style="width: 6%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/></span>
-                <span>竞赛LOGO：<input type="file" class="form-control" name="series_logo"
-                                    style="width: 6%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/></span>
+                <span>竞赛名称：</span><input type="text" class="form-control" name="series_name"
+                                  style="width: 50%;display: inline-block;border: 1px solid #666666;"/>
+                <br>
+                <span>简介：</span><input type="text" class="form-control" name="series_intro"
+                                style="width: 50%;display: inline-block;border: 1px solid #666666;"/>
+                <br>
+                <span>竞赛LOGO：</span><input type="file" name="series_logo">
+                <br>
                 <span>类型：
                     <select name="series_type">
                     <option value="0">个人赛</option>
                     <option value="1">团体赛</option>
                 </select></span>
+
+                <div class="zuihouanniu">
+                    <input type="submit" class="tijiaoanniu" value="发布"/>
+                </div>
+
             </form>
         </div>
     </div>

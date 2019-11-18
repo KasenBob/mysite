@@ -46,12 +46,14 @@ def alter_info_teach(request):
 	context = {}
 	nid = request.session.get('user_number', None)
 	teach_info = get_object_or_404(models.teach_basic_info, tea_number=nid)
+	user_info = get_object_or_404(all_model.user_login_info, account=nid)
 	profess_info = models.profess_info.objects.all()
 	depart_info = all_model.depart_info.objects.all()
 
 	context['teach_info'] = teach_info
 	context['profess_info'] = profess_info
 	context['depart_info'] = depart_info
+	context['user_info'] = user_info
 
 	if request.method == "POST":
 		# tea_number = request.POST.get('tea_number')
@@ -285,7 +287,7 @@ def confirm_apply(request):
 		if com_stu.status == '1':
 			stu_id = com_stu.stu_id.stu_number
 			title = '报名进度通知'
-			content = teach_info.tea_name + '教师已确认关于' + com_info.com_name + '的报名申请，请等待其他成员 / 指导教师确认报名信息。'
+			content = teach_info.tea_name + '教师已确认关于' + com_info.com_name + '的报名申请。'
 			send_stu_inform(stu_id, title, content)
 
 	verify_all_apply(group_id)

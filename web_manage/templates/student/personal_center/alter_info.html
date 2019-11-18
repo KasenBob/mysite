@@ -104,10 +104,19 @@
                                        value="{{ stu_info.email }}">
                             </div>
                         </div>
-                        <div id="zuihouanniu">
-                            <a class="btn btn-transparent quanbubisai" data-toggle="modal"
-                               data-target="#myModal">提交信息</a>
-                        </div>
+
+                        {% if user_info.have_alter == '1' and user_info.have_login == '1' %}
+                            <div id="zuihouanniu">
+                                <a class="btn btn-transparent quanbubisai" data-toggle="modal"
+                                   data-target="#myModal">提交修改</a>
+                            </div>
+                        {% else %}
+                            <div id="zuihouanniu">
+                                <a class="btn btn-transparent quanbubisai" data-toggle="modal"
+                                   data-target="#myModal">确认信息</a>
+                            </div>
+                        {% endif %}
+
 
                         <!-- 模态框 -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -122,19 +131,18 @@
                                     </div>
 
                                     <div class="modal-body">
-                                        <p>输入修改原因</p>
+                                        <p>修改理由</p>
                                         <div id="chaxunduiyou">
                                             <select name="liyou" style="background-color: #333439;height: 30px">
                                                 <option>扩展信息填错了</option>
                                                 <option>基本信息需要变动</option>
-                                                <option>其他</option>
+                                                <option>并没有错误</option>
                                             </select>
 
                                         </div>
                                     </div>
-
-                                    <div class="modal-footer" style="border-top: #666666 solid 1px;">
-                                        <button type="submit" class="tijiaoanniu">提交</button>
+                                    <div id="zuihouanniu">
+                                        <button class="tijiaoanniu" type="submit">确认修改</button>
                                     </div>
                                 </div>
                             </div>

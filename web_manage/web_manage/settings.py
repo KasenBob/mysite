@@ -42,7 +42,7 @@ INSTALLED_APPS = [
 	'member',
 	'news',
 	'djcelery',
-		'ckeditor',
+	'ckeditor',
 	'ckeditor_uploader',
 ]
 

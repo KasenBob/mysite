@@ -108,6 +108,25 @@
                     </div>
                 </div>
 
+                <!--
+                这个style放到 indexstyle里
+                这个style放到 indexstyle里
+                这个style放到 indexstyle里
+                -->
+
+                <style>
+                    .motaikuang .modal-content {
+                        background-color: #2B2C30;
+                    }
+
+                    .motaikuang h5 {
+                        line-height: 20px;
+                        letter-spacing: 0.5px;
+                        font-family: 宋体;
+
+                    }
+                </style>
+
                 <div id="biao">
 
                     <div class="biaoti">
@@ -116,20 +135,47 @@
                     </div>
 
                     {% for series_list in series_list_one %}
-                    <div class="row">
-                        {% for series in series_list %}
-                        <div class="col-md-3 col-sm-6">
-                            <div class="table-bordered">
-                                <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
-                                <div class="member">
-                                    <h3>{{ series.name }}</h3>
-                                    <p>{{ series.introduction }}</p>
-                                    <a class="btn btn-transparent">更多详情</a>
+                        <div class="row">
+                            {% for series in series_list %}
+
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="table-bordered">
+                                        <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
+                                        <div class="member">
+                                            <h3>{{ series.name }}</h3>
+                                            <a class="btn btn-transparent" data-toggle="modal"
+                                               data-target="#{{ series.name }}">更多详情</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="modal fade motaikuang" id="{{ series.name }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel_1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">{{ series.name }}介绍</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3>{{ series.name }}</h3>
+
+                                                <h5>{{ series.introduction }}</h5>
+
+                                                <img src="/media/{{ series.photo }}" style="margin: 0 auto"
+                                                     class="img-responsive">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-transparent" data-dismiss="modal">关闭</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
                     {% endfor %}
 
                     <div class="biaoti">
@@ -138,20 +184,48 @@
                     </div>
 
                     {% for series_list in series_list_all %}
-                    <div class="row">
-                        {% for series in series_list %}
-                        <div class="col-md-3 col-sm-6">
-                            <div class="table-bordered">
-                                <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
-                                <div class="member">
-                                    <h3>{{ series.name }}</h3>
-                                    <p>{{ series.introduction }}</p>
-                                    <a class="btn btn-transparent">更多详情</a>
+                        <div class="row">
+                            {% for series in series_list %}
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="table-bordered">
+                                        <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
+                                        <div class="member">
+                                            <h3>{{ series.name }}</h3>
+                                            <p>{{ series.introduction }}</p>
+                                            <a class="btn btn-transparent" data-toggle="modal"
+                                               data-target="#{{ series.name }}">
+                                                更多详情</a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="modal fade motaikuang" id="{{ series.name }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel_1">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">{{ series.name }}介绍</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <h3>{{ series.name }}</h3>
+
+                                                <h5>{{ series.introduction }}</h5>
+
+                                                <img src="/media/{{ series.photo }}" style="margin: 0 auto"
+                                                     class="img-responsive">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn btn-transparent" data-dismiss="modal">关闭</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
                     {% endfor %}
 
                     <div class="zuihouanniu">

@@ -23,27 +23,27 @@
                 <li class="active">{{ com_info.com_name }}</li>
             </ol>
             <div class="col-md-8">
-
                 <div class="zhengwen">
-                    <h2>[公告]{{ com_info.com_name }}报名</h2>
+                    <h2>{{ inform.title }}</h2>
 
-                    <h5><span style="color: #888888;">发表日期：{{ com_publish.last_update_time }}</span><span
-                            class="xinxilaiyuan">信息来源：{{ com_publish.author.depart_name }}</span></h5>
+                    <h5><span style="color: #888888;">发表日期：{{ inform.create_time }}</span><span
+                            class="xinxilaiyuan">作者：{{ inform.author }}</span></h5>
+                    <p>
+                        {{ inform.content|safe }}
+                    </p>
 
-                    {{ com_publish.apply_step|safe }}
+                    {% if request.session.user_power == '0' and inform.com_id.com_status == '0' %}
+                        <a class="btn btn-transparent"
+                           href="/competition/com_attach_download?id={{ inform.com_id.com_id }}"
+                           role="button" style="display:inline-block;">
+                            下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+                        </a>
 
-                    <a class="btn btn-transparent" href="/competition/com_attach_download?id={{ com_info.com_id }}"
-                       role="button" style="display:inline-block;">
-                        下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
-                    </a>
-
-                    {% if request.session.user_power == '0' %}
-                    <div class="zuihouanniu">
-                        <a class="btn btn-transparent quanbubisai"
-                           href="/competition/com_apply_first?id={{ com_info.com_id }}">竞赛报名</a>
-                    </div>
+                        <div class="zuihouanniu">
+                            <a class="btn btn-transparent quanbubisai"
+                               href="/competition/com_apply_first?id={{ inform.com_id.com_id }}">竞赛报名</a>
+                        </div>
                     {% endif %}
-
                 </div>
             </div>
             <div class="col-md-4">
@@ -60,21 +60,21 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                             <div class="item active">
-                                <img src="img/6662.jpg" style="width: 350px;height: 232px;">
+                                <img src="/media/web_photo/6661.jpg" style="width: 350px;height: 232px;">
                                 <div class="carousel-caption">
-                                    <h4>竞赛新闻小标题</h4>
+                                    <!--<h4>新闻标题</h4>-->
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="img/6661.jpg" style="width: 350px;height: 232px;">
+                                <img src="/media/web_photo/6661.jpg" style="width: 350px;height: 232px;">
                                 <div class="carousel-caption">
-                                    <h4>竞赛新闻小标题</h4>
+
                                 </div>
                             </div>
                             <div class="item">
-                                <img src="img/6663.png" style="width: 350px;height: 232px;">
+                                <img src="/media/web_photo/6661.jpg" style="width: 350px;height: 232px;">
                                 <div class="carousel-caption">
-                                    <h4>竞赛新闻小标题</h4>
+
                                 </div>
                             </div>
                         </div>
@@ -93,6 +93,7 @@
                     </div>
                 </div>
 
+                <!--
                 <div id="qitaneirong">
                     <div class="qitabiaoti">
                         <p style="text-spacing: 1.5px;font-size: 18px;margin: 10px 38%;">其他内容</p>
@@ -149,19 +150,19 @@
                         </div>
                     </div>
                 </div>
-
+                -->
                 <div id="rukou">
                     <h2>其他入口</h2>
                     <div id="rukouanniu">
-                        <a class="btn btn-transparent">
+                        <a href="/competition/series_list/" class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
-                            <span>竞赛介绍</span>
+                            <span>竞赛一览</span>
                         </a>
-                        <a class="btn btn-transparent">
+                        <a href="/competition/com_list/" class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
-                            <span>竞赛报名</span>
+                            <span>比赛报名</span>
                         </a>
-                        <a class="btn btn-transparent">
+                        <a href="/news/news_list/" class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
                             <span>获奖新闻</span>
                         </a>
@@ -169,7 +170,7 @@
                             <span class="glyphicon glyphicon-share-alt"></span>
                             <span>通知公告</span>
                         </a>
-                        <a class="btn btn-transparent" href="index.html">
+                        <a href="/home/" class="btn btn-transparent">
                             <span class="glyphicon glyphicon-share-alt"></span>
                             <span>返回首页</span>
                         </a>

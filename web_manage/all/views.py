@@ -41,9 +41,10 @@ def home(request):
 		new_list = cache.get(key_1)
 	else:
 		new_list = news_model.news.objects.all().order_by('-created_time')
-	cache.set(key_1, new_list, 3600 - int(time.time() % 3600))
+	cache.set(key_1, new_list, 30 * 60)
 	i = 0
 	news_list = []
+	top_new = None
 	for new in new_list:
 		if i == 0:
 			top_new = new
@@ -59,7 +60,7 @@ def home(request):
 		inform_list = cache.get(key_2)
 	else:
 		inform_list = models.inform.objects.all().order_by('-create_time')
-	cache.set(key_2, inform_list, 3600 - int(time.time() % 3600))
+	cache.set(key_2, inform_list, 30 * 60)
 	i = 0
 	informs_list = []
 	for form in inform_list:
@@ -74,7 +75,7 @@ def home(request):
 		com_list = cache.get(key_3)
 	else:
 		com_list = com_model.com_basic_info.objects.filter(com_status='0').order_by('-begin_regit')
-	cache.set(key_3, com_list, 3600 - int(time.time() % 3600))
+	cache.set(key_3, com_list, 30 * 60)
 	i = 0
 	show_com_list = []
 	for com in com_list:
@@ -98,10 +99,10 @@ def login(request):
 		context = {}
 		message = "请填写正确的账号和密码！"
 		if t_account == "":
-			context['message'] = "？？？输入账号啊"
+			context['message'] = "请输入账号！"
 			return render(request, 'home/login.html', context)
 		if t_psword == "":
-			context['message'] = "？？？倒是输密码啊"
+			context['message'] = "请输入密码！"
 			return render(request, 'home/login.html', context)
 		if t_account and t_psword:
 			t_account = t_account.strip()
@@ -124,10 +125,10 @@ def login(request):
 						return redirect('/teacher/alter_info_teach')
 					return redirect('/home')
 				else:
-					context['message'] = "???连密码都输不对吗？？？"
+					context['message'] = "您输入的密码似乎有错误!"
 					return render(request, 'home/login.html', context)
 			except:
-				context['message'] = "账号不存在！"
+				context['message'] = "您输入的账号似乎不存在！"
 				return render(request, 'home/login.html', context)
 		return render(request, 'home/home.html', context)
 	return render(request, 'home/login.html', context)

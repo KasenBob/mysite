@@ -42,28 +42,24 @@ def verify_all_apply(group_id):
 # 竞赛列表
 def series_list(request):
 	context = {}
-	# 没有登录或者还未修改个人信息都无法报名
-	try:
-		is_login = request.session['is_login']
-	except KeyError:
-		context['have_login'] = "赶紧登录啦 :("
-	else:
-		user_num = request.session['user_number']
-		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
-		if user_info.have_alter == '0':
-			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
 	# 个人赛
-	key_1 = 'series_list_one'
-	if cache.has_key(key_1):
-		temp_series_list_one = cache.get(key_1)
+
+	key = 'series_list'
+	if cache.has_key(key):
+		temp_series_list = cache.get(key)
 	else:
-		temp_series_list_one = models.series_info.objects.filter(type='0')
+		temp_series_list = models.series_info.objects.filter(status='0')
+
+	for series in temp_series_list:
+		series.update_com_id()
+
+	# 个人赛
+	temp_series_list_one = temp_series_list.filter(type='0')
 	l1 = len(temp_series_list_one)
 	series_list_one = []
 	temp = []
 	flag = 1
 	for series in temp_series_list_one:
-		series.update_com_id()
 		temp.append(series)
 		if flag == l1:
 			series_list_one.append(temp)
@@ -72,19 +68,14 @@ def series_list(request):
 			series_list_one.append(temp)
 			temp = []
 		flag += 1
-	cache.set(key_1, temp_series_list_one, 3600 - int(time.time() % 3600))
+
 	# 团体赛
-	key_2 = 'series_list_all'
-	if cache.has_key(key_2):
-		temp_series_list_all = cache.get(key_2)
-	else:
-		temp_series_list_all = models.series_info.objects.filter(type='1')
+	temp_series_list_all = temp_series_list.filter(type='1')
 	l2 = len(temp_series_list_all)
 	series_list_all = []
 	temp = []
 	flag = 1
 	for series in temp_series_list_all:
-		series.update_com_id()
 		temp.append(series)
 		if flag == l2:
 			series_list_all.append(temp)
@@ -93,7 +84,8 @@ def series_list(request):
 			series_list_all.append(temp)
 			temp = []
 		flag += 1
-	cache.set(key_2, temp_series_list_all, 3600 - int(time.time() % 3600))
+
+	cache.set(key, temp_series_list, 30 * 60)
 
 	context['series_list_one'] = series_list_one
 	context['series_list_all'] = series_list_all
@@ -104,61 +96,66 @@ def series_list(request):
 def com_list(request):
 	context = {}
 	# 没有登录或者还未修改个人信息都无法报名
-	try:
-		is_login = request.session['is_login']
-	except KeyError:
-		context['have_login'] = "赶紧登录啦 :("
+	if request.session['user_power'] == '0':
+		try:
+			is_login = request.session['is_login']
+		except KeyError:
+			context['message'] = "你得登录，才能报名。"
+		else:
+			user_num = request.session['user_number']
+			user_info = get_object_or_404(all_model.user_login_info, account=user_num)
+			if user_info.have_alter == '0':
+				context['message'] = "你得确认完个人信息，才能报名。"
 	else:
-		user_num = request.session['user_number']
-		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
-		if user_info.have_alter == '0':
-			context['have_alter'] = "客官还没确认个人信息啦 :( 赶紧滚去修改"
+		if request.session['user_power'] == '5':
+			context['message'] = '学科委员无法进行报名操作。'
+		if request.session['user_power'] == '1':
+			context['message'] = '指导教师无法进行报名操作。'
+
+	key = 'com_list'
+	if cache.has_key(key):
+		temp_com_list = cache.get(key)
+	else:
+		temp_com_list = models.com_basic_info.objects.filter(com_status='0')
+
+	for temp_com in temp_com_list:
+		temp_com.update_status()
+
 	# 个人赛
-	key_1 = 'com_list_one'
-	if cache.has_key(key_1):
-		temp_com_list_one = cache.get(key_1)
-	else:
-		temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
-	# temp_com_list_one = models.com_basic_info.objects.filter(type='0', com_status='0')
+	temp_com_list_one = temp_com_list.filter(type='0', com_status='0')
 	l1 = len(temp_com_list_one)
 	com_list_one = []
 	temp = []
 	flag = 1
 	for com in temp_com_list_one:
-		com.update_status()
-		temp.append(com)
-		if flag == l1:
-			com_list_one.append(temp)
-			temp = []
-		elif flag % 4 == 0:
-			com_list_one.append(temp)
-			temp = []
-		flag += 1
-	cache.set(key_1, temp_com_list_one, 3600 - int(time.time() % 3600))
+		if com.com_status == '0':
+			temp.append(com)
+			if flag == l1:
+				com_list_one.append(temp)
+				temp = []
+			elif flag % 4 == 0:
+				com_list_one.append(temp)
+				temp = []
+			flag += 1
+
 	# 团体赛
-
-	key_2 = 'com_list_all'
-	if cache.has_key(key_2):
-		temp_com_list_all = cache.get(key_2)
-	else:
-		temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
-
-	# temp_com_list_all = models.com_basic_info.objects.filter(type='1', com_status='0')
+	temp_com_list_all = temp_com_list.filter(type='1', com_status='0')
 	l2 = len(temp_com_list_all)
 	com_list_all = []
 	temp = []
 	flag = 1
 	for com in temp_com_list_all:
-		com.update_status()
-		temp.append(com)
-		if flag == l2:
-			com_list_all.append(temp)
-			temp = []
-		elif flag % 4 == 0:
-			com_list_all.append(temp)
-			temp = []
-		flag += 1
-	# cache.set(key_2, temp_com_list_all, 3600 - int(time.time() % 3600))
+		if com.com_status == '0':
+			temp.append(com)
+			if flag == l2:
+				com_list_all.append(temp)
+				temp = []
+			elif flag % 4 == 0:
+				com_list_all.append(temp)
+				temp = []
+			flag += 1
+
+	cache.set(key, temp_com_list, 30 * 60)
 
 	context['com_list_one'] = com_list_one
 	context['com_list_all'] = com_list_all
@@ -169,15 +166,18 @@ def com_list(request):
 def com_detail(request):
 	context = {}
 	# 没有登录或者还未修改个人信息都无法报名
-	try:
-		is_login = request.session['is_login']
-	except KeyError:
-		return redirect("/competition/series_list/")
+	if request.session['user_power'] == '0':
+		try:
+			is_login = request.session['is_login']
+		except KeyError:
+			return redirect("/competition/com_list/")
+		else:
+			user_num = request.session['user_number']
+			user_info = get_object_or_404(all_model.user_login_info, account=user_num)
+			if user_info.have_alter == '0':
+				return redirect("/competition/com_list/")
 	else:
-		user_num = request.session['user_number']
-		user_info = get_object_or_404(all_model.user_login_info, account=user_num)
-		if user_info.have_alter == '0':
-			return redirect("/competition/series_list/")
+		return redirect("/competition/com_list/")
 
 	if request.method == 'GET':
 		id = request.GET.get('com_id')
@@ -189,20 +189,24 @@ def com_detail(request):
 			object_flag = 1
 
 		if object_flag != 0:
-			context['warn'] = ""
+			context['message'] = "比赛信息丢失了呢 :("
 			return redirect('/competition/com_list')
+
+		# print(1)
 
 		object_flag = 0
 		try:
-			com_publish = models.com_publish_info.objects.get(com_id=com_info)
+			inform_list = all_model.inform.objects.filter(com_id=com_info).order_by('-last_update_time')
 		except ObjectDoesNotExist:
 			object_flag = 1
 
 		if object_flag != 0:
-			context['warn'] = ""
+			context['message'] = "比赛信息丢失了呢 :("
 			return redirect('/competition/com_list')
 
-		context['com_publish'] = com_publish
+		# print(2)
+
+		context['inform'] = inform_list[0]
 		context['com_info'] = com_info
 	return render(request, 'competition/com_detail.html', context)
 
@@ -211,13 +215,16 @@ def com_detail(request):
 def com_attach_download(request):
 	com_id = request.GET.get('id')
 	com_info = get_object_or_404(models.com_basic_info, com_id=com_id)
-	com_publish = get_object_or_404(models.com_publish_info, com_id=com_info)
+	inform = get_object_or_404(all_model.inform, com_id=com_info)
 	# 返回下载
-	filename = str(com_publish.com_attachment)
+	filename = str(inform.com_attachment)
 	file_path = settings.MEDIA_ROOT + filename
 	ext = os.path.basename(file_path).split('.')[-1].lower()
 	if ext not in ['py', 'db', 'sqlite3']:
-		response = FileResponse(open(file_path, 'rb'))
+		try:
+			response = FileResponse(open(file_path, 'rb'))
+		except FileNotFoundError:
+			return redirect('/competition/com_detail?com_id=' + com_id)
 		response['content_type'] = "application/octet-stream"
 		response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(file_path)
 		return response
@@ -371,7 +378,7 @@ def com_apply_first(request):
 		if flag_proname == 1:
 			prodect_name = request.POST.get('product_name')
 			if prodect_name == "":
-				context['message'] = "作品名称没有填哦 X D "
+				context['message'] = "作品名称没有填哦 :( "
 				context['com_info'] = com_info
 				context['info_list'] = info_list
 				context['group_list'] = group_list
@@ -385,7 +392,7 @@ def com_apply_first(request):
 		if flag_groupname == 1:
 			group_name = request.POST.get('group_name')
 			if group_name == "":
-				context['message'] = "小组名称没有填哦 X D "
+				context['message'] = "小组名称没有填哦 :("
 				context['com_info'] = com_info
 				context['info_list'] = info_list
 				context['group_list'] = group_list
@@ -405,7 +412,7 @@ def com_apply_first(request):
 				teach = teacher_model.teach_basic_info.objects.filter(tea_number=temp)
 				if len(teach) == 0:
 					# 回到first页面
-					context['message'] = '无法搜索到对应指导教师信息，请确认姓名无误'
+					context['message'] = '无法搜索到对应指导教师信息，请确认信息无误'
 					context['com_info'] = com_info
 					context['info_list'] = info_list
 					context['group_list'] = group_list

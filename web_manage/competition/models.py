@@ -13,6 +13,7 @@ class series_info(models.Model):
 	type = models.CharField(max_length=10, choices=(('0', '个人赛'), ('1', '团体赛')), default='0')
 	now_com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True,
 	                               blank=True)
+	status = models.CharField(max_length=5, choices=(('0', '显示'), ('1', '隐藏')))
 
 	def update_com_id(self):
 		com_list = com_basic_info.objects.filter(series_id=self.id).order_by('-begin_regit')
@@ -64,17 +65,6 @@ class com_basic_info(models.Model):
 		else:
 			self.com_status = '3'
 		self.save()
-
-
-# 竞赛发布信息
-class com_publish_info(models.Model):
-	com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.CASCADE)
-	title = models.CharField(max_length=225, null=True, blank=True)
-	apply_announce = RichTextUploadingField(null=True, blank=True)
-	com_attachment = models.FileField(upload_to='com_attach', null=True, blank=True)
-	last_update_time = models.DateTimeField(auto_now=True)
-	author = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.SET_NULL, null=True,
-	                           blank=True)
 
 
 # 竞赛组别信息
