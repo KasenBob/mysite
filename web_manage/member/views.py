@@ -586,6 +586,25 @@ def add_notices(request):
 def apply_application(request):
 	context = {}
 	temp_group_list = competition_model.temp_com_group_basic_info.objects.all()
+	pre_stu_list = []
+	temp_com_stu_list = []
+	pre_teach_list = []
+	temp_com_teach_list = []
+	com_need_list = []
+	for temp_group in temp_group_list:
+		pre_stu = student_model.com_stu_info.objects.filter(group_id=temp_group.group_id)
+		pre_stu_list.append(pre_stu)
+		stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_group)
+		temp_com_stu_list.append(stu_list)
+		pre_teach = teacher_model.com_teach_info.objects.filter(group_id=temp_group.group_id)
+		pre_teach_list.append(pre_teach)
+		teach_list = teacher_model.temp_com_teach_info.objects.filter(temp_id=temp_group)
+		temp_com_teach_list.append(teach_list)
+		com_need = get_object_or_404(competition_model.com_need_info, com_id=temp_group.com_id.com_id)
+		com_need_list.append(com_need)
+
+	temp_group_list = zip(temp_group_list, temp_com_stu_list, pre_stu_list, temp_com_teach_list, pre_teach_list,
+	                      com_need_list)
 	context['temp_group_list'] = temp_group_list
 	return render(request, 'member/group_change.html', context)
 

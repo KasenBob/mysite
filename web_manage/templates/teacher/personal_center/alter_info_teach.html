@@ -77,13 +77,11 @@
                         </div>
                         {% if user_info.have_alter == '1' and user_info.have_login == '1' %}
                             <div id="zuihouanniu">
-                                <a class="btn btn-transparent quanbubisai" data-toggle="modal"
-                                   data-target="#myModal">提交修改</a>
+                                <button class="tijiaoanniu" type="submit">确认修改</button>
                             </div>
                         {% else %}
                             <div id="zuihouanniu">
-                                <a class="btn btn-transparent quanbubisai" data-toggle="modal"
-                                   data-target="#myModal">确认信息</a>
+                                <button class="tijiaoanniu" type="submit">确认信息</button>
                             </div>
                         {% endif %}
                     </form>

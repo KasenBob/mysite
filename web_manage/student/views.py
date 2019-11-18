@@ -587,3 +587,25 @@ def delete_apply(request):
 		send_stu_inform(stu_id, title, content)
 
 	return redirect('/student/personal_center_stu_apply')
+
+
+# 修改密码
+def edit_pwd(request):
+	context = {}
+	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
+	context['stu_info'] = stu_info
+
+	if request.method == 'POST':
+		user_info = get_object_or_404(all_model.user_login_info, account=request.session['user_number'])
+		pre_pwd = request.POST.get('pre_pwd')
+		new_pwd = request.POST.get('new_pwd_2')
+
+		if user_info.psword != pre_pwd:
+			context['message'] = "原密码不正确!"
+			return render(request, 'student/personal_center/edit_pwd.html', context)
+
+		user_info.psword = new_pwd
+		user_info.save()
+		return redirect('/student/personal_center_stu_info/')
+
+	return render(request, 'student/personal_center/edit_pwd.html', context)

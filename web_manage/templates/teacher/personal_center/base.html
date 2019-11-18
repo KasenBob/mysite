@@ -23,7 +23,11 @@
                         </div>
                         <p class="xingming">{{ teach_info.tea_name }}</p>
                         <p class="banji">{{ teach_info.department.depart_name }}</p>
-                        <p style="margin-top: 0;font-size: 10px;">修改密码 | 登出</p>
+                        <p style="margin-top: 0;font-size: 10px;">
+                            <a href="/teacher/edit_pwd/">修改密码</a>
+                            |
+                            <a href="/logout/">登出</a>
+                        </p>
                     </div>
                     <div class="list-group" id="gongnenglan">
                         <a href="/teacher/personal_center_teach_info"

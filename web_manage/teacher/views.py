@@ -403,3 +403,27 @@ def teach_apply_deatil(request):
 	context['group_info'] = group_info
 	context['depart_list'] = depart_list
 	return render(request, "teacher/personal_center/apply_detail.html", context)
+
+
+# 修改密码
+def edit_pwd(request):
+	context = {}
+	teach_id = request.session['user_number']
+	# 获取教师信息
+	teach_info = get_object_or_404(models.teach_basic_info, tea_number=teach_id)
+	context['teach_info'] = teach_info
+
+	if request.method == 'POST':
+		user_info = get_object_or_404(all_model.user_login_info, account=request.session['user_number'])
+		pre_pwd = request.POST.get('pre_pwd')
+		new_pwd = request.POST.get('new_pwd_2')
+
+		if user_info.psword != pre_pwd:
+			context['message'] = "原密码不正确!"
+			return render(request, 'teacher/personal_center/edit_pwd.html', context)
+
+		user_info.psword = new_pwd
+		user_info.save()
+		return redirect('/teacher/personal_center_teach_info/')
+
+	return render(request, 'teacher/personal_center/edit_pwd.html', context)
