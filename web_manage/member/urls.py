@@ -30,4 +30,5 @@ urlpatterns = [
 	path('release_manage/', views.release_manage, name='release_manage'),
 	path('news_comanage/', views.news_comanage, name='news_comanage'),
 	path('notice_comanage/', views.notice_comanage, name='notice_comanage'),
+	path('edit_pwd/', views.edit_pwd, name='edit_pwd'),
 ]

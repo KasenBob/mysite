@@ -1157,3 +1157,23 @@ def change_com(request):
 		com_need.save()
 		return redirect('/member/my_coms/')
 	return render(request, 'member/change_com.html', context)
+
+
+# 修改密码
+def edit_pwd(request):
+	context = {}
+
+	if request.method == 'POST':
+		user_info = get_object_or_404(all_model.user_login_info, account=request.session['user_number'])
+		pre_pwd = request.POST.get('pre_pwd')
+		new_pwd = request.POST.get('new_pwd_2')
+
+		if user_info.psword != pre_pwd:
+			context['message'] = "原密码不正确!"
+			return render(request, 'member/edit_pwd.html', context)
+
+		user_info.psword = new_pwd
+		user_info.save()
+		return redirect('/member/add_com/')
+
+	return render(request, 'member/edit_pwd.html', context)
