@@ -54,6 +54,13 @@ def add_series(request):
 			photo_url.close()
 
 		series.save()
+
+		key = 'series_list'
+		if cache.has_key(key):
+			cache.delete(key)
+		series_list = competition_model.series_info.objects.filter(status='0')
+		cache.set(key, series_list, 30 * 60)
+
 		return redirect('/member/my_series/')
 	return render(request, 'member/add_series.html', context)
 
@@ -524,6 +531,14 @@ def add_com(request):
 		com_need.bank_number = int(bank_number)
 		com_need.else_info = int(else_info)
 		com_need.save()
+
+		key = 'com_list'
+		if cache.has_key(key):
+			cache.delete(key)
+		com_list = competition_model.com_basic_info.objects.filter(com_status='0')
+		cache.set(key, com_list, 30 * 60)
+
+		return redirect('/member/add_notices/')
 
 	return render(request, 'member/add_com/first.html', context)
 
