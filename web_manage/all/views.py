@@ -34,6 +34,16 @@ def home(request):
 	'''
 	context = {}
 	# sendmail.delay('test@test.com')
+	'''
+	# 学生需要储存信息
+	if request.session['user_power'] == '0':
+		all_inform_list = student_model.stu_inform.objects.filter(
+			Recipient_acc=request.session['user_number']).order_by('-create_time')
+		if len(all_inform_list) > 4:
+			request.session['inform_list'] = all_inform_list[:5]
+		else:
+			request.session['inform_list'] = all_inform_list
+	'''
 
 	# 新闻列表
 	key_1 = 'news_list'
@@ -148,5 +158,3 @@ def article(request):
 	form = ArticleForm()
 	context['form'] = form
 	return render(request, 'test.html', context)
-
-

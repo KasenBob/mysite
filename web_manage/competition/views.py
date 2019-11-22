@@ -192,21 +192,14 @@ def com_detail(request):
 			context['message'] = "比赛信息丢失了呢 :("
 			return redirect('/competition/com_list')
 
-		# print(1)
+		inform_list = all_model.inform.objects.filter(com_id=com_info).order_by('-last_update_time')
 
-		object_flag = 0
-		try:
-			inform_list = all_model.inform.objects.filter(com_id=com_info).order_by('-last_update_time')
-		except ObjectDoesNotExist:
-			object_flag = 1
-
-		if object_flag != 0:
+		if len(inform_list) <= 0 :
 			context['message'] = "比赛信息丢失了呢 :("
 			return redirect('/competition/com_list')
+		else:
+			context['inform'] = inform_list[0]
 
-		# print(2)
-
-		context['inform'] = inform_list[0]
 		context['com_info'] = com_info
 	return render(request, 'competition/com_detail.html', context)
 
@@ -545,7 +538,7 @@ def com_apply_second(request):
 				leader = get_object_or_404(student_model.stu_basic_info, stu_number=request.session['user_number'])
 				teach_id = i.tea_number
 				title = '比赛指导申请'
-				content = leader.stu_name + '邀请您指导参与' + com_info.com_name + ',请查看您的指导申请信息。'
+				content = '有学生邀请您指导' + com_info.com_name + '参赛,请查看您的指导申请信息。'
 				send_teach_inform(teach_id, title, content)
 
 		return render(request, 'competition/apply/com_apply_succeed.html', context)

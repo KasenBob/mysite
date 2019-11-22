@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load cache %}
 
 {% block title %}
     学科竞赛|竞赛一览
@@ -33,12 +34,13 @@
                     </p>
 
                     {% if request.session.user_power == '0' and inform.com_id.com_status == '0' %}
-                        <a class="btn btn-transparent"
-                           href="/competition/com_attach_download?id={{ inform.com_id.com_id }}"
-                           role="button" style="display:inline-block;">
-                            下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
-                        </a>
-
+                        {% if inform.com_attachment %}
+                            <a class="btn btn-transparent"
+                               href="/competition/com_attach_download?id={{ inform.com_id.com_id }}"
+                               role="button" style="display:inline-block;">
+                                下载附件<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+                            </a>
+                        {% endif %}
                         <div class="zuihouanniu">
                             <a class="btn btn-transparent quanbubisai"
                                href="/competition/com_apply_first?id={{ inform.com_id.com_id }}">竞赛报名</a>

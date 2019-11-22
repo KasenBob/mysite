@@ -12,17 +12,17 @@
             <h3 class="panel-title">修改头像</h3>
         </div>
         <div class="panel-body" style="background-color: #2B2C30;">
-            <form class="form-horizontal" action="/teacher/alter_avatar/" method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" action="/student/alter_avatar/" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="avatar">
                     <div id="avatar">
-                        <img src="/media/web_photo/noface.gif" id="avatar_img" alt="选择并上传头像">
+                        <img src="/media/web_photo/noface.jpg" id="avatar_img" alt="选择并上传头像">
                         <input type="file" id="avatar_file" name="avatar_file" accept="image/jpg,image/png,image/gif">
                         <span>Tips:点击头像上传图片。</span>
                     </div>
                 </div>
                 <div id="zuihouanniu">
-                    <button class="btn btn-transparent quanbubisai" type="submit">确定修改</button>
+                    <button class="tijiaoanniu" type="submit">确定修改</button>
                 </div>
             </form>
         </div>

@@ -97,14 +97,16 @@
                     <span class="dabiaoti">获奖新闻</span>
                     <hr class="hrs">
 
-                    <div class="col-sm-6 col-md-4 shoutiaoweizhi">
-                        <div class="thumbnail shoutiaoneirong">
-                            <img src="/media/{{ top_new.new_photo }}" alt="...">
-                            <div class="caption shoutiaoneirong">
-                                <h3><a href="/news/news_detail?p={{ top_new.pk }}">{{ top_new.title }}</a></h3>
+                    {% if top_new %}
+                        <div class="col-sm-6 col-md-4 shoutiaoweizhi">
+                            <div class="thumbnail shoutiaoneirong">
+                                <img src="/media/{{ top_new.new_photo }}" alt="...">
+                                <div class="caption shoutiaoneirong">
+                                    <h3><a href="/news/news_detail?p={{ top_new.pk }}">{{ top_new.title }}</a></h3>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
 
                     {% for new in news_list %}
                         <div class="yitiao">
@@ -124,13 +126,14 @@
                     <hr class="hrs">
                     {% for inform in informs_list %}
                         <div class="yitiao">
-                            <span><a>{{ inform.title }}</a></span><span class="riqi">{{ inform.create_time }}</span>
+                            <span><a href="/news/informs_detail?p={{ inform.pk }}">{{ inform.title }}</a></span><span
+                                class="riqi">{{ inform.create_time }}</span>
                         </div>
                         {% empty %}
                         <h3>暂无更多公告</h3>
                     {% endfor %}
                     <div class="yitiao">
-                        <span class="riqi"> 更多>></span>
+                        <span class="riqi"><a href="/news/informs_list/">更多>></a></span>
                     </div>
                 </div>
             </div>
@@ -146,7 +149,6 @@
                 <h1 class="h1s">比赛进行中</h1>
                 <div class="border"></div>
                 <div class="row">
-
                     {% for show_com in show_com_list %}
                         <div class="col-md-3 col-sm-6">
                             <div class="table-bordered">
@@ -160,9 +162,9 @@
                                 </div>
                             </div>
                         </div>
+                        {% empty %}
+                        <h4>暂无进行中比赛</h4>
                     {% endfor %}
-
-
                 </div>
             </div>
             <div class="zuihouanniu">

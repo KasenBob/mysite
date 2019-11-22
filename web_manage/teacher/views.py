@@ -38,6 +38,7 @@ def alter_avatar(request):
 				photo_url.write(chunk)
 			photo_url.close()
 			teach_info.save()
+		return redirect('/teacher/alter_avatar/')
 	return render(request, 'teacher/personal_center/alter_avatar.html', context)
 
 
@@ -54,6 +55,9 @@ def alter_info_teach(request):
 	context['profess_info'] = profess_info
 	context['depart_info'] = depart_info
 	context['user_info'] = user_info
+
+	if user_info.have_alter == '0':
+		context['message'] = "请确认个人信息无误。"
 
 	if request.method == "POST":
 		# tea_number = request.POST.get('tea_number')

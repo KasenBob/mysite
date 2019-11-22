@@ -35,6 +35,9 @@ def alter_info_stu(request):
 	context['class_info'] = class_info
 	context['user_info'] = user_info
 
+	if user_info.have_alter == '0':
+		context['message'] = "需确认个人信息无误后方可进行报名等操作。"
+
 	# print(context['stu'][0])
 	if request.method == "POST":
 		stu_number = request.POST.get('stu_number')

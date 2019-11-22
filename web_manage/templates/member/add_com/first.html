@@ -14,13 +14,15 @@
         <div class="panel-body">
             <form action="/member/add_com/" method="POST">
                 {% csrf_token %}
-                <span>比赛系列: </span>
+                <span>竞赛系列: </span>
                 <select name="com_name">
                     {% for series in series_list %}
                         <option value="{{ series.id }}">{{ series.name }}</option>
+                        {% empty %}
+                        <option>警告：暂无竞赛系列，请先发布竞赛系列。</option>
                     {% endfor %}
                 </select>
-                <a>没找到？</a><br><br>
+                <a href="/member/my_series/">没找到？</a><br><br>
                 <span>届数：第<input type="text" class="form-control" name="com_number"
                                  style="width: 6%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/>届</span>
                 <!--<p>*上一届为第10届</p>--><br><br>
@@ -55,7 +57,7 @@
                                           style="width: 7%;display: inline-block;font-size: 20px;margin: 4px;border: 1px solid #666666;"/>
                         </div>
                         <div class="form-group">
-                            是否小组需要满员：<input type="checkbox" name="need_full" value="1">
+                            是否小组需要满员：<input type="checkbox" name="need_full" value="1" checked>
                             是否学生可以重复参加：<input type="checkbox" name="same_stu" value="1">
                         </div>
                     </div>

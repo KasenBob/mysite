@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, Http404, FileResponse
 from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
 import datetime
 from . import models
 import os
@@ -14,6 +15,9 @@ import teacher.models as teacher_model
 import news.models as news_model
 from .forms import ArticleForm
 from django.core.cache import cache
+import xlwt
+from io import BytesIO
+
 
 
 # Create your views here.
@@ -31,6 +35,11 @@ def add_series(request):
 			context['message'] = '请输入竞赛系列简介。'
 			return render(request, 'member/add_series.html', context)
 		series_logo = request.FILES.get('series_logo', None)
+
+		test = competition_model.series_info.objects.filter(name=series_name)
+		if len(test) > 0:
+			context['message'] = '竞赛名称重复。'
+			return render(request, 'member/add_series.html', context)
 
 		series_type = request.POST.get('series_type', None)
 
@@ -136,6 +145,15 @@ def change_series(request):
 			photo_url.close()
 
 		series.save()
+
+		key = 'series_list'
+		if cache.has_key(key):
+			cache.delete(key)
+		series_list = competition_model.series_info.objects.filter(status='0')
+		for series in series_list:
+			series.update_com_id()
+		cache.set(key, series_list, 30 * 60)
+
 		return redirect('/member/my_series/')
 
 	return render(request, 'member/change_series.html', context)
@@ -376,7 +394,7 @@ def com_edit(request):
 # 学科委员—发布竞赛
 def add_com(request):
 	context = {}
-	series_list = competition_model.series_info.objects.all().order_by('name')
+	series_list = competition_model.series_info.objects.filter(status='0').order_by('name')
 	context['series_list'] = series_list
 
 	if request.method == "POST":
@@ -544,17 +562,18 @@ def add_com(request):
 
 
 # 学科委员—增加公告
+@csrf_exempt
 def add_notices(request):
 	context = {}
 	form = ArticleForm()
 	context['form'] = form
 
-	com_list = competition_model.com_basic_info.objects.all().order_by('-begin_regit')
+	com_list = competition_model.com_basic_info.objects.exclude(com_status='3').order_by('-begin_regit')
 	context['com_list'] = com_list
 
 	if request.method == "POST":
 		com_id = request.POST.get('com_id', None)
-		if com_id != None:
+		if com_id != None and com_id != '无':
 			com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 		com_attach = request.FILES.get('com_attach', None)
 		author = request.POST.get('author', None)
@@ -566,7 +585,7 @@ def add_notices(request):
 			content = apply_form.cleaned_data['content']
 
 		inform = all_model.inform()
-		if com_id != None:
+		if com_id != None and com_id != '无':
 			inform.com_id = com_info
 		else:
 			inform.com_id = None
@@ -626,7 +645,7 @@ def apply_application(request):
 
 # 同意小组信息修改
 def apply_application_agree(request):
-	temp_id = request.GET.get('id')
+	temp_id = request.GET.get('p')
 	temp_info = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 	group_info = temp_info.group_id
 
@@ -650,6 +669,7 @@ def apply_application_agree(request):
 			new_stu.group_id = group_info
 			new_stu.stu_id = temp_stu.stu_id
 			new_stu.is_leader = temp_stu.is_leader
+			new_stu.status = '1'
 			new_stu.save()
 			temp_stu.delete()
 
@@ -663,6 +683,7 @@ def apply_application_agree(request):
 			new_teach.com_id = group_info.com_id
 			new_teach.group_id = group_info
 			new_teach.teach_id = temp_teach.teach_id
+			new_teach.status = '1'
 			new_teach.save()
 			temp_teach.delete()
 
@@ -690,7 +711,7 @@ def apply_application_agree(request):
 
 # 驳回小组信息修改
 def apply_application_disagree(request):
-	temp_id = request.GET.get('id')
+	temp_id = request.GET.get('p')
 	temp_info = get_object_or_404(competition_model.temp_com_group_basic_info, temp_id=temp_id)
 
 	temp_stu_list = student_model.temp_com_stu_info.objects.filter(temp_id=temp_info)
@@ -919,6 +940,9 @@ def notice_comanage(request):
 def change_notice(request):
 	context = {}
 
+	com_list = competition_model.com_basic_info.objects.exclude(com_status='3').order_by('-begin_regit')
+	context['com_list'] = com_list
+
 	notice_id = request.GET.get('p')
 	# print(news_id)
 	notice = get_object_or_404(all_model.inform, pk=notice_id)
@@ -1140,6 +1164,7 @@ def change_com(request):
 		com_info.num_teach = num_teach
 		com_info.com_status = '0'
 		com_info.save()
+		com_info.update_status
 
 		if if_com_sort == '1' and sort_list != '0':
 			temp_sort = competition_model.com_sort_info.objects.filter(com_id=com_info)
@@ -1170,6 +1195,13 @@ def change_com(request):
 		com_need.bank_number = int(bank_number)
 		com_need.else_info = int(else_info)
 		com_need.save()
+
+		key = 'com_list'
+		if cache.has_key(key):
+			cache.delete(key)
+		com_list = competition_model.com_basic_info.objects.filter(com_status='0')
+		cache.set(key, com_list, 30 * 60)
+
 		return redirect('/member/my_coms/')
 	return render(request, 'member/change_com.html', context)
 
@@ -1192,3 +1224,57 @@ def edit_pwd(request):
 		return redirect('/member/add_com/')
 
 	return render(request, 'member/edit_pwd.html', context)
+
+
+# 导出到excel
+def export_excel(request):
+	com_id = request.GET.get('p')
+	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
+	need_info = get_object_or_404(competition_model.com_need_info, com_id=com_id)
+
+	com_group_list = competition_model.com_group_basic_info.objects.filter(com_id=com_info, status='1')
+	com_stu_list = student_model.com_stu_info.objects.filter(group_id=com_group_list)
+	com_teach_list = teacher_model.com_teach_info.objects.filter(group_id=com_group_list)
+
+	# 设置HTTPResponse的类型
+	response = HttpResponse(content_type='application/vnd.ms-excel')
+	response['Content-Disposition'] = 'attachment;filename=order.xls'
+	# 创建一个文件对象
+	wb = xlwt.Workbook(encoding='utf8')
+	# 创建一个sheet对象
+	sheet = wb.add_sheet('order-sheet')
+
+	# 写入文件标题
+	sheet.write(0, 0, '申请编号')
+	sheet.write(0, 1, '客户名称')
+	sheet.write(0, 2, '联系方式')
+	sheet.write(0, 3, '身份证号码')
+	sheet.write(0, 4, '办理日期')
+	sheet.write(0, 5, '处理人')
+	sheet.write(0, 6, '处理状态')
+	sheet.write(0, 7, '处理时间')
+
+	# 写入数据
+	data_row = 1
+	# UserTable.objects.all()这个是查询条件,可以根据自己的实际需求做调整.
+	for i in UserTable.objects.all():
+		# 格式化datetime
+		pri_time = i.pri_date.strftime('%Y-%m-%d')
+		oper_time = i.operating_time.strftime('%Y-%m-%d')
+		sheet.write(data_row, 0, i.loan_id)
+		sheet.write(data_row, 1, i.name)
+		sheet.write(data_row, 2, i.user_phone)
+		sheet.write(data_row, 3, i.user_card)
+		sheet.write(data_row, 4, pri_time)
+		sheet.write(data_row, 5, i.emp.emp_name)
+		sheet.write(data_row, 6, i.statu.statu_name)
+		sheet.write(data_row, 7, oper_time)
+		data_row = data_row + 1
+
+	# 写出到IO
+	output = BytesIO()
+	wb.save(output)
+	# 重新定位到开始
+	output.seek(0)
+	response.write(output.getvalue())
+	return response

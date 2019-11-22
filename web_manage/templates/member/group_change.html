@@ -14,14 +14,22 @@
         <div class="panel-body" style="background-color: #2B2C30;">
             {% for temp_group,temp_stu,pre_stu,temp_teach,pre_teach,com_need in temp_group_list %}
                 <div class="geren1">
+                    <span>{{ temp_group.com_id.com_name }}</span><br>
+                    <span>发起人:
+                        {% for stu in pre_stu %}
+                            {% if stu.is_leader == 1 %}
+                                {{ stu.stu_id.stu_name }}
+                            {% endif %}
+                        {% endfor %}
+                    </span><br>
                     <span>类型：{{ temp_group.get_apply_type_display }}</span><br>
                     <span>提交时间：{{ temp_group.created_time }}</span>
                     <span class="fun-btn pull-right">
                         <a class="btn btn-transparent" data-toggle="modal"
                            data-target="#{{ temp_group.temp_id }}">详情</a>
-                        <a href="/member/apply_application_agree?p1=0&p2={{ temp_group.pk }}"
+                        <a href="/member/apply_application_agree?p={{ temp_group.pk }}"
                            class="glyphicon glyphicon-ok btn btn-transparent"></a>
-                        <a href="/member/apply_application_disagree?p1=0&p2={{ temp_group.pk }}"
+                        <a href="/member/apply_application_disagree?p={{ temp_group.pk }}"
                            class="glyphicon glyphicon-remove btn btn-transparent"></a>
                     </span>
                 </div>

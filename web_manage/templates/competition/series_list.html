@@ -21,7 +21,7 @@
             <h1>竞赛介绍</h1>
             <h4>
                 <span id="qiebiao" class="qiehuan" style="color: #6CB670;">列表</span><span> / </span>
-                <span id="qiezhou" class="qiehuan">时间轴</span>
+                <!--<span id="qiezhou" class="qiehuan">时间轴</span>-->
             </h4>
             <div class="border"></div>
         </div>
@@ -175,7 +175,10 @@
                                 </div>
 
                             {% endfor %}
+
                         </div>
+                        {% empty %}
+                        <h4>暂无更多竞赛</h4>
                     {% endfor %}
 
                     <div class="biaoti">
@@ -223,14 +226,17 @@
                                         </div>
                                     </div>
                                 </div>
-
                             {% endfor %}
                         </div>
+                        {% empty %}
+                        <h4>暂无更多竞赛</h4>
                     {% endfor %}
 
-                    <div class="zuihouanniu">
-                        <a class="btn btn-transparent quanbubisai" id="qhsjz">切换时间轴</a>
-                    </div>
+                    <!--
+                        <div class="zuihouanniu">
+                            <a class="btn btn-transparent quanbubisai" id="qhsjz">切换时间轴</a>
+                        </div>
+                        -->
 
                 </div>
             </div>

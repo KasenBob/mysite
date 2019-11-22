@@ -42,7 +42,7 @@ class Article(models.Model):
 class inform(models.Model):
 	title = models.CharField(max_length=225, null=True, blank=True)
 	content = RichTextUploadingField()
-	author = models.CharField(max_length=50, default='学科委员会')
+	author = models.CharField(max_length=50, default='学科竞赛委员会')
 	create_time = models.DateField(auto_now=True)
 	last_update_time = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 	com_id = models.ForeignKey('competition.com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True,

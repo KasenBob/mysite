@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load cache %}
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -64,7 +65,7 @@
                         <a href="/competition/com_list/">比赛报名</a>
                     </li>
                 </ul>
-
+                <!--
                 <form class="navbar-form navbar-left dist" id="search-form">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="查询" autocomplete="on" name="seach">
@@ -72,19 +73,34 @@
                                 class="glyphicon glyphicon-search"></i></button>
                     </div>
                 </form>
-
+                -->
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;">
                     {% if request.session.is_login and request.session.user_power == '0' %}
-
                         <li class="dropdown" id="xiaoxiliebiao">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">
                                 <span class="glyphicon glyphicon-envelope"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/student/personal_center_stu_message/">通知消息</a></li>
+                                <!--
+                                {% for inform in request.session.inform_list %}
+                                    <li>
+                                        <a>
+                                            <h4>{{ inform.title }}<span
+                                                    class="pull-right xiaoxiriqi">{{ inform.create_time }}</span></h4>
+                                            <h6>{{ inform.content }}</h6>
+                                        </a>
+                                    </li>
+                                    {% empty %}
+                                    <h4>暂无更多消息</h4>
+                                {% endfor %}
+                            -->
+                                <li>
+                                    <a href="/student/personal_center_stu_message/">
+                                        <h6 style="color: #6CB670;">查看信息</h6>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
-
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-haspopup="true" aria-expanded="false">{{ request.session.user_number }}

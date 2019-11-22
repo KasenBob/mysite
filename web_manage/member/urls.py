@@ -31,4 +31,5 @@ urlpatterns = [
 	path('news_comanage/', views.news_comanage, name='news_comanage'),
 	path('notice_comanage/', views.notice_comanage, name='notice_comanage'),
 	path('edit_pwd/', views.edit_pwd, name='edit_pwd'),
+	path('export_excel/', views.export_excel, name='export_excel'),
 ]

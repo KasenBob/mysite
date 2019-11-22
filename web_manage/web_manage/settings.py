@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-o0-g!(a=)%b%!(4r+e)mu5kn!6x7nma4rfn0_&+_vk%#5ebe$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True     
+    
+TEMPLATE_DEBUG = False
 
 # HOST settings
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['49.234.197.105','172.17.0.14','127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -86,9 +88,9 @@ DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',  # 设置数据库
 		'NAME': 'com_manage',
-		'USER': 'root',
-		'PASSWORD': '2223601',
-		'HOST': 'localhost',
+		'USER': 'com_manage',
+		'PASSWORD': '!ab2223601',
+		'HOST': 'rm-wz9kc0k65b8bx8p1a4o.mysql.rds.aliyuncs.com',
 		'PORT': '3306'
 	}
 }
@@ -139,6 +141,7 @@ DATE_FORMAT = 'Y-m-d'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+STATIC_ROOT = 'C:/project/mysite/web_manage/collectstatic'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
 	os.path.join(BASE_DIR, 'static').replace('\\', '/'),

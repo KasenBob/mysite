@@ -18,13 +18,13 @@
                 <div class="col-md-3">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="/media/{{ teach_info.photo }}" alt="..."
+                            <img src="/media/{{ teach_info.photo }}/" alt="..."
                                  style="width: 63px;height: 63px;border: 2px solid white;border-radius: 20px;">
                         </div>
                         <p class="xingming">{{ teach_info.tea_name }}</p>
                         <p class="banji">{{ teach_info.department.depart_name }}</p>
                         <p style="margin-top: 0;font-size: 10px;">
-                            <a href="/member/edit_pwd/">修改密码</a>
+                            <a href="/teacher/edit_pwd/">修改密码</a>
                             |
                             <a href="/logout/">登出</a>
                         </p>
@@ -41,9 +41,11 @@
                         <a href="/teacher/personal_center_teach_apply"
                            class="list-group-item {% block is_active2 %}{% endblock %}">
                             <span class="glyphicon glyphicon-comment"></span>指导申请
+                            <!--
                             {% if apply_number > 0 %}
                                 <span class="badge pull-right">{{ apply_number }}</span>
                             {% endif %}
+                            -->
                         </a>
                         <a href="/teacher/personal_center_teach_team"
                            class="list-group-item {% block is_active3 %}{% endblock %}">

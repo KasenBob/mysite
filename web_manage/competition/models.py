@@ -13,7 +13,7 @@ class series_info(models.Model):
 	type = models.CharField(max_length=10, choices=(('0', '个人赛'), ('1', '团体赛')), default='0')
 	now_com_id = models.ForeignKey('com_basic_info', to_field='com_id', on_delete=models.SET_NULL, null=True,
 	                               blank=True)
-	status = models.CharField(max_length=5, choices=(('0', '显示'), ('1', '隐藏')))
+	status = models.CharField(max_length=5, choices=(('0', '显示'), ('1', '隐藏')), default='0')
 
 	def update_com_id(self):
 		com_list = com_basic_info.objects.filter(series_id=self.id).order_by('-begin_regit')
@@ -121,4 +121,4 @@ class temp_com_group_basic_info(models.Model):
 	product_name = models.CharField(max_length=50, null=True, blank=True)
 	else_info = models.TextField(default='', null=True, blank=True)
 	created_time = models.DateField(auto_now=True)
-	apply_type = models.CharField(max_length=5, choices=(('1', '修改'), ('2', '撤销')), default='1')
+	apply_type = models.CharField(max_length=5, choices=(('1', '修改信息'), ('2', '撤销报名')), default='1')
