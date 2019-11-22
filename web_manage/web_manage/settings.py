@@ -88,9 +88,9 @@ DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',  # 设置数据库
 		'NAME': 'com_manage',
-		'USER': 'com_manage',
-		'PASSWORD': '!ab2223601',
-		'HOST': 'rm-wz9kc0k65b8bx8p1a4o.mysql.rds.aliyuncs.com',
+		'USER': 'root',
+		'PASSWORD': '2223601',
+		'HOST': 'localhost',
 		'PORT': '3306'
 	}
 }

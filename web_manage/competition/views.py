@@ -96,21 +96,21 @@ def series_list(request):
 def com_list(request):
 	context = {}
 	# 没有登录或者还未修改个人信息都无法报名
-	if request.session['user_power'] == '0':
-		try:
-			is_login = request.session['is_login']
-		except KeyError:
-			context['message'] = "你得登录，才能报名。"
-		else:
+	try:
+		is_login = request.session['is_login']
+	except KeyError:
+		context['message'] = "你得登录，才能报名。"
+	else:
+		if request.session['user_power'] == '0':
 			user_num = request.session['user_number']
 			user_info = get_object_or_404(all_model.user_login_info, account=user_num)
 			if user_info.have_alter == '0':
 				context['message'] = "你得确认完个人信息，才能报名。"
-	else:
-		if request.session['user_power'] == '5':
-			context['message'] = '学科委员无法进行报名操作。'
-		if request.session['user_power'] == '1':
-			context['message'] = '指导教师无法进行报名操作。'
+		else:
+			if request.session['user_power'] == '5':
+				context['message'] = '学科委员无法进行报名操作。'
+			if request.session['user_power'] == '1':
+				context['message'] = '指导教师无法进行报名操作。'
 
 	key = 'com_list'
 	if cache.has_key(key):

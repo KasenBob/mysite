@@ -1235,46 +1235,134 @@ def export_excel(request):
 	com_group_list = competition_model.com_group_basic_info.objects.filter(com_id=com_info, status='1')
 	com_stu_list = student_model.com_stu_info.objects.filter(group_id=com_group_list)
 	com_teach_list = teacher_model.com_teach_info.objects.filter(group_id=com_group_list)
+	if com_info.type == '0':
+		# 设置HTTPResponse的类型
+		response = HttpResponse(content_type='application/vnd.ms-excel')
+		response['Content-Disposition'] = 'attachment;filename=order.xls'
+		# 创建一个文件对象
+		wb = xlwt.Workbook(encoding='utf8')
+		# 创建一个sheet对象
+		sheet = wb.add_sheet('order-sheet')
 
-	# 设置HTTPResponse的类型
-	response = HttpResponse(content_type='application/vnd.ms-excel')
-	response['Content-Disposition'] = 'attachment;filename=order.xls'
-	# 创建一个文件对象
-	wb = xlwt.Workbook(encoding='utf8')
-	# 创建一个sheet对象
-	sheet = wb.add_sheet('order-sheet')
+		# 写入文件标题
+		data_line = 0
 
-	# 写入文件标题
-	sheet.write(0, 0, '申请编号')
-	sheet.write(0, 1, '客户名称')
-	sheet.write(0, 2, '联系方式')
-	sheet.write(0, 3, '身份证号码')
-	sheet.write(0, 4, '办理日期')
-	sheet.write(0, 5, '处理人')
-	sheet.write(0, 6, '处理状态')
-	sheet.write(0, 7, '处理时间')
+		sheet.write(0, data_line, '序号')
+		data_line += 1
 
-	# 写入数据
-	data_row = 1
-	# UserTable.objects.all()这个是查询条件,可以根据自己的实际需求做调整.
-	for i in UserTable.objects.all():
-		# 格式化datetime
-		pri_time = i.pri_date.strftime('%Y-%m-%d')
-		oper_time = i.operating_time.strftime('%Y-%m-%d')
-		sheet.write(data_row, 0, i.loan_id)
-		sheet.write(data_row, 1, i.name)
-		sheet.write(data_row, 2, i.user_phone)
-		sheet.write(data_row, 3, i.user_card)
-		sheet.write(data_row, 4, pri_time)
-		sheet.write(data_row, 5, i.emp.emp_name)
-		sheet.write(data_row, 6, i.statu.statu_name)
-		sheet.write(data_row, 7, oper_time)
-		data_row = data_row + 1
+		if need_info.stu_num == 1:
+			sheet.write(0, data_line, '学号')
+			data_line += 1
 
-	# 写出到IO
-	output = BytesIO()
-	wb.save(output)
-	# 重新定位到开始
-	output.seek(0)
-	response.write(output.getvalue())
-	return response
+		if need_info.stu_name == 1:
+			sheet.write(0, data_line, '姓名')
+			data_line += 1
+
+		if need_info.depart == 1:
+			sheet.write(0, data_line, '院系')
+			data_line += 1
+
+		if need_info.stumajor_num == 1:
+			sheet.write(0, data_line, '专业')
+			data_line += 1
+
+		if need_info.grade == 1:
+			sheet.write(0, data_line, '年级')
+			data_line += 1
+
+		if need_info.stu_class == 1:
+			sheet.write(0, data_line, '班级')
+			data_line += 1
+
+		if need_info.ID_number == 1:
+			sheet.write(0, data_line, '身份证号')
+			data_line += 1
+
+		if need_info.sex == 1:
+			sheet.write(0, data_line, '性别')
+			data_line += 1
+
+		if need_info.email == 1:
+			sheet.write(0, data_line, '邮箱')
+			data_line += 1
+
+		if need_info.phone_num == 1:
+			sheet.write(0, data_line, '联系电话')
+			data_line += 1
+
+		if need_info.bank_number == 1:
+			sheet.write(0, data_line, '银行卡号')
+			data_line += 1
+
+		if need_info.tea_num != 0:
+			sheet.write(0, data_line, '指导教师')
+			data_line += 1
+
+		if need_info.else_info == 1:
+			sheet.write(0, data_line, '备注')
+			data_line += 1
+
+		# 整合
+		stu_list = []
+		teach_list = []
+		for com_group in com_group_list:
+			com_stu = student_model.com_stu_info.objects.get(group_id=com_group)
+			stu_list.append(com_stu)
+			com_teach = teacher_model.com_teach_info.objects.get(group_id=com_group)
+			teach_list.append(com_teach)
+		com_apply_list = zip(com_group_list, stu_list, teach_list)
+
+		# 写入数据
+		data_row = 1
+		for com_group, stu, teach in com_apply_list:
+			data_line = 0
+			sheet.write(data_row, data_line, data_row)
+			data_line += 1
+			if need_info.stu_num == 1:
+				sheet.write(data_row, data_line, stu.stu_id.stu_number)
+				data_line += 1
+			if need_info.stu_name == 1:
+				sheet.write(data_row, data_line, stu.stu_id.stu_name)
+				data_line += 1
+			if need_info.depart == 1:
+				sheet.write(data_row, data_line, stu.stu_id.department.depart_name)
+				data_line += 1
+			if need_info.stumajor_num == 1:
+				sheet.write(data_row, data_line, stu.stu_id.major.major_name)
+				data_line += 1
+			if need_info.grade == 1:
+				sheet.write(data_row, data_line, stu.stu_id.grade.grade_name)
+				data_line += 1
+			if need_info.stu_class == 1:
+				sheet.write(data_row, data_line, stu.stu_id.stu_class.class_name)
+				data_line += 1
+			if need_info.ID_number == 1:
+				sheet.write(data_row, data_line, stu.stu_id.ID_number)
+				data_line += 1
+			if need_info.sex == 1:
+				sheet.write(data_row, data_line, stu.stu_id.sex)
+				data_line += 1
+			if need_info.email == 1:
+				sheet.write(data_row, data_line, stu.stu_id.email)
+				data_line += 1
+			if need_info.phone_num == 1:
+				sheet.write(data_row, data_line, stu.stu_id.phone_number)
+				data_line += 1
+			if need_info.bank_number == 1:
+				sheet.write(data_row, data_line, stu.stu_id.bank_number)
+				data_line += 1
+			if need_info.tea_num != 0:
+				sheet.write(data_row, data_line, teach.teach_id.tea_name)
+				data_line += 1
+			if need_info.else_info == 1:
+				sheet.write(data_row, data_line, com_group.else_info)
+				data_line += 1
+			data_row = data_row + 1
+
+		# 写出到IO
+		output = BytesIO()
+		wb.save(output)
+		# 重新定位到开始
+		output.seek(0)
+		response.write(output.getvalue())
+		return response
