@@ -1238,7 +1238,8 @@ def export_excel(request):
 	if com_info.type == '0':
 		# 设置HTTPResponse的类型
 		response = HttpResponse(content_type='application/vnd.ms-excel')
-		response['Content-Disposition'] = 'attachment;filename=order.xls'
+		filename = com_info.com_name + '报名表'
+		response['Content-Disposition'] = 'attachment;filename=Registration_form.xls'
 		# 创建一个文件对象
 		wb = xlwt.Workbook(encoding='utf8')
 		# 创建一个sheet对象
@@ -1262,7 +1263,7 @@ def export_excel(request):
 			sheet.write(0, data_line, '院系')
 			data_line += 1
 
-		if need_info.stumajor_num == 1:
+		if need_info.major == 1:
 			sheet.write(0, data_line, '专业')
 			data_line += 1
 
@@ -1327,7 +1328,7 @@ def export_excel(request):
 			if need_info.depart == 1:
 				sheet.write(data_row, data_line, stu.stu_id.department.depart_name)
 				data_line += 1
-			if need_info.stumajor_num == 1:
+			if need_info.major == 1:
 				sheet.write(data_row, data_line, stu.stu_id.major.major_name)
 				data_line += 1
 			if need_info.grade == 1:
