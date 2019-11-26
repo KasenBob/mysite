@@ -22,7 +22,8 @@
                         <div class="form-group">
                             {% if info_list.stu_num %}
                                 学号：<input type="text" class="form-control" autocomplete="on"
-                                          name="stu_num{{ forloop.counter }}" value="{{ stu.stu_id.stu_number }}">
+                                          name="stu_num{{ forloop.counter }}" value="{{ stu.stu_id.stu_number }}" 
+                                          readonly="readonly"> 
                             {% endif %}
                         </div>
 

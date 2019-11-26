@@ -6,6 +6,11 @@ import time
 from django.core.mail import send_mail
 from django.conf import settings
 
+import competition.models as com_model
+from django.core.exceptions import ObjectDoesNotExist
+import logging
+
+
 # 异步任务
 @task
 def send_email_demo(user, subject, message):
@@ -15,3 +20,16 @@ def send_email_demo(user, subject, message):
 	send_mail(subject, message, from_who, [to_who])
 	return True
 
+'''
+# 测试数据提取
+@periodic_task(run_every=1)
+def test_group_test():
+	group_id = 3
+	logger = logging.getLogger('log')
+	try:
+		group_info = com_model.com_group_basic_info.objects.get(group_id=group_id)
+	except ObjectDoesNotExist:
+		logger.error('Error!')
+	else:
+		logger.info(group_info.group_id)
+'''

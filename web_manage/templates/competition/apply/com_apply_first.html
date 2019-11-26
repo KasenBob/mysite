@@ -41,7 +41,9 @@
                                 学生({{ forloop.counter }})：<input type="text" class="form-control xuanren"
                                                                  placeholder="查询" autocomplete="on"
                                                                  name="stu_num{{ num }}"
-                                                                 value="{{ leader.stu_number }}">
+                                                                 readonly="readonly"
+                                                                 value="{{ leader.stu_number }}"
+                                                                 style="background-color: rgb(47,56,61)">
                             </div>
                         {% else %}
                             <div class="form-group">
@@ -50,7 +52,6 @@
                                                                  data-target="#myModal"
                                                                  placeholder="查询" autocomplete="on"
                                                                  name="stu_num{{ num }}"
-                                                                 readonly="readonly"
                                                                  style="background-color: rgb(47,56,61)">
                             </div>
                         {% endif %}

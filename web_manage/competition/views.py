@@ -96,6 +96,7 @@ def series_list(request):
 def com_list(request):
 	context = {}
 	# 没有登录或者还未修改个人信息都无法报名
+	# 没有登录或者还未修改个人信息都无法报名
 	try:
 		is_login = request.session['is_login']
 	except KeyError:
