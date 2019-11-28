@@ -1,0 +1,705 @@
+[2019-11-26 20:08:47,815] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:08:53,114] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 32, in _decorator
+    return method(self, *args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 124, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 478, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py", line 50, in home
+    if cache.has_key(key_1):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 39, in _decorator
+    raise e.parent
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 476, in has_key
+    return client.exists(key) == 1
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 1307, in exists
+    return self.execute_command('EXISTS', *names)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 836, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 1071, in get_connection
+    connection.connect()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 543, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+[2019-11-26 20:08:53,199] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET / HTTP/1.1" 500 27
+[2019-11-26 20:08:53,761] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-26 20:08:53,762] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-26 20:09:06,444] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:09:06,501] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:09:06,503] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:09:06,504] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:09:06,504] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:09:06,555] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/6661.jpg HTTP/1.1" 200 83408
+[2019-11-26 20:09:06,577] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/series_photo/logo.png HTTP/1.1" 200 6167
+[2019-11-26 20:09:06,630] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:09:06,632] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:09:06,633] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:09:06,634] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:09:06,635] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:09:06,635] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:09:06,704] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:09:06,704] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:09:06,717] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:09:06,718] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:09:06,735] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:09:06,735] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:09:17,671] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:09:17,672] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:09:17,746] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:09:17,746] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:10:31,231] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:10:33,019] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:10:34,965] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:10:36,840] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:10:42,159] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:10:48,678] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:11:23,535] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:11:25,796] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:11:30,504] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:11:30,592] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:11:30,593] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:11:30,594] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:11:30,594] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:11:30,912] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:11:30,913] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:11:30,914] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:11:30,914] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:11:30,919] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:11:30,919] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:11:30,942] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:11:30,943] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:11:31,028] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:11:31,028] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:18:09,050] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:19:16,151] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:19:18,950] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:19:19,114] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:19:19,115] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:19:19,115] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:19:19,116] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:19:19,165] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:19:19,166] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:19:19,220] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:19:19,221] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:19:19,229] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:19:19,230] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:19:19,313] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:19:19,314] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:19:19,334] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:19:19,335] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:19:27,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:19:27,719] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:19:27,720] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:19:27,721] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:19:27,721] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:19:27,724] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:19:27,726] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:19:27,727] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:19:27,727] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:19:27,727] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:19:27,728] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:19:30,266] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:19:30,267] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:19:30,332] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:19:30,333] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:21:45,543] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py changed, reloading.
+[2019-11-26 20:21:48,785] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:21:53,379] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:21:53,449] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:21:53,451] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:21:53,452] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:21:53,453] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:21:53,516] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:21:53,517] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:21:53,519] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:21:53,521] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:21:53,532] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:21:53,533] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:21:53,546] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:21:53,547] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:21:53,569] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:21:53,569] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:22:40,472] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:22:44,693] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:22:44,755] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:22:44,756] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:22:44,756] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:22:44,757] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:22:44,783] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:22:44,783] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:22:44,834] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:22:44,834] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:22:44,848] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:22:44,849] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:22:44,882] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:22:44,883] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:24:49,746] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:24:51,841] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:26:48,850] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:26:58,925] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:27:07,632] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:27:09,427] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:27:12,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:27:12,769] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:12,770] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:27:12,771] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:12,771] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:27:12,813] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:27:12,814] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:27:12,815] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:12,815] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:12,844] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:27:12,846] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:27:12,867] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:12,867] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:17,110] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/news_list/ HTTP/1.1" 200 7772
+[2019-11-26 20:27:17,160] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/newsstyle.css
+[2019-11-26 20:27:17,161] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:27:17,163] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:17,164] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:17,164] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/newsstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:17,165] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:17,182] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:27:17,182] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:27:17,216] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:27:17,217] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:17,235] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:27:17,236] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:27:17,265] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:17,266] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/newsstyle.css
+[2019-11-26 20:27:17,267] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:17,267] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/newsstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:17,399] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/fonts/glyphicons-halflings-regular.woff2
+[2019-11-26 20:27:17,400] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 404 77
+[2019-11-26 20:27:17,526] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/fonts/glyphicons-halflings-regular.woff
+[2019-11-26 20:27:17,527] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff HTTP/1.1" 404 77
+[2019-11-26 20:27:17,580] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/fonts/glyphicons-halflings-regular.ttf
+[2019-11-26 20:27:17,581] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/fonts/glyphicons-halflings-regular.ttf HTTP/1.1" 404 77
+[2019-11-26 20:27:18,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-26 20:27:18,247] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:18,248] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:27:18,248] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:18,249] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:27:18,297] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:27:18,298] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:27:18,300] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:27:18,300] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:18,301] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:18,301] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:27:18,329] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:18,330] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:48,495] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:27:52,996] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:27:56,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-26 20:27:56,252] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:56,253] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:27:56,255] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:27:56,255] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:56,283] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:27:56,289] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:27:56,295] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:27:56,295] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:27:56,303] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:27:56,304] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:27:56,362] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:27:56,363] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:27:56,414] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:27:56,415] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:28:16,215] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:29:10,414] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:29:12,126] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:29:12,222] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:29:12,223] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:29:12,224] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:29:12,224] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:29:12,265] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:29:12,266] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:29:12,295] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:29:12,298] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:29:12,316] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:29:12,319] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:29:12,365] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:29:12,366] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:29:58,274] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py changed, reloading.
+[2019-11-26 20:30:01,387] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:31:24,712] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:32:57,965] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:33:01,612] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:33:02,043] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:33:02,044] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:33:02,044] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:33:02,045] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:33:02,047] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:33:02,048] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:33:02,049] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:33:02,049] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:33:02,083] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:33:02,084] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:33:02,137] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:33:02,137] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:33:02,198] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:33:02,198] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:33:02,221] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:33:02,222] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:33:02,835] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-26 20:33:02,836] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-26 20:33:11,951] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:33:11,952] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:33:12,031] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:33:12,032] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:34:45,003] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:34:50,060] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:34:51,964] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:34:52,050] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:34:52,050] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:34:52,055] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:34:52,056] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:34:52,154] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:34:52,156] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:34:52,226] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:34:52,228] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:34:52,265] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:34:52,266] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:34:52,344] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:34:52,345] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:34:52,400] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:34:52,400] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:35:29,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin HTTP/1.1" 301 0
+[2019-11-26 20:35:29,687] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2019-11-26 20:35:29,772] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1821
+[2019-11-26 20:35:29,847] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/admin/css/base.css
+[2019-11-26 20:35:29,848] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/admin/css/login.css
+[2019-11-26 20:35:29,850] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/admin/css/responsive.css
+[2019-11-26 20:35:29,850] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/admin/css/base.css HTTP/1.1" 404 77
+[2019-11-26 20:35:29,851] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/admin/css/login.css HTTP/1.1" 404 77
+[2019-11-26 20:35:29,851] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/admin/css/responsive.css HTTP/1.1" 404 77
+[2019-11-26 20:36:04,530] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:36:04,937] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:36:04,992] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:36:04,993] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:36:04,995] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:36:04,996] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:36:05,001] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/6661.jpg HTTP/1.1" 200 83408
+[2019-11-26 20:36:05,005] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/series_photo/logo.png HTTP/1.1" 200 6167
+[2019-11-26 20:36:05,024] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:36:05,025] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:36:05,032] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css
+[2019-11-26 20:36:05,032] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 404 77
+[2019-11-26 20:36:05,044] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:36:05,046] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:36:05,049] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css
+[2019-11-26 20:36:05,049] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 404 77
+[2019-11-26 20:36:05,060] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:36:05,061] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:36:05,182] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-26 20:36:05,183] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-26 20:36:07,984] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:36:08,004] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:36:08,006] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:36:08,005] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:36:08,007] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:36:08,008] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:36:08,009] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css
+[2019-11-26 20:36:08,010] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:36:08,010] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 404 77
+[2019-11-26 20:36:08,012] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:36:08,014] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:36:08,014] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:36:08,014] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:36:08,023] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css
+[2019-11-26 20:36:08,024] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:36:08,025] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:36:08,027] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 404 77
+[2019-11-26 20:38:28,074] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:38:32,649] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:38:36,284] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:38:36,709] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:38:36,709] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:38:36,727] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:38:36,727] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:38:36,744] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:38:36,745] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:38:36,764] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:38:36,764] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:38:36,859] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:38:36,860] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:38:37,632] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-26 20:38:37,632] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-26 20:38:40,567] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:38:40,612] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:38:40,614] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:38:40,614] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:38:40,615] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:38:40,665] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:38:40,667] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:38:40,669] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:38:40,669] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:38:40,670] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:38:40,670] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:38:40,682] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:38:40,683] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:38:43,723] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:38:43,723] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:38:43,799] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 20:38:43,800] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 20:40:02,165] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:41:59,469] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:41:59,598] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:41:59,598] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:41:59,611] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:41:59,611] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:41:59,646] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:41:59,648] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:41:59,649] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:41:59,649] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:41:59,655] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:41:59,656] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:42:00,352] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-26 20:42:00,352] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-26 20:42:41,893] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 20:42:43,398] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:43:06,311] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:43:07,814] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:43:07,981] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:43:07,982] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:43:07,985] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:43:07,986] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:43:08,013] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:43:08,014] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:43:08,020] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:43:08,021] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:43:08,034] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:43:08,036] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:43:08,061] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:43:08,061] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:46:31,495] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 20:46:33,434] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 20:46:33,628] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:46:33,630] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:46:33,631] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:46:33,631] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 20:46:33,660] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 20:46:33,661] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 20:46:33,665] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 20:46:33,666] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 20:46:33,673] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 20:46:33,674] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 20:46:33,763] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 20:46:33,764] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 20:46:33,780] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 20:46:33,781] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:02:23,743] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 21:02:27,022] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:02:28,607] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 21:02:28,702] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 21:02:28,703] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:02:28,704] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 21:02:28,704] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:02:28,814] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 21:02:28,816] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 21:02:28,816] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 21:02:28,818] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 21:02:28,833] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 21:02:28,833] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 21:02:28,861] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:02:28,862] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:02:45,076] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:02:45,077] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:02:45,149] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/bootstrap.min.css.map
+[2019-11-26 21:02:45,150] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 404 77
+[2019-11-26 21:27:33,807] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 21:27:35,616] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:28:06,438] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 21:28:10,731] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:28:12,430] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 21:28:12,499] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 21:28:12,501] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 21:28:12,502] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:28:12,503] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:28:12,521] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 21:28:12,522] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 21:28:12,528] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 21:28:12,529] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 21:28:12,534] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 21:28:12,536] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 21:28:12,574] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 21:28:12,575] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 21:28:12,623] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 21:28:12,624] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 21:28:12,641] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:28:12,642] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:28:36,552] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 21:28:37,977] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:28:46,925] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:29:33,904] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 21:29:37,090] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:30:03,783] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:31:17,156] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:36:18,955] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 21:36:20,385] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:36:50,245] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:36:52,227] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 21:36:52,302] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/img/logo.png
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,302] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/css/indexstyle.css
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,362] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/img/logo.png HTTP/1.1" 500 27
+[2019-11-26 21:36:52,365] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 500 27
+[2019-11-26 21:36:52,404] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/jquery-1.12.4.min.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,406] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 500 27
+[2019-11-26 21:36:52,422] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,423] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 500 27
+[2019-11-26 21:36:52,425] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/script.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,427] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/script.js HTTP/1.1" 500 27
+[2019-11-26 21:36:52,443] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/css/indexstyle.css
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:36:52,444] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 500 27
+[2019-11-26 21:37:28,255] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 21:37:29,586] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:37:36,833] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:37:38,359] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 21:37:38,450] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/css/indexstyle.css
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,450] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/img/logo.png
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,452] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 500 27
+[2019-11-26 21:37:38,454] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/img/logo.png HTTP/1.1" 500 27
+[2019-11-26 21:37:38,495] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/jquery-1.12.4.min.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,497] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,499] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 500 27
+[2019-11-26 21:37:38,500] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 500 27
+[2019-11-26 21:37:38,511] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/js/script.js
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,513] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/js/script.js HTTP/1.1" 500 27
+[2019-11-26 21:37:38,526] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /static/sources/css/indexstyle.css
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\views\static.py", line 36, in serve
+    fullpath = Path(safe_join(document_root, path))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\_os.py", line 32, in safe_join
+    final_path = abspath(join(base, *paths))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+[2019-11-26 21:37:38,527] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 500 27
+[2019-11-26 21:45:47,988] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 21:46:08,864] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 21:46:10,586] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 21:46:10,697] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:46:10,699] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 21:46:10,700] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/img/logo.png
+[2019-11-26 21:46:10,701] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/img/logo.png HTTP/1.1" 404 77
+[2019-11-26 21:46:10,758] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/jquery-1.12.4.min.js
+[2019-11-26 21:46:10,760] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 21:46:10,762] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 21:46:10,762] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 21:46:10,762] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 404 77
+[2019-11-26 21:46:10,768] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 21:46:10,793] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/bootstrap.min.js
+[2019-11-26 21:46:10,793] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 404 77
+[2019-11-26 21:46:10,804] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/js/script.js
+[2019-11-26 21:46:10,805] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/js/script.js HTTP/1.1" 404 77
+[2019-11-26 21:46:10,822] [log.py:228] [log:log_response] [WARNING]- Not Found: /static/sources/css/indexstyle.css
+[2019-11-26 21:46:10,823] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 404 77
+[2019-11-26 22:31:12,664] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 22:34:11,308] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-26 22:34:13,143] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 22:34:53,830] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 22:34:55,379] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 22:35:05,403] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-26 22:35:08,576] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-26 22:35:16,601] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-26 22:35:16,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/img/logo.png HTTP/1.1" 200 2897
+[2019-11-26 22:35:16,690] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 200 6236
+[2019-11-26 22:35:16,713] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/script.js HTTP/1.1" 200 2331
+[2019-11-26 22:35:16,713] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 200 97168
+[2019-11-26 22:35:16,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 200 37045
+[2019-11-26 22:35:20,167] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-26 22:35:20,209] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-26 22:35:20,210] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 77
+[2019-11-26 22:35:20,211] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 200 10496
+[2019-11-26 22:35:23,010] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-26 22:35:23,020] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-26 22:35:23,039] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-26 22:35:24,737] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-26 22:35:24,781] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 200 366675
+[2019-11-26 22:35:24,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor-init.js HTTP/1.1" 200 2039
+[2019-11-26 22:35:24,826] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/gerenzhongxinJS.js HTTP/1.1" 200 889
+[2019-11-26 22:35:24,893] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/ckeditor.js HTTP/1.1" 200 624345
+[2019-11-26 22:35:24,942] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+[2019-11-26 22:35:25,109] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/config.js?t=H8DA HTTP/1.1" 200 332
+[2019-11-26 22:35:25,205] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/lang/zh.js?t=H8DA HTTP/1.1" 200 17383
+[2019-11-26 22:35:25,206] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/editor.css?t=H8DA HTTP/1.1" 200 46901
+[2019-11-26 22:35:25,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/styles.js?t=H8DA HTTP/1.1" 200 5546
+[2019-11-26 22:35:25,272] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/dialogs/dialog.css HTTP/1.1" 200 419
+[2019-11-26 22:35:25,273] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/tableselection/styles/tableselection.css HTTP/1.1" 200 1082
+[2019-11-26 22:35:25,273] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css HTTP/1.1" 200 381
+[2019-11-26 22:35:25,274] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css HTTP/1.1" 200 1306
+[2019-11-26 22:35:25,285] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/copyformatting/styles/copyformatting.css HTTP/1.1" 200 1493
+[2019-11-26 22:35:25,344] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/icons.png?t=dee99e2 HTTP/1.1" 200 12421
+[2019-11-26 22:35:25,373] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/contents.css?t=H8DA HTTP/1.1" 200 2955

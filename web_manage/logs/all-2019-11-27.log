@@ -1,0 +1,1145 @@
+[2019-11-27 20:43:18,948] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:43:40,984] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 32, in _decorator
+    return method(self, *args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 124, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 478, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py", line 50, in home
+    if cache.has_key(key_1):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 39, in _decorator
+    raise e.parent
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 476, in has_key
+    return client.exists(key) == 1
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 1307, in exists
+    return self.execute_command('EXISTS', *names)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 836, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 1071, in get_connection
+    connection.connect()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 543, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+[2019-11-27 20:43:41,050] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET / HTTP/1.1" 500 27
+[2019-11-27 20:43:41,894] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-27 20:43:41,895] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 77
+[2019-11-27 20:44:42,050] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17654
+[2019-11-27 20:44:42,158] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 200 6236
+[2019-11-27 20:44:42,170] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/img/logo.png HTTP/1.1" 200 2897
+[2019-11-27 20:44:42,174] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 200 37045
+[2019-11-27 20:44:42,192] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 200 97168
+[2019-11-27 20:44:42,193] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 200 146638
+[2019-11-27 20:44:42,199] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/series_photo/logo.png HTTP/1.1" 200 6167
+[2019-11-27 20:44:42,208] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/script.js HTTP/1.1" 200 2331
+[2019-11-27 20:44:42,218] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/6661.jpg HTTP/1.1" 200 83408
+[2019-11-27 20:45:09,969] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:45:16,416] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 32, in _decorator
+    return method(self, *args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 124, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 478, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py", line 50, in home
+    if cache.has_key(key_1):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 39, in _decorator
+    raise e.parent
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 476, in has_key
+    return client.exists(key) == 1
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 1307, in exists
+    return self.execute_command('EXISTS', *names)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 836, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 1071, in get_connection
+    connection.connect()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 543, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+[2019-11-27 20:45:16,419] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET / HTTP/1.1" 500 117046
+[2019-11-27 20:46:10,310] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-27 20:46:11,841] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:46:41,973] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17654
+[2019-11-27 20:46:44,857] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin HTTP/1.1" 301 0
+[2019-11-27 20:46:44,999] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 302 0
+[2019-11-27 20:46:45,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1821
+[2019-11-27 20:46:45,207] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/login.css HTTP/1.1" 200 1233
+[2019-11-27 20:46:45,209] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/base.css HTTP/1.1" 200 16378
+[2019-11-27 20:46:45,215] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/responsive.css HTTP/1.1" 200 17944
+[2019-11-27 20:46:45,274] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/fonts.css HTTP/1.1" 200 423
+[2019-11-27 20:46:45,381] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+[2019-11-27 20:46:45,381] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+[2019-11-27 20:46:49,507] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2019-11-27 20:46:49,591] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 18833
+[2019-11-27 20:46:49,632] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/dashboard.css HTTP/1.1" 200 412
+[2019-11-27 20:46:49,699] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[2019-11-27 20:46:49,700] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[2019-11-27 20:46:49,810] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+[2019-11-27 20:47:02,200] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:47:02,259] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/changelists.css HTTP/1.1" 200 6170
+[2019-11-27 20:47:02,302] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 20:47:02,326] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 363
+[2019-11-27 20:47:02,326] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/urlify.js HTTP/1.1" 200 8941
+[2019-11-27 20:47:02,327] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/core.js HTTP/1.1" 200 7099
+[2019-11-27 20:47:02,329] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 271817
+[2019-11-27 20:47:02,331] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 6918
+[2019-11-27 20:47:02,332] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/actions.js HTTP/1.1" 200 6766
+[2019-11-27 20:47:02,339] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1530
+[2019-11-27 20:47:02,340] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 128820
+[2019-11-27 20:47:02,431] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[2019-11-27 20:47:04,155] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/all/inform/6/change/
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 129, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 188, in render
+    return template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 993, in render
+    return render_value_in_context(output, context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 972, in render_value_in_context
+    value = str(value)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\html.py", line 388, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 93, in as_widget
+    renderer=self.form.renderer,
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\ckeditor\widgets.py", line 144, in render
+    'external_plugin_resources': json_encode(external_plugin_resources)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\renderers.py", line 30, in render
+    template = self.get_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\renderers.py", line 36, in get_template
+    return self.engine.get_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 36, in get_template
+    reraise(exc, self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+[2019-11-27 20:47:04,159] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/all/inform/6/change/ HTTP/1.1" 500 571775
+[2019-11-27 20:47:16,670] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:47:46,305] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:47:46,384] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 20:47:47,182] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/all/inform/6/change/
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 129, in find_template
+    raise TemplateDoesNotExist(name, tried=tried)
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 188, in render
+    return template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 993, in render
+    return render_value_in_context(output, context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 972, in render_value_in_context
+    value = str(value)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\html.py", line 388, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 93, in as_widget
+    renderer=self.form.renderer,
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\ckeditor\widgets.py", line 144, in render
+    'external_plugin_resources': json_encode(external_plugin_resources)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\renderers.py", line 30, in render
+    template = self.get_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\renderers.py", line 36, in get_template
+    return self.engine.get_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 36, in get_template
+    reraise(exc, self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 63, in render
+    reraise(exc, self.backend)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 84, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: ckeditor/widget.html
+[2019-11-27 20:47:47,189] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/all/inform/6/change/ HTTP/1.1" 500 571775
+[2019-11-27 20:47:51,626] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:50:29,859] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-27 20:50:31,420] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:50:50,676] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-27 20:50:51,876] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:50:57,053] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\urls.py changed, reloading.
+[2019-11-27 20:50:58,279] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 20:56:10,661] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 18833
+[2019-11-27 20:56:10,712] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 18833
+[2019-11-27 20:56:12,483] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:56:12,603] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 20:56:13,661] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /admin/all/inform/5/change/
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 143, in _get_response
+    response = response.render()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 106, in render
+    self.content = self.rendered_content
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 188, in render
+    return template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 173, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 993, in render
+    return render_value_in_context(output, context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 972, in render_value_in_context
+    value = str(value)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\utils\html.py", line 388, in <lambda>
+    klass.__str__ = lambda self: mark_safe(klass_str(self))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 33, in __str__
+    return self.as_widget()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\forms\boundfield.py", line 93, in as_widget
+    renderer=self.form.renderer,
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\ckeditor\widgets.py", line 135, in render
+    self._set_config()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\ckeditor_uploader\widgets.py", line 12, in _set_config
+    self.config.setdefault('filebrowserUploadUrl', reverse('ckeditor_upload'))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\urls\base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\urls\resolvers.py", line 668, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'ckeditor_upload' not found. 'ckeditor_upload' is not a valid view function or pattern name.
+[2019-11-27 20:56:13,667] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /admin/all/inform/5/change/ HTTP/1.1" 500 538347
+[2019-11-27 20:56:16,635] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 20:56:17,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/ HTTP/1.1" 200 18833
+[2019-11-27 21:13:53,557] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:13:55,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17654
+[2019-11-27 21:14:02,654] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/ HTTP/1.1" 200 5796
+[2019-11-27 21:14:02,804] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 21:14:03,651] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/6/change/ HTTP/1.1" 200 8801
+[2019-11-27 21:14:03,709] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/forms.css HTTP/1.1" 200 8518
+[2019-11-27 21:14:03,743] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor-init.js HTTP/1.1" 200 2039
+[2019-11-27 21:14:03,762] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 21:14:03,769] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+[2019-11-27 21:14:03,771] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/ckeditor.js HTTP/1.1" 200 624345
+[2019-11-27 21:14:03,791] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+[2019-11-27 21:14:03,791] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+[2019-11-27 21:14:03,803] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+[2019-11-27 21:14:03,924] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/config.js?t=H8DA HTTP/1.1" 200 332
+[2019-11-27 21:14:03,989] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/lang/zh.js?t=H8DA HTTP/1.1" 200 17383
+[2019-11-27 21:14:03,989] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/editor.css?t=H8DA HTTP/1.1" 200 46901
+[2019-11-27 21:14:04,040] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/styles.js?t=H8DA HTTP/1.1" 200 5546
+[2019-11-27 21:14:04,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/tableselection/styles/tableselection.css HTTP/1.1" 200 1082
+[2019-11-27 21:14:04,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/dialogs/dialog.css HTTP/1.1" 200 419
+[2019-11-27 21:14:04,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css HTTP/1.1" 200 1306
+[2019-11-27 21:14:04,063] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css HTTP/1.1" 200 381
+[2019-11-27 21:14:04,076] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/copyformatting/styles/copyformatting.css HTTP/1.1" 200 1493
+[2019-11-27 21:14:04,121] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/icons.png?t=dee99e2 HTTP/1.1" 200 12421
+[2019-11-27 21:14:04,147] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/contents.css?t=H8DA HTTP/1.1" 200 2955
+[2019-11-27 21:14:04,149] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo_aOoiGnP.png HTTP/1.1" 200 6167
+[2019-11-27 21:14:34,708] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 12573
+[2019-11-27 21:14:34,761] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/gerenzhongxinStyle.css HTTP/1.1" 200 7316
+[2019-11-27 21:14:34,766] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 200 366675
+[2019-11-27 21:14:34,845] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/gerenzhongxinJS.js HTTP/1.1" 200 889
+[2019-11-27 21:14:34,911] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+[2019-11-27 21:25:14,753] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-27 21:25:22,034] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:25:22,856] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/all/inform/6/change/ HTTP/1.1" 200 10307
+[2019-11-27 21:25:22,976] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/forms.css HTTP/1.1" 200 8518
+[2019-11-27 21:25:23,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/jsi18n/ HTTP/1.1" 200 7755
+[2019-11-27 21:25:23,966] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo_aOoiGnP.png HTTP/1.1" 304 0
+[2019-11-27 21:33:41,532] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:33:44,849] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:34:23,705] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:34:26,922] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:45:19,616] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\web_manage\settings.py changed, reloading.
+[2019-11-27 21:45:20,938] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:53:03,605] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:53:04,846] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:55:09,709] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:55:11,649] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:55:28,051] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:55:29,236] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:56:52,208] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 21:56:53,413] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 21:59:58,404] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:00:00,609] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:02:41,365] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:02:42,610] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:04:37,889] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:04:39,037] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:04:46,353] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:04:48,386] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:04:56,852] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:04:58,477] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:06:50,685] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:06:52,269] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:08:07,342] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:08:09,125] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:10:23,698] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:10:25,060] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:10:43,673] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:10:44,843] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:11:24,977] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:11:26,318] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:12:27,261] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:12:45,735] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17654
+[2019-11-27 22:12:49,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 6988
+[2019-11-27 22:12:49,511] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/conteststyle.css HTTP/1.1" 200 681
+[2019-11-27 22:12:53,263] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:12:53,279] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:12:58,348] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-27 22:13:01,950] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:13:01,991] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 200 10496
+[2019-11-27 22:13:02,007] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:13:02,008] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:13:04,021] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:13:04,029] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:13:04,045] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:13:04,246] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+[2019-11-27 22:13:05,789] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:13:08,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 6478
+[2019-11-27 22:13:09,508] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 6478
+[2019-11-27 22:13:13,587] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:13:13,603] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:13:14,605] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:13:14,654] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:13:14,655] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:13:18,187] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:13:18,196] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:13:18,211] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 22:13:22,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/my_series/ HTTP/1.1" 200 11458
+[2019-11-27 22:13:22,503] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/gerenzhongxinStyle.css HTTP/1.1" 200 7316
+[2019-11-27 22:13:22,505] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 200 366675
+[2019-11-27 22:13:22,527] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/gerenzhongxinJS.js HTTP/1.1" 200 889
+[2019-11-27 22:13:26,062] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/my_coms/ HTTP/1.1" 200 11290
+[2019-11-27 22:13:28,658] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_com?p=35 HTTP/1.1" 301 0
+[2019-11-27 22:13:28,740] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_com/?p=35 HTTP/1.1" 200 17201
+[2019-11-27 22:13:40,315] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/change_com/?p=35 HTTP/1.1" 302 0
+[2019-11-27 22:13:40,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/my_coms/ HTTP/1.1" 200 11287
+[2019-11-27 22:13:43,504] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7817
+[2019-11-27 22:13:46,003] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:13:46,017] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:13:47,102] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:13:47,154] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:13:47,155] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:13:49,760] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:13:49,766] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:13:49,781] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:13:51,119] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:13:52,661] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:13:54,026] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail?com_id=35 HTTP/1.1" 301 0
+[2019-11-27 22:13:54,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13884
+[2019-11-27 22:13:54,124] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/newsstyle.css HTTP/1.1" 200 2683
+[2019-11-27 22:13:54,130] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo_aOoiGnP.png HTTP/1.1" 200 6167
+[2019-11-27 22:13:56,865] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13884
+[2019-11-27 22:13:57,729] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first?id=35 HTTP/1.1" 301 0
+[2019-11-27 22:13:57,801] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 22:13:57,843] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/baomingStyle.css HTTP/1.1" 200 1245
+[2019-11-27 22:13:59,170] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 22:14:02,303] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second?name=A HTTP/1.1" 301 0
+[2019-11-27 22:14:02,421] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 22:14:05,430] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 22:14:14,822] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10767
+[2019-11-27 22:14:15,667] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10767
+[2019-11-27 22:14:18,805] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 6560
+[2019-11-27 22:14:24,381] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9925
+[2019-11-27 22:14:24,421] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 200 6721
+[2019-11-27 22:14:25,618] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail?p1=35&p2=12 HTTP/1.1" 301 0
+[2019-11-27 22:14:25,695] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=12 HTTP/1.1" 200 11001
+[2019-11-27 22:14:26,764] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/delete_apply?p1=35&p2=12&p3=1 HTTP/1.1" 301 0
+[2019-11-27 22:14:27,088] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/delete_apply/?p1=35&p2=12&p3=1 HTTP/1.1" 302 0
+[2019-11-27 22:14:27,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply HTTP/1.1" 301 0
+[2019-11-27 22:14:27,116] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9337
+[2019-11-27 22:14:28,135] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:14:29,056] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13884
+[2019-11-27 22:14:30,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 22:14:33,645] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 22:14:37,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10767
+[2019-11-27 22:14:44,716] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 18280
+[2019-11-27 22:14:45,182] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 18280
+[2019-11-27 22:17:26,669] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:17:28,069] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:17:32,066] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:17:53,957] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17506
+[2019-11-27 22:17:55,293] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-27 22:17:55,294] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3837
+[2019-11-27 22:18:02,055] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17506
+[2019-11-27 22:18:07,074] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:18:11,308] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:18:12,471] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13884
+[2019-11-27 22:18:13,568] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13884
+[2019-11-27 22:18:14,506] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 22:18:15,400] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 22:18:17,316] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 22:18:20,573] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 22:18:22,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10767
+[2019-11-27 22:18:23,661] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10767
+[2019-11-27 22:18:30,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 6560
+[2019-11-27 22:18:30,262] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 20616
+[2019-11-27 22:27:20,334] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:27:23,266] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17506
+[2019-11-27 22:27:24,334] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-27 22:27:24,334] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3837
+[2019-11-27 22:27:25,692] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:27:25,709] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:27:26,627] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:27:26,660] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 304 0
+[2019-11-27 22:27:26,666] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:27:26,667] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:27:29,574] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:27:29,580] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:27:29,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 22:27:31,660] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 22:27:31,699] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-27 22:27:37,597] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/image/dialogs/image.js?t=H8DA HTTP/1.1" 200 21266
+[2019-11-27 22:27:37,597] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/dialog.css?t=H8DA HTTP/1.1" 200 13550
+[2019-11-27 22:27:37,629] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/close.png HTTP/1.1" 200 615
+[2019-11-27 22:27:37,633] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/lock.png HTTP/1.1" 200 506
+[2019-11-27 22:27:37,636] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/refresh.png HTTP/1.1" 200 757
+[2019-11-27 22:27:39,340] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /ckeditor/browse/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 302 0
+[2019-11-27 22:27:39,369] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/ckeditor/browse/%3FCKEditor%3Did_content%26CKEditorFuncNum%3D1%26langCode%3Dzh HTTP/1.1" 200 1961
+[2019-11-27 22:27:39,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/login.css HTTP/1.1" 200 1233
+[2019-11-27 22:27:43,142] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/ckeditor/browse/%3FCKEditor%3Did_content%26CKEditorFuncNum%3D1%26langCode%3Dzh HTTP/1.1" 302 0
+[2019-11-27 22:27:43,171] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /ckeditor/browse/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 200 10071
+[2019-11-27 22:27:43,220] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/galleriffic-2.css HTTP/1.1" 200 3166
+[2019-11-27 22:27:43,220] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/basic.css HTTP/1.1" 200 1043
+[2019-11-27 22:27:43,220] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor_uploader/admin_base.css HTTP/1.1" 200 1481
+[2019-11-27 22:27:43,226] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo.png HTTP/1.1" 200 6167
+[2019-11-27 22:27:43,237] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo_aOoiGnP.png HTTP/1.1" 304 0
+[2019-11-27 22:27:43,269] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/24/warframe0000.jpg HTTP/1.1" 200 1233754
+[2019-11-27 22:27:43,285] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery.opacityrollover.js HTTP/1.1" 200 937
+[2019-11-27 22:27:43,285] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery.galleriffic.js HTTP/1.1" 200 33266
+[2019-11-27 22:27:43,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery-1.3.2.js HTTP/1.1" 200 120619
+[2019-11-27 22:27:43,328] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/loader.gif HTTP/1.1" 200 10453
+[2019-11-27 22:28:01,440] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /ckeditor/upload/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 200 181
+[2019-11-27 22:28:01,503] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/27/warframe0000.jpg HTTP/1.1" 200 1233754
+[2019-11-27 22:28:01,507] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/27/warframe0000.jpg HTTP/1.1" 304 0
+[2019-11-27 22:28:07,426] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/27/warframe0000.jpg HTTP/1.1" 304 0
+[2019-11-27 22:28:33,641] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:28:35,800] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:30:49,213] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:30:51,148] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:32:11,625] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:32:12,788] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:33:29,845] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:33:31,695] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:33:45,710] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:33:47,930] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:34:08,923] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:34:10,510] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:34:58,090] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:34:59,559] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:35:37,110] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:35:38,865] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:36:01,997] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:36:04,060] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:36:12,539] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:36:15,526] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 22:36:15,564] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-27 22:36:27,438] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/add_notices/ HTTP/1.1" 302 0
+[2019-11-27 22:36:27,479] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11908
+[2019-11-27 22:36:30,056] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_notice?p=7 HTTP/1.1" 301 0
+[2019-11-27 22:36:30,134] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_notice/?p=7 HTTP/1.1" 200 14180
+[2019-11-27 22:36:48,799] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:36:55,821] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_notice/?p=7 HTTP/1.1" 200 14180
+[2019-11-27 22:36:58,990] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/change_notice/?p=7 HTTP/1.1" 302 0
+[2019-11-27 22:36:59,008] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11908
+[2019-11-27 22:37:07,278] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 22:37:14,136] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/add_notices/ HTTP/1.1" 302 0
+[2019-11-27 22:37:14,152] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 12310
+[2019-11-27 22:37:36,785] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\member\views.py changed, reloading.
+[2019-11-27 22:37:39,913] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:37:40,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice?p=7 HTTP/1.1" 301 0
+[2019-11-27 22:37:40,512] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice/?p=7 HTTP/1.1" 302 0
+[2019-11-27 22:37:40,556] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11908
+[2019-11-27 22:37:41,490] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice?p=8 HTTP/1.1" 301 0
+[2019-11-27 22:37:41,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice/?p=8 HTTP/1.1" 302 0
+[2019-11-27 22:37:41,572] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11506
+[2019-11-27 22:37:42,118] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice?p=5 HTTP/1.1" 301 0
+[2019-11-27 22:37:42,178] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice/?p=5 HTTP/1.1" 302 0
+[2019-11-27 22:37:42,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11104
+[2019-11-27 22:37:42,650] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice?p=6 HTTP/1.1" 301 0
+[2019-11-27 22:37:42,721] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/delete_notice/?p=6 HTTP/1.1" 302 0
+[2019-11-27 22:37:42,738] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 10767
+[2019-11-27 22:37:43,400] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 22:37:53,228] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/add_notices/ HTTP/1.1" 302 0
+[2019-11-27 22:37:53,244] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11104
+[2019-11-27 22:37:55,059] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 22:37:59,233] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/add_notices/ HTTP/1.1" 200 14447
+[2019-11-27 22:52:54,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7817
+[2019-11-27 22:52:59,826] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:52:59,843] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:53:00,750] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:53:00,790] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 304 0
+[2019-11-27 22:53:00,792] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:53:00,793] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:53:06,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:53:06,550] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:53:06,566] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:53:08,595] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9925
+[2019-11-27 22:53:08,631] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 200 6721
+[2019-11-27 22:53:09,825] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail?p1=35&p2=13 HTTP/1.1" 301 0
+[2019-11-27 22:53:09,861] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=13 HTTP/1.1" 200 11001
+[2019-11-27 22:53:11,058] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/delete_apply?p1=35&p2=13&p3=1 HTTP/1.1" 301 0
+[2019-11-27 22:53:11,376] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/delete_apply/?p1=35&p2=13&p3=1 HTTP/1.1" 302 0
+[2019-11-27 22:53:11,382] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply HTTP/1.1" 301 0
+[2019-11-27 22:53:11,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9337
+[2019-11-27 22:53:12,583] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:13,584] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:13,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list HTTP/1.1" 301 0
+[2019-11-27 22:53:13,611] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:15,149] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:15,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:17,849] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:19,649] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:19,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:34,189] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:53:50,011] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:51,010] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:51,035] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:52,234] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:52,259] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:52,842] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:52,863] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:53,644] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:53:53,668] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:53:54,701] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 15888
+[2019-11-27 22:53:54,736] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/jquery.eeyellow.Timeline.css HTTP/1.1" 200 4567
+[2019-11-27 22:53:54,751] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/jquery.eeyellow.Timeline.js HTTP/1.1" 200 5512
+[2019-11-27 22:53:55,221] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:02,253] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9337
+[2019-11-27 22:54:03,775] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:09,364] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:54:09,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:10,645] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:13,332] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 15888
+[2019-11-27 22:54:14,103] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:16,217] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:54:16,231] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:54:17,120] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:54:17,170] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:54:17,170] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:54:20,125] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:54:20,133] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:54:20,150] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 22:54:23,812] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/my_coms/ HTTP/1.1" 200 11287
+[2019-11-27 22:54:23,843] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-27 22:54:25,259] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_com?p=35 HTTP/1.1" 301 0
+[2019-11-27 22:54:25,282] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/change_com/?p=35 HTTP/1.1" 200 17201
+[2019-11-27 22:54:35,238] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/change_com/?p=35 HTTP/1.1" 302 0
+[2019-11-27 22:54:35,256] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/my_coms/ HTTP/1.1" 200 11287
+[2019-11-27 22:54:37,625] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:54:37,640] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:54:38,457] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:54:38,492] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:54:38,492] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:54:40,184] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:54:40,191] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:54:40,209] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:54:41,308] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:42,067] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:54:42,090] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:54:53,844] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 22:54:53,869] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:56:13,940] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:56:15,579] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 22:56:16,712] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 6828
+[2019-11-27 22:56:19,388] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:56:19,408] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:56:20,748] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:56:20,788] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:56:20,788] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:56:38,808] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:56:42,281] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:58:07,429] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 22:58:08,759] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:58:26,358] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py changed, reloading.
+[2019-11-27 22:58:29,765] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:58:31,370] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:58:31,377] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:58:31,425] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 22:58:33,952] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 22:58:33,967] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 22:59:26,826] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 22:59:28,014] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 22:59:28,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 22:59:28,347] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 22:59:28,347] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 22:59:31,046] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 22:59:31,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 22:59:31,086] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 22:59:33,441] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:01:22,809] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:01:24,286] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:01:33,907] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:01:35,272] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:01:46,983] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:01:48,289] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:03:53,371] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:03:54,360] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:03:54,418] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 304 0
+[2019-11-27 23:03:58,936] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu HTTP/1.1" 301 0
+[2019-11-27 23:03:58,999] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17656
+[2019-11-27 23:04:05,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /student/alter_info_stu/ HTTP/1.1" 302 0
+[2019-11-27 23:04:05,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info HTTP/1.1" 301 0
+[2019-11-27 23:04:05,549] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:04:17,704] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:04:21,440] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:04:25,006] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:04:41,337] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:04:42,428] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:05:11,590] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:05:13,200] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:07:01,294] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:07:02,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:07:03,180] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:11,248] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:08:12,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:48,176] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:08:48,938] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:50,091] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:50,795] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:51,382] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:51,930] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:08:52,600] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:10:28,360] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:10:30,475] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 12734
+[2019-11-27 23:11:15,821] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:12:51,521] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:12:52,016] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13127
+[2019-11-27 23:13:09,422] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:13:10,172] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13127
+[2019-11-27 23:14:02,704] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:14:03,501] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13037
+[2019-11-27 23:14:09,333] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:14:09,367] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:14:10,274] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:14:10,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 304 0
+[2019-11-27 23:14:10,315] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:14:10,315] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:14:13,399] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:14:13,409] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:14:13,427] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 23:14:18,525] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/msg_application HTTP/1.1" 301 0
+[2019-11-27 23:14:18,602] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/msg_application/ HTTP/1.1" 200 14085
+[2019-11-27 23:14:18,637] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-27 23:14:21,183] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/msg_application_agree?p1=0&p2=4 HTTP/1.1" 301 0
+[2019-11-27 23:14:21,467] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/msg_application_agree/?p1=0&p2=4 HTTP/1.1" 302 0
+[2019-11-27 23:14:21,486] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/msg_application/ HTTP/1.1" 200 10420
+[2019-11-27 23:14:23,715] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:14:23,732] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:14:24,704] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:14:24,747] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:14:24,748] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:14:26,716] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:14:26,723] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:14:26,739] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 23:14:28,745] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13093
+[2019-11-27 23:14:31,884] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9335
+[2019-11-27 23:14:33,580] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 23:14:34,597] [views.py:202] [views:com_detail] [ERROR]- 找不到公告信息！
+[2019-11-27 23:14:34,598] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 302 0
+[2019-11-27 23:14:34,623] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 23:14:36,039] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_list/ HTTP/1.1" 200 9800
+[2019-11-27 23:15:01,541] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:15:01,559] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:15:02,396] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:15:02,437] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:15:02,438] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:15:05,266] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:15:05,272] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:15:05,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 23:15:09,723] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-27 23:15:22,496] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/dialog.css?t=H8DA HTTP/1.1" 200 13550
+[2019-11-27 23:15:22,496] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/image/dialogs/image.js?t=H8DA HTTP/1.1" 200 21266
+[2019-11-27 23:15:22,530] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/close.png HTTP/1.1" 200 615
+[2019-11-27 23:15:22,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/lock.png HTTP/1.1" 200 506
+[2019-11-27 23:15:22,535] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/images/refresh.png HTTP/1.1" 200 757
+[2019-11-27 23:15:23,695] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /ckeditor/browse/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 302 0
+[2019-11-27 23:15:23,730] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /admin/login/?next=/ckeditor/browse/%3FCKEditor%3Did_content%26CKEditorFuncNum%3D1%26langCode%3Dzh HTTP/1.1" 200 1961
+[2019-11-27 23:15:23,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/base.css HTTP/1.1" 304 0
+[2019-11-27 23:15:23,758] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/login.css HTTP/1.1" 200 1233
+[2019-11-27 23:15:23,766] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/responsive.css HTTP/1.1" 304 0
+[2019-11-27 23:15:23,804] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+[2019-11-27 23:15:24,112] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 304 0
+[2019-11-27 23:15:24,115] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 304 0
+[2019-11-27 23:15:26,708] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /admin/login/?next=/ckeditor/browse/%3FCKEditor%3Did_content%26CKEditorFuncNum%3D1%26langCode%3Dzh HTTP/1.1" 302 0
+[2019-11-27 23:15:26,745] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /ckeditor/browse/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 200 11022
+[2019-11-27 23:15:26,773] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/basic.css HTTP/1.1" 200 1043
+[2019-11-27 23:15:26,773] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor_uploader/admin_base.css HTTP/1.1" 200 1481
+[2019-11-27 23:15:26,775] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/galleriffic-2.css HTTP/1.1" 200 3166
+[2019-11-27 23:15:26,784] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo.png HTTP/1.1" 200 6167
+[2019-11-27 23:15:26,785] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/21/logo_aOoiGnP.png HTTP/1.1" 304 0
+[2019-11-27 23:15:26,812] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/27/warframe0000.jpg HTTP/1.1" 304 0
+[2019-11-27 23:15:26,816] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/article_images/2019/11/24/warframe0000.jpg HTTP/1.1" 200 1233754
+[2019-11-27 23:15:26,837] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery.galleriffic.js HTTP/1.1" 200 33266
+[2019-11-27 23:15:26,838] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery-1.3.2.js HTTP/1.1" 200 120619
+[2019-11-27 23:15:26,840] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/js/jquery.opacityrollover.js HTTP/1.1" 200 937
+[2019-11-27 23:15:26,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/galleriffic/css/loader.gif HTTP/1.1" 200 10453
+[2019-11-27 23:15:49,666] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /member/add_notices/ HTTP/1.1" 302 0
+[2019-11-27 23:15:49,680] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/notice_comanage/ HTTP/1.1" 200 11511
+[2019-11-27 23:15:51,726] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7817
+[2019-11-27 23:15:55,242] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:15:55,258] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:15:56,185] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:15:56,229] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:15:56,229] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:15:57,826] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:15:57,833] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:15:57,848] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 23:15:58,860] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7307
+[2019-11-27 23:15:59,935] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_detail/?com_id=35 HTTP/1.1" 200 13738
+[2019-11-27 23:16:01,433] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_apply_first/?id=35 HTTP/1.1" 200 20113
+[2019-11-27 23:16:05,155] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/select_mate_second/?name=A HTTP/1.1" 200 538
+[2019-11-27 23:16:06,945] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_first/?id=35 HTTP/1.1" 200 10765
+[2019-11-27 23:16:08,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /competition/com_apply_second/?id=35 HTTP/1.1" 200 6560
+[2019-11-27 23:16:09,633] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9923
+[2019-11-27 23:16:09,673] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 304 0
+[2019-11-27 23:16:23,435] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:16:23,451] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:16:24,553] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:16:24,594] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:16:24,595] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:16:27,124] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:16:27,131] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:16:27,146] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 16798
+[2019-11-27 23:16:28,312] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 6961
+[2019-11-27 23:16:31,020] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/personal_center_teach_apply HTTP/1.1" 301 0
+[2019-11-27 23:16:31,603] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/personal_center_teach_apply/ HTTP/1.1" 200 9859
+[2019-11-27 23:16:31,635] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/teach_photo/11/head.jpg/ HTTP/1.1" 200 41988
+[2019-11-27 23:16:33,895] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/teach_apply_deatil?p1=35&p2=14 HTTP/1.1" 301 0
+[2019-11-27 23:16:33,989] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/teach_apply_deatil/?p1=35&p2=14 HTTP/1.1" 200 9563
+[2019-11-27 23:16:36,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/confirm_apply?p1=35&p2=14 HTTP/1.1" 301 0
+[2019-11-27 23:16:37,233] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/confirm_apply/?p1=35&p2=14 HTTP/1.1" 302 0
+[2019-11-27 23:16:37,257] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /teacher/personal_center_teach_apply/ HTTP/1.1" 200 8785
+[2019-11-27 23:16:38,782] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:16:38,799] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:16:40,634] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:16:40,676] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:16:40,677] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:16:43,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:16:43,113] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:16:43,128] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 23:16:52,033] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 9908
+[2019-11-27 23:23:07,081] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:23:08,367] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:24:06,346] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:24:07,572] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:24:50,591] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:24:52,217] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:25:21,273] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:25:22,857] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:25:55,342] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:25:57,115] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:26:48,311] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:26:49,463] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:28:39,007] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:28:41,972] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 10101
+[2019-11-27 23:28:42,039] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 304 0
+[2019-11-27 23:28:43,831] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail?p1=35&p2=14 HTTP/1.1" 301 0
+[2019-11-27 23:28:43,871] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:28:46,495] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_edit?p1=35&p2=14 HTTP/1.1" 301 0
+[2019-11-27 23:28:46,566] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_edit/?p1=35&p2=14 HTTP/1.1" 200 18577
+[2019-11-27 23:28:52,286] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /student/stu_apply_edit/?p1=35&p2=14 HTTP/1.1" 302 0
+[2019-11-27 23:28:52,311] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_apply/ HTTP/1.1" 200 10136
+[2019-11-27 23:30:27,313] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:30:28,995] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:30:46,476] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:30:50,351] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:31:26,850] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:31:27,905] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /student/stu_apply_detail/
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\smartif.py", line 175, in translate_token
+    op = OPERATORS[token]
+KeyError: "'1'and"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py", line 328, in stu_apply_detail
+    return render(request, 'student/personal_center/apply_detail.html', context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loaders\base.py", line 30, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 209, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 959, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 884, in __init__
+    super().__init__(*args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\smartif.py", line 166, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\smartif.py", line 177, in translate_token
+    return self.create_var(token)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 887, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 563, in compile_filter
+    return FilterExpression(token, self)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 663, in __init__
+    "from '%s'" % (token[upto:], token))
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: 'and' from ''1'and'
+[2019-11-27 23:31:27,914] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 500 222062
+[2019-11-27 23:31:48,399] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:31:50,136] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:32:26,680] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:32:28,479] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:32:29,432] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:32:35,862] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:32:37,330] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:32:53,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:32:55,567] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:32:56,416] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:32:58,944] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10999
+[2019-11-27 23:33:36,107] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:33:36,918] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 11057
+[2019-11-27 23:33:48,950] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:33:49,696] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 11057
+[2019-11-27 23:34:22,186] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\student\views.py changed, reloading.
+[2019-11-27 23:34:23,391] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:34:30,360] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:34:31,148] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/stu_apply_detail/?p1=35&p2=14 HTTP/1.1" 200 10749
+[2019-11-27 23:34:35,487] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:34:35,528] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:34:36,481] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:34:36,519] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 304 0
+[2019-11-27 23:34:36,521] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:34:36,522] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:34:39,222] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:34:39,229] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:34:39,245] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-27 23:34:41,487] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/apply_application HTTP/1.1" 301 0
+[2019-11-27 23:34:41,529] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/apply_application/ HTTP/1.1" 200 13705
+[2019-11-27 23:34:41,568] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-27 23:34:45,371] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/apply_application_agree?p=10 HTTP/1.1" 301 0
+[2019-11-27 23:34:45,873] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/apply_application_agree/?p=10 HTTP/1.1" 302 0
+[2019-11-27 23:34:45,888] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/apply_application/ HTTP/1.1" 200 9909
+[2019-11-27 23:34:47,557] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:34:47,574] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:34:48,487] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5932
+[2019-11-27 23:34:48,528] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:34:48,529] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:34:50,330] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-27 23:34:50,339] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-27 23:34:50,356] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 23:35:51,920] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:36:09,748] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17506
+[2019-11-27 23:36:22,322] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /logout/ HTTP/1.1" 302 0
+[2019-11-27 23:36:22,340] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:55:34,526] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:55:41,581] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-27 23:55:43,036] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5933
+[2019-11-27 23:55:43,074] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/bak/1.jpg HTTP/1.1" 200 23913
+[2019-11-27 23:55:43,076] [log.py:228] [log:log_response] [WARNING]- Not Found: /login/img/rjxx.png
+[2019-11-27 23:55:43,077] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /login/img/rjxx.png HTTP/1.1" 404 3858
+[2019-11-27 23:56:02,552] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-27 23:56:06,465] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15891
+[2019-11-27 23:56:07,810] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5946
+[2019-11-27 23:56:07,851] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 304 0
+[2019-11-27 23:56:07,851] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/bak/1.jpg HTTP/1.1" 304 0

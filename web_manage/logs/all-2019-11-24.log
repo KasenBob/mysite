@@ -1,0 +1,51 @@
+[2019-11-24 21:19:06,980] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:19:27,309] [log.py:228] [log:log_response] [WARNING]- Not Found: /abc
+[2019-11-24 21:19:27,309] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /abc HTTP/1.1" 404 77
+[2019-11-24 21:20:11,394] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:20:12,515] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:21:04,797] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:21:05,892] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:22:44,599] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:22:45,771] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:22:59,814] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:23:00,944] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:23:12,687] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:23:13,797] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:23:16,530] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:23:17,657] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:23:27,166] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:23:28,289] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:23:33,268] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:23:34,341] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:24:25,934] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:26,936] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:27,933] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:28,935] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:29,912] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:30,912] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:31,914] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:32,914] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:33,915] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:34,916] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:35,918] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:36,917] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:37,918] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:38,919] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:39,918] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:40,920] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:41,923] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:42,921] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:43,922] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:44,923] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:45,924] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:46,925] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:47,926] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:48,926] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:49,927] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:50,929] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:51,931] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:24:52,932] [tasks.py:31] [tasks:test_group_test] [ERROR]- Error!
+[2019-11-24 21:25:07,965] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:25:09,063] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-24 21:26:13,851] [autoreload.py:213] [autoreload:trigger_reload] [INFO]- D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\tasks.py changed, reloading.
+[2019-11-24 21:26:14,938] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader

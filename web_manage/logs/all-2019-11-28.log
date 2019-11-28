@@ -1,0 +1,263 @@
+[2019-11-28 00:01:13,390] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 00:01:17,868] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 15891
+[2019-11-28 00:01:18,740] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-28 00:01:18,741] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3840
+[2019-11-28 00:01:22,020] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /KasenBob HTTP/1.1" 301 0
+[2019-11-28 00:01:22,107] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /KasenBob/ HTTP/1.1" 302 0
+[2019-11-28 00:01:22,156] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /KasenBob/login/?next=/KasenBob/ HTTP/1.1" 200 1833
+[2019-11-28 00:01:27,141] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5946
+[2019-11-28 00:01:27,194] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/bak/1.jpg HTTP/1.1" 304 0
+[2019-11-28 00:01:30,133] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-28 00:01:30,139] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-28 00:01:30,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17654
+[2019-11-28 00:01:34,554] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /member/add_notices/ HTTP/1.1" 200 14079
+[2019-11-28 00:01:34,597] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/touxiang.png HTTP/1.1" 304 0
+[2019-11-28 00:01:34,621] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor-init.js HTTP/1.1" 304 0
+[2019-11-28 00:01:34,694] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/ckeditor.js HTTP/1.1" 304 0
+[2019-11-28 00:01:34,975] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/config.js?t=H8DA HTTP/1.1" 304 0
+[2019-11-28 00:01:35,023] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/editor.css?t=H8DA HTTP/1.1" 304 0
+[2019-11-28 00:01:35,025] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/lang/zh.js?t=H8DA HTTP/1.1" 304 0
+[2019-11-28 00:01:35,053] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/styles.js?t=H8DA HTTP/1.1" 304 0
+[2019-11-28 00:01:35,090] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/dialogs/dialog.css HTTP/1.1" 304 0
+[2019-11-28 00:01:35,091] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/scayt/skins/moono-lisa/scayt.css HTTP/1.1" 304 0
+[2019-11-28 00:01:35,095] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/tableselection/styles/tableselection.css HTTP/1.1" 304 0
+[2019-11-28 00:01:35,096] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/wsc/skins/moono-lisa/wsc.css HTTP/1.1" 304 0
+[2019-11-28 00:01:35,098] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/plugins/copyformatting/styles/copyformatting.css HTTP/1.1" 304 0
+[2019-11-28 00:01:35,164] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/skins/moono-lisa/icons.png?t=dee99e2 HTTP/1.1" 304 0
+[2019-11-28 00:01:35,215] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/ckeditor/ckeditor/contents.css?t=H8DA HTTP/1.1" 304 0
+[2019-11-28 00:01:39,007] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /ckeditor/browse/?CKEditor=id_content&CKEditorFuncNum=1&langCode=zh HTTP/1.1" 302 0
+[2019-11-28 00:01:39,048] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /KasenBob/login/?next=/ckeditor/browse/%3FCKEditor%3Did_content%26CKEditorFuncNum%3D1%26langCode%3Dzh HTTP/1.1" 200 1967
+[2019-11-28 10:10:09,862] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:10:18,687] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 32, in _decorator
+    return method(self, *args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 124, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 478, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\all\views.py", line 50, in home
+    if cache.has_key(key_1):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\cache.py", line 39, in _decorator
+    raise e.parent
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django_redis\client\default.py", line 476, in has_key
+    return client.exists(key) == 1
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 1307, in exists
+    return self.execute_command('EXISTS', *names)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\client.py", line 836, in execute_command
+    conn = self.connection or pool.get_connection(command_name, **options)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 1071, in get_connection
+    connection.connect()
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\redis\connection.py", line 543, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 10061 connecting to 127.0.0.1:6379. 由于目标计算机积极拒绝，无法连接。.
+[2019-11-28 10:10:18,690] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET / HTTP/1.1" 500 116915
+[2019-11-28 10:10:19,386] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-28 10:10:19,387] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3840
+[2019-11-28 10:11:03,309] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17640
+[2019-11-28 10:11:03,426] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/series_photo/logo.png HTTP/1.1" 200 6167
+[2019-11-28 10:11:41,859] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:11:44,627] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17640
+[2019-11-28 10:13:57,279] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:14:01,108] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17279
+[2019-11-28 10:14:20,727] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:14:23,420] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17387
+[2019-11-28 10:15:19,942] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:15:22,906] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17545
+[2019-11-28 10:15:27,049] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 16036
+[2019-11-28 10:15:27,101] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/conteststyle.css HTTP/1.1" 304 0
+[2019-11-28 10:15:27,101] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/jquery.eeyellow.Timeline.css HTTP/1.1" 304 0
+[2019-11-28 10:15:27,127] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/jquery.eeyellow.Timeline.js HTTP/1.1" 304 0
+[2019-11-28 10:19:14,769] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:19:20,464] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 16443
+[2019-11-28 10:19:51,129] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:19:57,822] [log.py:228] [log:log_response] [ERROR]- Internal Server Error: /competition/series_list/
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 829, in _resolve_lookup
+    current = current[bit]
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: '120'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 835, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(type(current), bit):
+AttributeError: type object 'RequestContext' has no attribute '120'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 843, in _resolve_lookup
+    current = current[int(bit)]
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 120
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\web_manage\competition\views.py", line 94, in series_list
+    return render(request, 'competition/series_list.html', context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\defaulttags.py", line 209, in render
+    nodelist.append(node.render_annotated(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 904, in render_annotated
+    return self.render(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 987, in render
+    output = self.filter_expression.resolve(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 692, in resolve
+    arg_vals.append(arg.resolve(context))
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 796, in resolve
+    value = self._resolve_lookup(context)
+  File "D:\Project\学科竞赛报名系统\Code\mysite\lib\site-packages\django\template\base.py", line 850, in _resolve_lookup
+    (bit, current))  # missing attribute
+django.template.base.VariableDoesNotExist: Failed lookup for key [120] in [{'True': True, 'False': False, 'None': None}, {}, {}, {'series_list_one': [[<series_info: series_info object (24)>]], 'series_list_all': []}]
+[2019-11-28 10:19:57,829] [basehttp.py:154] [basehttp:log_message] [ERROR]- "GET /competition/series_list/ HTTP/1.1" 500 235632
+[2019-11-28 10:21:39,640] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:21:57,471] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:22:01,779] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 16449
+[2019-11-28 10:22:32,744] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_list/ HTTP/1.1" 200 10135
+[2019-11-28 10:22:32,789] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/newsstyle.css HTTP/1.1" 304 0
+[2019-11-28 10:22:33,081] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 304 0
+[2019-11-28 10:22:38,454] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail?p=10 HTTP/1.1" 301 0
+[2019-11-28 10:22:38,481] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail/?p=10 HTTP/1.1" 200 13724
+[2019-11-28 10:23:25,222] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 10:23:36,057] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_list/ HTTP/1.1" 200 10135
+[2019-11-28 10:23:41,858] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/news_list/ HTTP/1.1" 200 9535
+[2019-11-28 10:23:45,220] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/series_list/ HTTP/1.1" 200 16449
+[2019-11-28 10:23:46,543] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /competition/com_list/ HTTP/1.1" 200 7817
+[2019-11-28 10:23:51,147] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 10:52:43,901] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:53:01,348] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17533
+[2019-11-28 10:53:01,976] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-28 10:53:01,977] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3840
+[2019-11-28 10:53:09,769] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17533
+[2019-11-28 10:54:18,734] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17533
+[2019-11-28 10:54:54,452] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET / HTTP/1.1" 200 17533
+[2019-11-28 10:55:23,104] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 200 542194
+[2019-11-28 10:55:25,930] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 10:55:35,126] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail/?p=10 HTTP/1.1" 200 13724
+[2019-11-28 10:56:11,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 10:56:12,193] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-28 10:56:12,194] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3840
+[2019-11-28 10:56:25,801] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail/?p=10 HTTP/1.1" 200 13724
+[2019-11-28 10:56:39,000] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail/?p=10 HTTP/1.1" 200 13724
+[2019-11-28 10:57:13,900] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:57:32,476] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:57:38,136] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 10:59:15,807] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 10:59:22,565] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17533
+[2019-11-28 11:00:44,400] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:00:51,516] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17928
+[2019-11-28 11:01:43,525] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:01:52,955] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17921
+[2019-11-28 11:04:52,308] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:05:01,318] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17969
+[2019-11-28 11:05:20,908] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:05:29,471] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:05:33,234] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17927
+[2019-11-28 11:06:09,062] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:06:15,664] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17593
+[2019-11-28 11:06:38,744] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:06:42,720] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17593
+[2019-11-28 11:07:05,401] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 15830
+[2019-11-28 11:07:05,448] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/jquery-1.12.4.min.js HTTP/1.1" 200 97168
+[2019-11-28 11:07:05,453] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/indexstyle.css HTTP/1.1" 200 6236
+[2019-11-28 11:07:05,460] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/bootstrap.min.js HTTP/1.1" 200 37045
+[2019-11-28 11:07:05,466] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/bootstrap.min.css HTTP/1.1" 200 146638
+[2019-11-28 11:07:05,491] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/6661.jpg HTTP/1.1" 200 83408
+[2019-11-28 11:07:05,496] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/series_photo/logo.png HTTP/1.1" 200 6167
+[2019-11-28 11:07:05,499] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/img/logo.png HTTP/1.1" 200 2897
+[2019-11-28 11:07:05,500] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/script.js HTTP/1.1" 200 2331
+[2019-11-28 11:07:05,635] [log.py:228] [log:log_response] [WARNING]- Not Found: /favicon.ico
+[2019-11-28 11:07:05,635] [basehttp.py:154] [basehttp:log_message] [WARNING]- "GET /favicon.ico HTTP/1.1" 404 3840
+[2019-11-28 11:07:31,214] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:07:37,197] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 16165
+[2019-11-28 11:07:42,524] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /login/ HTTP/1.1" 200 5946
+[2019-11-28 11:07:42,551] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/bak/1.jpg HTTP/1.1" 200 23913
+[2019-11-28 11:07:42,578] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/web_photo/hzxy.png HTTP/1.1" 200 10496
+[2019-11-28 11:07:48,542] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /login/ HTTP/1.1" 302 0
+[2019-11-28 11:07:48,546] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home HTTP/1.1" 301 0
+[2019-11-28 11:07:48,560] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /home/ HTTP/1.1" 200 17780
+[2019-11-28 11:07:48,621] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/fonts/glyphicons-halflings-regular.woff2 HTTP/1.1" 200 18028
+[2019-11-28 11:08:05,346] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_list/ HTTP/1.1" 200 9987
+[2019-11-28 11:08:05,403] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/newsstyle.css HTTP/1.1" 200 2683
+[2019-11-28 11:08:07,497] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail?p=10 HTTP/1.1" 301 0
+[2019-11-28 11:08:07,508] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /news/informs_detail/?p=10 HTTP/1.1" 200 13576
+[2019-11-28 11:08:31,494] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13093
+[2019-11-28 11:08:31,523] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/gerenzhongxinStyle.css HTTP/1.1" 200 7316
+[2019-11-28 11:08:31,534] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/js/gerenzhongxinJS.js HTTP/1.1" 200 889
+[2019-11-28 11:08:31,544] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /media/stu_photo/1/head.jpg HTTP/1.1" 200 6721
+[2019-11-28 11:10:05,194] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:10:08,061] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13126
+[2019-11-28 11:10:10,255] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu HTTP/1.1" 301 0
+[2019-11-28 11:10:10,315] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17592
+[2019-11-28 11:11:40,374] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /static/sources/css/bootstrap.min.css.map HTTP/1.1" 200 542194
+[2019-11-28 11:13:44,019] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:13:47,007] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17612
+[2019-11-28 11:14:04,983] [basehttp.py:154] [basehttp:log_message] [INFO]- "POST /student/alter_info_stu/ HTTP/1.1" 302 0
+[2019-11-28 11:14:04,986] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info HTTP/1.1" 301 0
+[2019-11-28 11:14:05,001] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13126
+[2019-11-28 11:14:08,870] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17612
+[2019-11-28 11:15:23,169] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:15:30,363] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17626
+[2019-11-28 11:16:07,063] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:16:10,731] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_message/ HTTP/1.1" 200 12723
+[2019-11-28 11:16:11,746] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13126
+[2019-11-28 11:16:16,989] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17602
+[2019-11-28 11:16:53,954] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/personal_center_stu_info/ HTTP/1.1" 200 13126
+[2019-11-28 11:17:03,790] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17602
+[2019-11-28 11:17:54,295] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:18:01,537] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17606
+[2019-11-28 11:18:28,487] [autoreload.py:586] [autoreload:run_with_reloader] [INFO]- Watching for file changes with StatReloader
+[2019-11-28 11:18:39,539] [basehttp.py:154] [basehttp:log_message] [INFO]- "GET /student/alter_info_stu/ HTTP/1.1" 200 17631

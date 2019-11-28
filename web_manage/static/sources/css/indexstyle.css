@@ -6,7 +6,7 @@
     background-color: #2B2C30;
 }
 
-.xuanta{
+.xuanta {
 
 }
 
@@ -211,6 +211,12 @@ ul li:hover {
 
 }
 
+.btn-transparent:visited {
+    color: white;
+    border: #6CB670 1px solid;
+
+}
+
 .btn-transparent:hover {
     background-color: #6cb670;
     border: 1px solid transparent;
@@ -248,6 +254,8 @@ ul li:hover {
 #msg .yitiao {
     margin-top: 10px;
 }
+
+
 
 #msg .riqi {
     float: right;

@@ -21,7 +21,8 @@
                                  style="width: 63px;height: 63px;border: 2px solid white;border-radius: 20px;">
                         </div>
                         <p class="xingming">{{ stu_info.stu_name }}</p>
-                        <p class="banji">{{ stu_info.department.depart_name }}{{ stu_info.major.major_name }}
+                        <p class="banji">{{ stu_info.department.depart_name }}<br>
+                            {{ stu_info.major.major_name }}
                             {{ stu_info.grade.grade_name }}{{ stu_info.stu_class.class_name }}</p>
                         <p style="margin-top: 0;font-size: 10px;">
                             <a href="/student/edit_pwd/">修改密码</a>
