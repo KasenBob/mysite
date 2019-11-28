@@ -110,8 +110,8 @@
 
                     {% for new in news_list %}
                         <div class="yitiao">
-                            <span><a href="/news/news_detail?p={{ new.pk }}">{{ new.title }}</a></span><span
-                                class="riqi"> {{ new.created_time }}</span>
+                            <a href="/news/news_detail?p={{ new.pk }}">{{ new.title }}</span><span
+                                    class="riqi"> {{ new.created_time }}</span></a>
                         </div>
                         {% empty %}
                         <h3>暂无更多新闻</h3>
@@ -126,8 +126,8 @@
                     <hr class="hrs">
                     {% for inform in informs_list %}
                         <div class="yitiao">
-                            <span><a href="/news/informs_detail?p={{ inform.pk }}">{{ inform.title }}</a></span><span
-                                class="riqi">{{ inform.create_time }}</span>
+                            <a href="/news/informs_detail?p={{ inform.pk }}">{{ inform.title }}<span
+                                    class="riqi">{{ inform.create_time }}</span></a>
                         </div>
                         {% empty %}
                         <h3>暂无更多公告</h3>
@@ -156,7 +156,7 @@
                                      alt="logo">
                                 <div class="member">
                                     <h3>{{ show_com.com_name }}</h3>
-                                    <p>{{ show_com.series_id.introduction }}</p>
+                                    <p>{{ show_com.series_id.introduction|truncatechars:120 }}。。。。。。</p>
                                     <a class="btn btn-transparent"
                                        href="/competition/com_detail?com_id={{ show_com.com_id }}">更多详情</a>
                                 </div>

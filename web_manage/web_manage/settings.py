@@ -22,9 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-o0-g!(a=)%b%!(4r+e)mu5kn!6x7nma4rfn0_&+_vk%#5ebe$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-TEMPLATE_DEBUG = False
+DEBUG = True
 
 # HOST settings
 ALLOWED_HOSTS = ['49.234.197.105', '172.17.0.14', '127.0.0.1']
@@ -91,7 +89,8 @@ DATABASES = {
 		'USER': 'root',
 		'PASSWORD': '2223601',
 		'HOST': 'localhost',
-		'PORT': '3306'
+		'PORT': '3306',
+		'CONN_MAX_AGE': 21600,
 	}
 }
 
@@ -141,17 +140,36 @@ DATE_FORMAT = 'Y-m-d'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-STATIC_ROOT = 'C:/project/mysite/web_manage/collectstatic'
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static'  ## 新增行
 STATICFILES_DIRS = [
-	os.path.join(BASE_DIR, 'static').replace('\\', '/'),
-	# 资源地址
+	os.path.join(BASE_DIR, '/static/').replace('\\', '/'),  ##修改地方
 ]
 
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static\\media\\').replace('\\', '/')
 MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = "article_images"
+
+# editor
+CKEDITOR_CONFIGS = {
+	'default': {
+		'toolbar': (
+			['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
+			['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
+			['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
+			['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
+			['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
+			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
+			['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+			['Link', 'Unlink', 'Anchor'],
+			['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
+			['Styles', 'Format', 'Font', 'FontSize'],
+			['TextColor', 'BGColor'],
+			['Maximize', 'ShowBlocks', '-', 'About', 'pbckcode'],
+		),
+	}
+}
 
 # Celery settings
 import djcelery
@@ -187,26 +205,6 @@ EMAIL_HOST_USER = 'hzuyzk@163.com'
 EMAIL_HOST_PASSWORD = 'Ab2223601'
 # 收件人看到的发件人
 EMAIL_FROM = 'KasenBob<hzuyzk@163.com>'  # 需要和邮箱号码一致
-
-# editor
-CKEDITOR_CONFIGS = {
-	'default': {
-		'toolbar': (
-			['div', 'Source', '-', 'Save', 'NewPage', 'Preview', '-', 'Templates'],
-			['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'],
-			['Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'],
-			['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
-			['Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'],
-			['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote'],
-			['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-			['Link', 'Unlink', 'Anchor'],
-			['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'],
-			['Styles', 'Format', 'Font', 'FontSize'],
-			['TextColor', 'BGColor'],
-			['Maximize', 'ShowBlocks', '-', 'About', 'pbckcode'],
-		),
-	}
-}
 
 # 下面就是logging的配置
 # 日志配置

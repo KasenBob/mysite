@@ -6,13 +6,20 @@
 {% endblock %}
 
 {% block body %}
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip('show')
+        })
+    </script>
+
     <div class="panel panel-default" style="border: none;" id="caozuomianban">
         <div class="panel-heading"
              style="background-color: #333439;color: white;border: none;height: 50px;padding-top: 15px;">
             <h3 class="panel-title">个人赛</h3>
         </div>
         <div class="panel-body" style="background-color: #2B2C30;">
-            {% for apply in apply_one_list %}
+            {% for apply,change in apply_one %}
                 <div class="geren">
                     <p>{{ apply.com_id.com_name }}</p>
                     <span>报名时间：{{ apply.group_id.apply_time }}
@@ -31,7 +38,8 @@
                             <span> 比赛状态：比赛中</span>
                         {% endif %}
                         <a href="/student/stu_apply_detail?p1={{ apply.com_id.com_id }}&p2={{ apply.group_id.group_id }}"
-                           class="btn btn-transparent">详情</a></span>
+                           class="btn btn-transparent" data-toggle="tooltip" data-placement="left"
+                           {% if change == 1 %}title="该报名有申请待审核"{% endif %}>详情</a></span>
                 </div>
                 {% empty %}
                 <h4>暂无报名</h4>
@@ -45,7 +53,7 @@
             <h3 class="panel-title">团队赛</h3>
         </div>
         <div class="panel-body" style="background-color: #2B2C30;">
-            {% for apply,leader in apply_all %}
+            {% for apply,leader,change in apply_all %}
                 <div class="tuandui">
                     <p>{{ apply.com_id.com_name }}</p>
                     <span> 发起者：{{ leader.stu_id.stu_name }}</span>
@@ -66,7 +74,8 @@
                         <span> 比赛状态：比赛中</span>
                     {% endif %}
                     <a href="/student/stu_apply_detail?p1={{ apply.com_id.com_id }}&p2={{ apply.group_id.group_id }}"
-                       class="btn btn-transparent">详情</a>
+                       class="btn btn-transparent" data-toggle="tooltip" data-placement="left"
+                       {% if change == 1 %}title="该报名有申请待审核"{% endif %}>详情</a>
                 </div>
                 {% empty %}
                 <h4>暂无报名</h4>

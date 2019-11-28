@@ -174,10 +174,13 @@
                     <a href="/student/delete_apply?p1={{ group_info.com_id.com_id }}&p2={{ group_info.group_id }}&p3=1"
                        class="btn btn-transparent">撤销报名</a>
                 {% elif modify_flag == 1 and group_info.status == '1' %}
-                    <a href="/student/stu_apply_edit?p1={{ group_info.com_id.com_id }}&p2={{ group_info.group_id }}"
-                       class="btn btn-transparent">申请修改</a>
-                    <a href="/student/delete_apply?p1={{ group_info.com_id.com_id }}&p2={{ group_info.group_id }}&p3=2"
-                       class="btn btn-transparent">申请撤销</a>
+                    {% if change != 1 %}
+                        <a href="/student/stu_apply_edit?p1={{ group_info.com_id.com_id }}&p2={{ group_info.group_id }}"
+                           class="btn btn-transparent">申请修改</a>
+                        <a href="/student/delete_apply?p1={{ group_info.com_id.com_id }}&p2={{ group_info.group_id }}&p3=2"
+                           class="btn btn-transparent">申请撤销</a>
+                    {% endif %}
+
                 {% endif %}
             </div>
         </div>

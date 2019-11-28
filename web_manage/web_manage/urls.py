@@ -20,16 +20,19 @@ from django.views.static import serve
 from django.conf.urls.static import static
 
 urlpatterns = [
-	path('admin/', admin.site.urls),
+	path('KasenBob/', admin.site.urls),
 	path('', include('all.urls')),
 	path('competition/', include('competition.urls')),
 	path('student/', include('student.urls')),
 	path('teacher/', include('teacher.urls')),
 	path('member/', include('member.urls')),
 	path('news/', include('news.urls')),
+	re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
 	# 静态资源
 	re_path(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
 	# editor
 	path('ckeditor/', include('ckeditor_uploader.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+

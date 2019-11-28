@@ -15,6 +15,8 @@ from django.core import serializers
 import json
 from student.tasks import send_stu_inform
 from teacher.tasks import send_teach_inform
+import logging
+
 
 
 # Create your views here.
@@ -181,6 +183,7 @@ def com_detail(request):
 		return redirect("/competition/com_list/")
 
 	if request.method == 'GET':
+		logger = logging.getLogger('log')
 		id = request.GET.get('com_id')
 
 		object_flag = 0
@@ -190,13 +193,13 @@ def com_detail(request):
 			object_flag = 1
 
 		if object_flag != 0:
-			context['message'] = "比赛信息丢失了呢 :("
+			logger.error('找不到比赛信息！')
 			return redirect('/competition/com_list')
 
 		inform_list = all_model.inform.objects.filter(com_id=com_info).order_by('-last_update_time')
 
-		if len(inform_list) <= 0 :
-			context['message'] = "比赛信息丢失了呢 :("
+		if len(inform_list) <= 0:
+			logger.error('找不到公告信息！')
 			return redirect('/competition/com_list')
 		else:
 			context['inform'] = inform_list[0]
@@ -444,40 +447,103 @@ def com_apply_first(request):
 # 报名参加比赛第二步
 def com_apply_second(request):
 	context = {}
-	if request.method == 'POST':
+
+	# 检测进程锁
+	key = str(request.session.get('user_number')) + "_lock"
+	if cache.has_key(key):
+		context['message'] = "请勿频繁操作！请等待一分钟后再进行操作！"
 		id = request.GET.get('id')
 		com_info = get_object_or_404(models.com_basic_info, com_id=id)
 		info_list = get_object_or_404(models.com_need_info, com_id=id)
 		group_list = models.com_sort_info.objects.filter(com_id=id)
-
+		leader_id = request.session.get('user_number')
+		leader = get_object_or_404(student_model.stu_basic_info, stu_number=leader_id)
+		context['leader'] = leader
+		context['com_info'] = com_info
+		context['info_list'] = info_list
+		context['group_list'] = group_list
+		context['tea_num'] = range(1, info_list.tea_num + 1)
 		num = com_info.num_stu
-		flag_full = com_info.need_full
-		flag_same = com_info.same_stu
-		flag_proname = info_list.product_name
-		flag_teanum = com_info.num_teach
-		flag_group = info_list.com_group
-		flag_else = info_list.else_info
-		flag_groupname = info_list.group_name
+		context['stu_num'] = range(1, num + 1)
+		return render(request, 'competition/apply/com_apply_first.html', context)
+	else:
+		cache.set(key, "1", 1 * 60)
 
-		# 优化
-		stu_list = []
-		for i in range(1, num + 1):
+	id = request.GET.get('id')
+	com_info = get_object_or_404(models.com_basic_info, com_id=id)
+	info_list = get_object_or_404(models.com_need_info, com_id=id)
+	group_list = models.com_sort_info.objects.filter(com_id=id)
+
+	num = com_info.num_stu
+	flag_full = com_info.need_full
+	flag_same = com_info.same_stu
+	flag_proname = info_list.product_name
+	flag_teanum = com_info.num_teach
+	flag_group = info_list.com_group
+	flag_else = info_list.else_info
+	flag_groupname = info_list.group_name
+
+	# 优化
+	stu_list = []
+	for i in range(1, num + 1):
+		if i == 1:
+			stu_list.append(request.session.get('user_number'))
+		else:
 			stu_number = request.POST.get('stu_num' + str(i))
 			if stu_number != None and stu_number != "":
 				stu_list.append(stu_number)
-		len_stu = len(stu_list)
-		stu_info_list = []
-		for stu in stu_list:
-			name = student_model.stu_basic_info.objects.get(stu_number=stu)
-			stu_info_list.append(name)
+	len_stu = len(stu_list)
+	stu_info_list = []
+	for stu in stu_list:
+		name = student_model.stu_basic_info.objects.get(stu_number=stu)
+		stu_info_list.append(name)
 
-		group_name = request.POST.get('group_name')
-		group = request.POST.get('group')
-		product_name = request.POST.get('product_name')
-		else_info = request.POST.get('else_info')
+	group_name = request.POST.get('group_name')
+	group = request.POST.get('group')
+	product_name = request.POST.get('product_name')
+	else_info = request.POST.get('else_info')
 
+	if request.method == 'POST':
 		# 分批保存信息，包括：竞赛小组信息、小组成员信息
 		# 保存竞赛小组信息
+
+		flag_same = com_info.same_stu
+		# 判断是够重复报名,到这里就随便来了
+		flag = 1
+		if flag_same == 0:
+			for stu in stu_info_list:
+				com_list = student_model.com_stu_info.objects.filter(stu_id=stu)
+				for com in com_list:
+					if com.com_id == com_info:
+						flag = 0
+						break
+		elif flag_same == 1:
+			num = 1
+			for stu in stu_info_list:
+				com_list = student_model.com_stu_info.objects.filter(stu_id=stu)
+				if num == 1:
+					for com in com_list:
+						if com.com_id == com_info:
+							flag = 0
+							break
+				else:
+					for com in com_list:
+						if com.is_leader == 1:
+							flag = 0
+							break
+				num = num + 1
+		if flag == 0:
+			# 回到first页面
+			context['message'] = '参赛成员不符合规定哦 :('
+			context['com_info'] = com_info
+			context['info_list'] = info_list
+			context['group_list'] = group_list
+			context['tea_num'] = range(1, info_list.tea_num + 1)
+			num = com_info.num_stu
+			context['stu_num'] = range(1, num + 1)
+			return render(request, 'competition/apply/com_apply_first.html', context)
+
+		# 写入数据库
 		com_group = models.com_group_basic_info()
 		# id
 		com_group.com_id = get_object_or_404(models.com_basic_info, com_id=id)
@@ -518,6 +584,11 @@ def com_apply_second(request):
 				stu_id = i.stu_number
 				title = '比赛报名邀请'
 				content = leader.stu_name + '邀请您参加' + com_info.com_name + ',请查看您的报名信息。'
+				send_stu_inform(stu_id, title, content)
+			else:
+				stu_id = leader.stu_number
+				title = '比赛报名通知'
+				content = '您已报名参加' + com_info.com_name + ',请查看您的报名信息。'
 				send_stu_inform(stu_id, title, content)
 
 		teach_list = []

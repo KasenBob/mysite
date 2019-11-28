@@ -19,7 +19,6 @@ import xlwt
 from io import BytesIO
 
 
-
 # Create your views here.
 # 增加竞赛系列
 def add_series(request):
@@ -578,7 +577,13 @@ def add_notices(request):
 		com_attach = request.FILES.get('com_attach', None)
 		author = request.POST.get('author', None)
 
-		title = request.POST.get('title')
+		title = request.POST.get('title', '公告')
+
+		test_list = all_model.inform.objects.filter(title=title)
+		if len(test_list) > 0:
+			context['message'] = "已存在同标题公告，请更改标题！"
+			return render(request, 'member/add_com/second.html', context)
+
 		apply_form = ArticleForm(request.POST)
 		content = ''
 		if apply_form.is_valid():
@@ -597,17 +602,14 @@ def add_notices(request):
 			f_name = com_attach.name
 			f_name = f_name.split('.')[-1].lower()
 			# 重命名文件
-			inform.com_attachment = "com_attach\\" + str(com_info.com_id) + "\\" + str(
-				com_info.com_id) + "." + f_name
+			inform.com_attachment = "com_attach\\" + str(title) + "\\." + str(title) + '.' + f_name
 			# print(com_publish.com_attachment)
-			url = settings.MEDIA_ROOT + 'com_attach\\' + str(com_info.com_id)
+			url = settings.MEDIA_ROOT + 'com_attach\\' + str(title)
 			# 判断路径是否存在
 			isExists = os.path.exists(url)
 			if not isExists:
 				os.makedirs(url)
-			file_url = open(settings.MEDIA_ROOT + "com_attach\\" + str(com_info.com_id) + "\\" + str(
-				com_info.com_id) + "." + f_name,
-			                'wb')
+			file_url = open(settings.MEDIA_ROOT + "com_attach\\" + str(title) + "\\." + str(title) + '.' + f_name, 'wb')
 			for chunk in com_attach.chunks():
 				file_url.write(chunk)
 			file_url.close()

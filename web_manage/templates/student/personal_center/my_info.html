@@ -14,7 +14,14 @@
         <div class="panel-body" style="background-color: #2B2C30;">
             <div id="xinxi">
                 <div id="jibenxinxi">
-                    <h3>基本信息</h3>
+                    <script>
+                        $(function () {
+                            $('[data-toggle="tooltip"]').tooltip('show')
+                        })
+                    </script>
+                    <h3 style="display: inline-block;" data-toggle="tooltip" data-placement="right"
+                        {% if change_flag == 1 %}title="您已提交基本信息修改申请，请等待审核通过"{% endif %}>
+                        基本信息</h3>
                     <form class="navbar-form dist">
                         <div class="form-group">
                             学号：
@@ -81,7 +88,9 @@
             </div>
             <div id="zuihouanniu">
                 <a class="btn btn-transparent quanbubisai" href="/student/alter_avatar">修改头像</a>
-                <a class="btn btn-transparent quanbubisai" href="/student/alter_info_stu">修改信息</a>
+                {% if change_flag != 1 %}
+                    <a class="btn btn-transparent quanbubisai" href="/student/alter_info_stu">修改信息</a>
+                {% endif %}
             </div>
         </div>
     </div>

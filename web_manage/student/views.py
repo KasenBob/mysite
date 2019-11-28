@@ -15,6 +15,7 @@ from .tasks import send_stu_inform
 from teacher.tasks import send_teach_inform
 
 
+
 # Create your views here.
 # 学生修改个人信息
 def alter_info_stu(request):
@@ -172,19 +173,32 @@ def personal_center_stu_apply(request):
 	apply_one_list = []
 	apply_all_list = []
 	leader_list = []
+	change_one_list = []
+	change_all_list = []
 	for apply in apply_list:
 		if apply.com_id.type == '0' and apply.com_id.com_status != '3':
 			apply_one_list.append(apply)
+			temp = competition_model.temp_com_group_basic_info.objects.filter(group_id=apply.group_id)
+			flag = 0
+			if len(temp) > 0:
+				flag = 1
+			change_one_list.append(flag)
 		elif apply.com_id.type == '1' and apply.com_id.com_status != '3':
 			apply_all_list.append(apply)
 			group = apply.group_id
+			temp = competition_model.temp_com_group_basic_info.objects.filter(group_id=apply.group_id)
+			flag = 0
+			if len(temp) > 0:
+				flag = 1
+			change_all_list.append(flag)
 			stu_list = models.com_stu_info.objects.filter(group_id=group)
 			for stu in stu_list:
 				if stu.is_leader == 1:
 					leader_list.append(stu)
-	apply_all = zip(apply_all_list, leader_list)
+	apply_one = zip(apply_one_list, change_one_list)
+	apply_all = zip(apply_all_list, leader_list, change_all_list)
 
-	context['apply_one_list'] = apply_one_list
+	context['apply_one'] = apply_one
 	context['apply_all'] = apply_all
 	return render(request, 'student/personal_center/my_apply.html', context)
 
@@ -241,6 +255,12 @@ def personal_center_stu_info(request):
 	context = {}
 	stu_info = get_object_or_404(models.stu_basic_info, stu_number=request.session['user_number'])
 	context['stu_info'] = stu_info
+	# 是否有基本信息修改
+	flag = 0
+	change_info = models.temp_stu_basic_info.objects.filter(stu_number=request.session['user_number'])
+	if len(change_info) > 0:
+		flag = 1
+	context['change_flag'] = flag
 	return render(request, 'student/personal_center/my_info.html', context)
 
 
@@ -266,6 +286,13 @@ def stu_apply_detail(request):
 	context = {}
 	com_id = request.GET.get('p1')
 	group_id = request.GET.get('p2')
+
+	temp = competition_model.temp_com_group_basic_info.objects.filter(group_id=group_id)
+	flag = 0
+	if len(temp) > 0:
+		flag = 1
+	context['change'] = flag
+
 	com_info = get_object_or_404(competition_model.com_basic_info, com_id=com_id)
 	com_info.update_status()
 	group_info = get_object_or_404(competition_model.com_group_basic_info, group_id=group_id)
