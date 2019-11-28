@@ -110,7 +110,7 @@
 
                     {% for new in news_list %}
                         <div class="yitiao">
-                            <a href="/news/news_detail?p={{ new.pk }}">{{ new.title }}</span><span
+                            <a href="/news/news_detail?p={{ new.pk }}">{{ new.title }}<span
                                     class="riqi"> {{ new.created_time }}</span></a>
                         </div>
                         {% empty %}
@@ -156,7 +156,7 @@
                                      alt="logo">
                                 <div class="member">
                                     <h3>{{ show_com.com_name }}</h3>
-                                    <p>{{ show_com.series_id.introduction|truncatechars:120 }}。。。。。。</p>
+                                    <p>{{ show_com.series_id.introduction|truncatechars:120 }}......</p>
                                     <a class="btn btn-transparent"
                                        href="/competition/com_detail?com_id={{ show_com.com_id }}">更多详情</a>
                                 </div>

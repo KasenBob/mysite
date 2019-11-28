@@ -20,8 +20,9 @@
         <div class="biaoti">
             <h1>竞赛介绍</h1>
             <h4>
-                <span id="qiebiao" class="qiehuan" style="color: #6CB670;">列表</span><span> / </span>
-                <!--<span id="qiezhou" class="qiehuan">时间轴</span>-->
+                <span id="qiebiao" class="qiehuan" style="color: #6CB670;">列表</span>
+                <!--<span> / </span>
+                <span id="qiezhou" class="qiehuan">时间轴</span>-->
             </h4>
             <div class="border"></div>
         </div>
@@ -143,6 +144,7 @@
                                         <img class="img-responsive myimg" src="/media/{{ series.photo }}" alt="logo">
                                         <div class="member">
                                             <h3>{{ series.name }}</h3>
+                                            <p>{{ series.introduction|truncatechars:120 }}......</p>
                                             <a class="btn btn-transparent" data-toggle="modal"
                                                data-target="#{{ series.name }}">更多详情</a>
                                         </div>
