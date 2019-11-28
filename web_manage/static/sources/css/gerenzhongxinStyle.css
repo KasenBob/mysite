@@ -25,7 +25,6 @@
 
 #gongnenglan a:hover{
 	background-color: #6CB670;
-	color: ;
 }
 
 #gongnenglan .active{
@@ -184,9 +183,10 @@
 
 .recent-msg{
 	padding: 10px;border-bottom: 1px solid  #666666;
-	
 	cursor: pointer;
 }
+
+
 
 .recent-msg-active{
 	background-color: #333439

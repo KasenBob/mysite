@@ -10,10 +10,9 @@ class stu_basic_info(models.Model):
 	                               blank=True)
 	major = models.ForeignKey('all.major_info', to_field='major_name', on_delete=models.SET_NULL, null=True, blank=True)
 	grade = models.ForeignKey('all.grade_info', to_field='grade_name', on_delete=models.SET_NULL, null=True, blank=True)
-	stu_class = models.ForeignKey('all.class_info', to_field='class_name', on_delete=models.SET_NULL, null=True,
-	                              blank=True)
+	stu_class = models.ForeignKey('all.class_info', to_field='class_name', on_delete=models.SET_NULL, null=True, blank=True)
 	sex = models.CharField(max_length=10, choices=(("男", "男"), ("女", "女")))
-	ID_number = models.CharField(max_length=25)
+	ID_number = models.CharField(max_length=25, null=True, blank=True)
 	bank_number = models.CharField(max_length=25, null=True, blank=True)
 	phone_number = models.CharField(max_length=25, null=True, blank=True)
 	email = models.EmailField(max_length=255, null=True, blank=True)

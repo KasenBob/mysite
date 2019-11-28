@@ -7,6 +7,11 @@ class profess_info(models.Model):
 	profess_name = models.CharField(max_length=10, primary_key=True)
 
 
+# 部门名称
+class part_info(models.Model):
+	part_name = models.CharField(max_length=20, primary_key=True)
+
+
 # 指导教师基本信息
 class teach_basic_info(models.Model):
 	tea_number = models.CharField(max_length=25, primary_key=True, default='0')
@@ -15,7 +20,8 @@ class teach_basic_info(models.Model):
 	                            blank=True)
 	department = models.ForeignKey('all.depart_info', to_field='depart_name', on_delete=models.SET_NULL, null=True,
 	                               blank=True)
-	ID_number = models.CharField(max_length=25)
+	part = models.ForeignKey('part_info', to_field='part_name', on_delete=models.SET_NULL, null=True, blank=True)
+	ID_number = models.CharField(max_length=25,  null=True, blank=True)
 	email = models.EmailField(max_length=255, null=True, blank=True)
 	phone_number = models.CharField(max_length=25, null=True, blank=True)
 	photo = models.ImageField(upload_to='photo', null=True, blank=True)

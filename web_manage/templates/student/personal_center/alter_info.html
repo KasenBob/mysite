@@ -11,6 +11,7 @@
              style="background-color: #333439;color: white;border: none;height: 50px;padding-top: 15px;">
             <h3 class="panel-title">个人信息</h3>
         </div>
+
         <div class="panel-body" style="background-color: #2B2C30;">
             <div id="xinxi">
                 <div id="jibenxinxi">
@@ -92,24 +93,25 @@
                             <h3>拓展信息</h3>
                             <div class="form-group">
                                 银行账号：
-                                <input type="text" class="form-control" autocomplete="on" name="bank_number"
+                                <input id="yinhangka" type="text" class="form-control" autocomplete="on" name="bank_number"
                                        value="{{ stu_info.bank_number }}">
                             </div>
                             <div class="form-group">
-                                电话号码：
-                                <input type="text" class="form-control" autocomplete="on" name="phone_number"
+                                电话号码*：
+                                <input id="dianhuahaoma" type="text" class="form-control" autocomplete="on" name="phone_number"
                                        value="{{ stu_info.phone_number }}">
+                                    <span id="geshicuowu" style="color: red;display: none;font-size: 10px">格式错误</span>
                             </div>
                             <div class="form-group">
-                                邮箱：
-                                <input type="text" class="form-control" autocomplete="on" name="email"
+                                邮箱*：
+                                <input  type="email" class="form-control" autocomplete="on" name="email"
                                        value="{{ stu_info.email }}">
                             </div>
                         </div>
 
                         {% if user_info.have_alter == '1' and user_info.have_login == '1' %}
                             <div id="zuihouanniu">
-                                <a class="btn btn-transparent quanbubisai" data-toggle="modal"
+                                <a id="tijiaoxiugai"  class="btn btn-transparent quanbubisai" data-toggle="modal"
                                    data-target="#myModal">提交修改</a>
                             </div>
                         {% else %}
@@ -144,7 +146,7 @@
                                         </div>
                                     </div>
                                     <div id="zuihouanniu">
-                                        <button class="tijiaoanniu" type="submit">确认修改</button>
+                                        <button id="querenxiugai" class="tijiaoanniu" style="margin-bottom: 10px" type="submit">确认修改</button>
                                     </div>
                                 </div>
                             </div>
@@ -157,4 +159,19 @@
             <div class="bgc2" style="height: 128px;"></div>
         </div>
     </div>
+
+    <script>
+        $(function () {
+            $("#dianhuahaoma").keyup(function () {
+                var s = $("#dianhuahaoma").val();
+                if(s.length<8 || s.length>12){
+                    $("#geshicuowu").show();
+                }else{
+                    $("#geshicuowu").hide();
+                }
+
+            })
+        })
+    </script>
+
 {% endblock %}
